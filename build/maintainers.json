@@ -2863,6 +2863,9 @@
   "/eeo/kuaixun": [
     "nczitzk"
   ],
+  "/efe/:category?": [
+    "mlkgrnt"
+  ],
   "/egsea/flash": [
     "hillerliao"
   ],
@@ -4022,6 +4025,12 @@
   ],
   "/grubstreet/": [
     "loganrockmore"
+  ],
+  "/grupoanimal/estados": [
+    "Slayer015"
+  ],
+  "/grupoanimal/politica": [
+    "Slayer015"
   ],
   "/gs/developer/blog": [
     "chesha1"
@@ -5329,6 +5338,12 @@
     "wb14123",
     "pseudoyu"
   ],
+  "/lemonde/en/:category?": [
+    "mlkgrnt"
+  ],
+  "/lemonde/:category?": [
+    "mlkgrnt"
+  ],
   "/lenovo/drive/:selName": [
     "cscnk52"
   ],
@@ -6014,6 +6029,9 @@
   ],
   "/nautiljon/releases/manga": [
     "Fafnor"
+  ],
+  "/naver/search/:category/:keyword": [
+    "slowmande"
   ],
   "/nbd/daily": [
     "yuuow"
@@ -7929,6 +7947,9 @@
   "/sjtu/tongqu/:type?": [
     "SeanChao"
   ],
+  "/sjtu/cs/tzgg/:category": [
+    "BeaCox"
+  ],
   "/sjtu/cs/xshd": [
     "BeaCox"
   ],
@@ -8073,6 +8094,9 @@
   ],
   "/southcn/nfapp/reporter/:reporter": [
     "TimWu007"
+  ],
+  "/soweather/warn": [
+    "TinkoLiu"
   ],
   "/spankbang/new_videos": [
     "TonyRL"

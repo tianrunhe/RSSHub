@@ -16162,6 +16162,19 @@
       }
     ]
   },
+  "efe.com": {
+    "_name": "EFE Noticias",
+    ".": [
+      {
+        "title": "Category",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/:category"
+        ],
+        "target": "/efe/:category"
+      }
+    ]
+  },
   "egsea.com": {
     "_name": "e 公司",
     ".": [
@@ -21799,6 +21812,27 @@
       }
     ]
   },
+  "grupoanimal.mx": {
+    "_name": "Grupo Animal",
+    "www": [
+      {
+        "title": "Estados",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/estados"
+        ],
+        "target": "/grupoanimal/grupoanimal/estados"
+      },
+      {
+        "title": "Política",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/politica"
+        ],
+        "target": "/grupoanimal/grupoanimal/politica"
+      }
+    ]
+  },
   "gs.com": {
     "_name": "Goldman Sachs",
     "developer": [
@@ -25950,7 +25984,7 @@
         "source": [
           "/:type/:name"
         ],
-        "target": "/jbmaparams=>{const type=params.type;const name=params.name;if(type===\"report\"||type===\"cat_report\"||type===\"tag_report\"){return`/${type}${name?`/${name}`:\"\"}`}return`/${type}`}"
+        "target": "/jbmaparams=>{const type=params.type;const name=params.name;if([\"report\",\"cat_report\",\"tag_report\"].includes(type)){return`/${type}${name?`/${name}`:\"\"}`}return`/${type}`}"
       },
       {
         "title": "Metals Forcus",
@@ -28685,6 +28719,27 @@
           "/"
         ],
         "target": "/leiphone/newsflash"
+      }
+    ]
+  },
+  "lemonde.fr": {
+    "_name": "Le Monde",
+    ".": [
+      {
+        "title": "News (English)",
+        "docs": "https://docs.rsshub.app/routes/traditional-media",
+        "source": [
+          "/en/:category"
+        ],
+        "target": "/lemonde/en/:category"
+      },
+      {
+        "title": "News",
+        "docs": "https://docs.rsshub.app/routes/traditional-media",
+        "source": [
+          "/:category"
+        ],
+        "target": "/lemonde/:category"
       }
     ]
   },
@@ -33335,6 +33390,19 @@
           "/"
         ],
         "target": "/nautiljon/releases/manga"
+      }
+    ]
+  },
+  "naver.com": {
+    "_name": "네이버",
+    "m.search": [
+      {
+        "title": "검색",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/search.naver"
+        ],
+        "target": "/naver/search/:category/:keyword"
       }
     ]
   },
@@ -38439,11 +38507,11 @@
       }
     ]
   },
-  "pixnoy.com": {
+  "picnob.com": {
     "_name": "Instagram",
     "www": [
       {
-        "title": "User Profile - Pixnoy",
+        "title": "User Profile - Picnob",
         "docs": "https://docs.rsshub.app/routes/social-media",
         "source": [
           "/profile/:id"
@@ -38451,7 +38519,7 @@
         "target": "/picnob/user/:id"
       },
       {
-        "title": "User Profile - Pixnoy",
+        "title": "User Profile - Picnob",
         "docs": "https://docs.rsshub.app/routes/social-media",
         "source": [
           "/profile/:id/tagged"
@@ -42276,6 +42344,62 @@
   "sjtu.edu.cn": {
     "_name": "上海交通大学",
     "www.cs": [
+      {
+        "title": "计算机学院 - 通知公告",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/notice-xssw-bkspy.html"
+        ],
+        "target": "/sjtu/cs/tzgg/bkspy"
+      },
+      {
+        "title": "计算机学院 - 通知公告",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/notice-xssw-yjspy.html"
+        ],
+        "target": "/sjtu/cs/tzgg/yjspy"
+      },
+      {
+        "title": "计算机学院 - 通知公告",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/notice-xssw-gjjl.html"
+        ],
+        "target": "/sjtu/cs/tzgg/gjjl"
+      },
+      {
+        "title": "计算机学院 - 通知公告",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/notice-xssw-djdy.html"
+        ],
+        "target": "/sjtu/cs/tzgg/djdy"
+      },
+      {
+        "title": "计算机学院 - 通知公告",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/notice-xssw-txgz.html"
+        ],
+        "target": "/sjtu/cs/tzgg/txgz"
+      },
+      {
+        "title": "计算机学院 - 通知公告",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/notice-xssw-zyfz.html"
+        ],
+        "target": "/sjtu/cs/tzgg/zyfz"
+      },
+      {
+        "title": "计算机学院 - 通知公告",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/notice-xssw-qt.html"
+        ],
+        "target": "/sjtu/cs/tzgg/qt"
+      },
       {
         "title": "计算机学院 - 学术活动",
         "docs": "https://docs.rsshub.app/routes/university",

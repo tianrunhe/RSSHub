@@ -932,6 +932,7 @@ export type RoutePath =
   | `/ecust/jxjy/news`
   | `/ecust/yjs`
   | `/eeo/kuaixun`
+  | `/efe/:category?`
   | `/egsea/flash`
   | `/ehentai/favorites/:favcat?/:order?/:page?/:routeParams?`
   | `/ehentai/search/:params?/:page?/:routeParams?`
@@ -1317,6 +1318,8 @@ export type RoutePath =
   | `/grist/series/:series`
   | `/grist/topic/:topic`
   | `/grubstreet/`
+  | `/grupoanimal/estados`
+  | `/grupoanimal/politica`
   | `/gs/developer/blog`
   | `/guancha/:category?`
   | `/guancha/headline`
@@ -1747,6 +1750,8 @@ export type RoutePath =
   | `/leiphone/:do?/:keyword?`
   | `/leiphone/newsflash`
   | `/lemmy/:community/:sort?`
+  | `/lemonde/:category?`
+  | `/lemonde/en/:category?`
   | `/lenovo/drive/:selName`
   | `/lens/profile/:handle`
   | `/lephoceen/chrono`
@@ -1968,6 +1973,7 @@ export type RoutePath =
   | `/nature/siteindex`
   | `/nautil/topic/:tid`
   | `/nautiljon/releases/manga`
+  | `/naver/search/:category/:keyword`
   | `/nbd/:id?`
   | `/nbd/daily`
   | `/nber/new`
@@ -2577,6 +2583,7 @@ export type RoutePath =
   | `/sinchew*`
   | `/sis001/author/:id?`
   | `/sis001/forum/:id?`
+  | `/sjtu/cs/tzgg/:category`
   | `/sjtu/cs/xshd`
   | `/sjtu/gs/:type/:num?`
   | `/sjtu/jwc/:type?`
@@ -2626,6 +2633,7 @@ export type RoutePath =
   | `/sourceforge/:routeParams?`
   | `/southcn/nfapp/column/:column?`
   | `/southcn/nfapp/reporter/:reporter`
+  | `/soweather/warn`
   | `/spankbang/new_videos`
   | `/spglobal/ratings/:language?`
   | `/spotify/artist/:id`
