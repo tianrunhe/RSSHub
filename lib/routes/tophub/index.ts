@@ -95,7 +95,7 @@ function shouldIncludeItem(heatRate: string, threshold: number) {
 }
 
 function parseHotness(heatRate: string) {
-    const matched = heatRate.match(/([\d.]+)\s*[Ww万]/);
+    const matched = heatRate.match(/([\d.]+)\s*[W万]/i);
 
     return matched ? Number.parseFloat(matched[1]) : Number.NaN;
 }
