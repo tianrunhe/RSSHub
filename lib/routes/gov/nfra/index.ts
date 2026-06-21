@@ -8,7 +8,7 @@ import timezone from '@/utils/timezone';
 
 export const handler = async (ctx) => {
     const { id = '915' } = ctx.req.param();
-    const limit = ctx.req.query('limit') ? Number.parseInt(ctx.req.query('limit'), 10) : 18;
+    const limit = ctx.req.query('limit') ? Number(ctx.req.query('limit')) : 18;
 
     const rootUrl = 'https://www.nfra.gov.cn';
     const apiUrl = new URL(`cn/static/data/DocInfo/SelectDocByItemIdAndChild/data_itemId=${id},pageIndex=1,pageSize=18.json`, rootUrl).href;
@@ -30,7 +30,7 @@ export const handler = async (ctx) => {
         return {
             title,
             description,
-            pubDate: timezone(parseDate(item.publishDate), +8),
+            pubDate: timezone(parseDate(item.publishDate), 8),
             link: new URL(`cn/view/pages/ItemDetail.html?docId=${guid}`, rootUrl).href,
             guid,
             id: guid,
@@ -60,7 +60,7 @@ export const handler = async (ctx) => {
 
                 item.title = title;
                 item.description = description;
-                item.pubDate = timezone(parseDate(data.publishDate), +8);
+                item.pubDate = timezone(parseDate(data.publishDate), 8);
                 item.category = data.listTwoItem?.[0]?.ItemLvs.map((c) => c.itemName);
                 item.author = data.docSource;
                 item.guid = `cbirc-${item.guid}`;

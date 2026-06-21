@@ -12,7 +12,7 @@ import timezone from '@/utils/timezone';
 
 export const handler = async (ctx: Context): Promise<Data> => {
     const { category = 'gzdt' } = ctx.req.param();
-    const limit: number = Number.parseInt(ctx.req.query('limit') ?? '30', 10);
+    const limit = Number(ctx.req.query('limit') ?? '30');
 
     const baseUrl = 'http://www.gjs.moa.gov.cn';
     const targetUrl: string = new URL(category.endsWith('/') ? category : `${category}/`, baseUrl).href;
@@ -68,7 +68,7 @@ export const handler = async (ctx: Context): Promise<Data> => {
                     let processedItem: DataItem = {
                         title,
                         description,
-                        pubDate: pubDateStr ? timezone(parseDate(pubDateStr), +8) : item.pubDate,
+                        pubDate: pubDateStr ? timezone(parseDate(pubDateStr), 8) : item.pubDate,
                         link: linkUrl ?? item.link,
                         category: categories,
                         author: authors,
@@ -76,7 +76,7 @@ export const handler = async (ctx: Context): Promise<Data> => {
                             html: description,
                             text: description,
                         },
-                        updated: upDatedStr ? timezone(parseDate(upDatedStr), +8) : item.updated,
+                        updated: upDatedStr ? timezone(parseDate(upDatedStr), 8) : item.updated,
                         language,
                     };
 

@@ -25,7 +25,7 @@ const renderDescription = ({ images, description }) =>
     );
 export const handler = async (ctx) => {
     const { category = 'fgw_zxxxgk' } = ctx.req.param();
-    const limit = ctx.req.query('limit') ? Number.parseInt(ctx.req.query('limit'), 10) : 20;
+    const limit = ctx.req.query('limit') ? Number(ctx.req.query('limit')) : 20;
 
     const rootUrl = 'https://fgw.sh.gov.cn';
     const currentUrl = new URL(`${category}/index.html`, rootUrl).href;
@@ -81,7 +81,7 @@ export const handler = async (ctx) => {
 
                 item.title = title;
                 item.description = description;
-                item.pubDate = timezone(parseDate($$('meta[name="PubDate"]').prop('content')), +8);
+                item.pubDate = timezone(parseDate($$('meta[name="PubDate"]').prop('content')), 8);
                 item.category = [...new Set([$$('meta[name="ColumnName"]').prop('content'), $$('meta[name="ColumnKeywords"]').prop('content')])].filter(Boolean);
                 item.author = $$('meta[name="ContentSource"]').prop('content');
                 item.content = {

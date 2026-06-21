@@ -36,7 +36,7 @@ export const route: Route = {
 
 export async function handler(ctx) {
     const { category = 'zuixin' } = ctx.req.param();
-    const limit = ctx.req.query('limit') ? Number.parseInt(ctx.req.query('limit'), 10) : 20;
+    const limit = ctx.req.query('limit') ? Number(ctx.req.query('limit')) : 20;
 
     const rootUrl = 'https://www.gov.cn';
     const currentUrl = new URL(`zhengce/${category.replace(/\/$/, '')}/`, rootUrl).href;
@@ -99,8 +99,8 @@ export async function handler(ctx) {
                     item.author = [agency, source, author].filter(Boolean).join('/');
                     item.category = [...new Set([subject, column, ...keywords].filter(Boolean))];
                     item.guid = `gov-zhengce-${manuscriptId}`;
-                    item.pubDate = timezone(parseDate(content('meta[name="firstpublishedtime"]').prop('content'), 'YYYY-MM-DD-HH:mm:ss'), +8);
-                    item.updated = timezone(parseDate(content('meta[name="lastmodifiedtime"]').prop('content'), 'YYYY-MM-DD-HH:mm:ss'), +8);
+                    item.pubDate = timezone(parseDate(content('meta[name="firstpublishedtime"]').prop('content'), 'YYYY-MM-DD-HH:mm:ss'), 8);
+                    item.updated = timezone(parseDate(content('meta[name="lastmodifiedtime"]').prop('content'), 'YYYY-MM-DD-HH:mm:ss'), 8);
 
                     return item;
                 })

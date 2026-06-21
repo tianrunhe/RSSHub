@@ -1,7 +1,6 @@
 import { load } from 'cheerio';
 
 import type { Route } from '@/types';
-import cache from '@/utils/cache';
 import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
@@ -59,7 +58,7 @@ export const route: Route = {
 
 async function handler(ctx) {
     const { category = 'yjglbyw' } = ctx.req.param();
-    const limit = ctx.req.query('limit') ? Number.parseInt(ctx.req.query('limit'), 10) : 30;
+    const limit = ctx.req.query('limit') ? Number(ctx.req.query('limit')) : 30;
 
     const currentUrl = new URL(`xw/${category.endsWith('/') ? category : `${category}/`}`, rootUrl).href;
 
@@ -76,11 +75,11 @@ async function handler(ctx) {
             return {
                 title: item.text(),
                 link: new URL(item.prop('href'), currentUrl).href,
-                pubDate: timezone(parseDate(item.parent().find('span').text()), +8),
+                pubDate: timezone(parseDate(item.parent().find('span').text()), 8),
             };
         });
 
-    items = await processItems(items, cache.tryGet);
+    items = await processItems(items);
 
     return {
         item: items,

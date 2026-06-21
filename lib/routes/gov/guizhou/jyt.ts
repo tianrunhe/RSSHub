@@ -33,7 +33,7 @@ export const route: Route = {
 };
 
 async function handler(ctx) {
-    const limit = ctx.req.query('limit') ? Number.parseInt(ctx.req.query('limit'), 10) : 15;
+    const limit = ctx.req.query('limit') ? Number(ctx.req.query('limit')) : 15;
 
     const baseUrl = 'https://jyt.guizhou.gov.cn';
     const currentUrl = `${baseUrl}/zwgk/tzgg/`;
@@ -72,7 +72,7 @@ async function handler(ctx) {
                 return {
                     ...item,
                     author,
-                    pubDate: pubDate ? timezone(parseDate(pubDate), +8) : item.pubDate,
+                    pubDate: pubDate ? timezone(parseDate(pubDate), 8) : item.pubDate,
                     description: $$('.trs_editor_view').html() || $$('.TRS_UEDITOR').html(),
                 };
             })

@@ -28,7 +28,7 @@ export const route: Route = {
 
 async function handler(ctx) {
     const { category = 'tzgg_191' } = ctx.req.param();
-    const limit = ctx.req.query('limit') ? Number.parseInt(ctx.req.query('limit'), 10) : 15;
+    const limit = ctx.req.query('limit') ? Number(ctx.req.query('limit')) : 15;
 
     const rootUrl = 'https://gzw.cq.gov.cn';
     const currentUrl = new URL(category, rootUrl).href;
@@ -47,7 +47,10 @@ async function handler(ctx) {
 
             return {
                 title: a.text(),
-                link: new URL(a.prop('href').replace(/^\./, category), rootUrl).href,
+                link: new URL(
+                    a.prop('href').replace(/^\./, () => category),
+                    rootUrl
+                ).href,
                 pubDate: parseDate(item.find('span').text()),
             };
         });
@@ -63,7 +66,7 @@ async function handler(ctx) {
                 item.description = content('div.trs_paper_default').html();
                 item.author = content('meta[name="ContentSource"]').prop('content');
                 item.category = content('meta[name="Keywords"]').prop('content').split(/;/).filter(Boolean);
-                item.pubDate = timezone(parseDate(content('meta[name="PubDate"]').prop('content')), +8);
+                item.pubDate = timezone(parseDate(content('meta[name="PubDate"]').prop('content')), 8);
 
                 return item;
             })

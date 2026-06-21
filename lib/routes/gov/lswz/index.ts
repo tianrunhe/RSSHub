@@ -8,7 +8,7 @@ import timezone from '@/utils/timezone';
 
 export const handler = async (ctx) => {
     const { category = 'html/xinwen/index' } = ctx.req.param();
-    const limit = ctx.req.query('limit') ? Number.parseInt(ctx.req.query('limit'), 10) : 25;
+    const limit = ctx.req.query('limit') ? Number(ctx.req.query('limit')) : 25;
 
     const rootUrl = 'https://www.lswz.gov.cn';
     const currentUrl = new URL(`${category}.shtml`, rootUrl).href;
@@ -48,7 +48,7 @@ export const handler = async (ctx) => {
 
                 item.title = title || item.title;
                 item.description = description;
-                item.pubDate = pubDate ? timezone(parseDate(pubDate), +8) : item.pubDate;
+                item.pubDate = pubDate ? timezone(parseDate(pubDate), 8) : item.pubDate;
                 item.author = $$('meta[name="ContentSource"]').prop('content')?.trim() ?? undefined;
                 item.content = {
                     html: description,

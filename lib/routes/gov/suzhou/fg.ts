@@ -27,7 +27,7 @@ export const route: Route = {
 async function handler(ctx) {
     const { category = 'szfgw/ggl/nav_list' } = ctx.req.param();
     const categoryPath = category.replace(/\.shtml$/, '');
-    const limit = ctx.req.query('limit') ? Number.parseInt(ctx.req.query('limit'), 10) : 30;
+    const limit = ctx.req.query('limit') ? Number(ctx.req.query('limit')) : 30;
 
     const rootUrl = 'https://fg.suzhou.gov.cn';
     const currentUrl = new URL(`${categoryPath}.shtml`, rootUrl).href;
@@ -60,7 +60,7 @@ async function handler(ctx) {
                 item.title = content('ucaptitle').text().trim();
                 item.description = content('ucapcontent').html();
                 item.author = content('span.ly b').text().trim();
-                item.pubDate = timezone(parseDate(content('meta[name="PubDate"]').prop('content')), +8);
+                item.pubDate = timezone(parseDate(content('meta[name="PubDate"]').prop('content')), 8);
 
                 return item;
             })

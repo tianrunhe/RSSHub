@@ -8,7 +8,7 @@ import timezone from '@/utils/timezone';
 
 export const handler = async (ctx) => {
     const { columnId = '1832739866673426433', subColumnId } = ctx.req.param();
-    const limit = ctx.req.query('limit') ? Number.parseInt(ctx.req.query('limit'), 10) : 30;
+    const limit = ctx.req.query('limit') ? Number(ctx.req.query('limit')) : 30;
 
     const rootUrl = 'https://www.jgjcndrc.org.cn';
     const currentUrl = new URL(`list?clmId=${columnId}${subColumnId ? `&sclmId=${subColumnId}` : ''}`, rootUrl).href;
@@ -53,7 +53,7 @@ export const handler = async (ctx) => {
 
                 item.title = title;
                 item.description = description;
-                item.pubDate = timezone(parseDate(data.pubDate), +8);
+                item.pubDate = timezone(parseDate(data.pubDate), 8);
                 item.link = data.linkUrl || new URL(data.articleUrl, rootUrl).href;
                 item.category = data.parentColumns.map((c) => c.columnName);
                 item.guid = guid;

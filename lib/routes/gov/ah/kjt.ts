@@ -8,7 +8,7 @@ import timezone from '@/utils/timezone';
 
 export const handler = async (ctx) => {
     const { category = 'kjzx/tzgg' } = ctx.req.param();
-    const limit = ctx.req.query('limit') ? Number.parseInt(ctx.req.query('limit'), 10) : 20;
+    const limit = ctx.req.query('limit') ? Number(ctx.req.query('limit')) : 20;
 
     const rootUrl = 'https://kjt.ah.gov.cn';
     const currentUrl = new URL(`${category.replace(/\/$/, '').replace(/\/index\.html$/, '')}/`, rootUrl).href;
@@ -48,7 +48,7 @@ export const handler = async (ctx) => {
 
                 item.title = $$('meta[name="ArticleTitle"]').prop('content');
                 item.description = description;
-                item.pubDate = timezone(parseDate($$('meta[name="PubDate"]').prop('content')), +8);
+                item.pubDate = timezone(parseDate($$('meta[name="PubDate"]').prop('content')), 8);
                 item.category = [
                     ...new Set([
                         $$('meta[name="ColumnName"]').prop('content'),
@@ -63,7 +63,7 @@ export const handler = async (ctx) => {
                     html: description,
                     text: $$('div.wzcon').text(),
                 };
-                item.updated = timezone(parseDate($$('meta[name="HtmlGenerateTime"]').prop('content')), +8);
+                item.updated = timezone(parseDate($$('meta[name="HtmlGenerateTime"]').prop('content')), 8);
                 item.language = language;
 
                 return item;

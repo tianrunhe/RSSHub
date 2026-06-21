@@ -67,14 +67,14 @@ async function handler(ctx) {
                     const { data: html } = await got(item.link);
                     const $ = load(html);
                     item.description = $('.text').html();
-                    item.pubDate = timezone(parseDate($('meta[name="PubDate"]').attr('content')), +8);
+                    item.pubDate = timezone(parseDate($('meta[name="PubDate"]').attr('content')), 8);
                     return item;
                 });
-            } else if (item.link.startsWith('https://mp.weixin.qq.com/')) {
-                return finishArticleItem(item);
-            } else {
-                return item;
             }
+            if (item.link.startsWith('https://mp.weixin.qq.com/')) {
+                return finishArticleItem(item);
+            }
+            return item;
         })
     );
 
