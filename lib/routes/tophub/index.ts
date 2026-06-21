@@ -38,7 +38,7 @@ export const route: Route = {
 
 async function handler(ctx) {
     const id = ctx.req.param('id');
-    const threshold = Number.parseFloat(ctx.req.param('threshold')) || 0;
+    const threshold = Number(ctx.req.param('threshold')) || 0;
     const headers = {
         Referer: 'https://tophub.today',
         Cookie: config.tophub?.cookie ?? '',
@@ -97,5 +97,5 @@ function shouldIncludeItem(heatRate: string, threshold: number) {
 function parseHotness(heatRate: string) {
     const matched = heatRate.match(/([\d.]+)\s*[W万]/i);
 
-    return matched ? Number.parseFloat(matched[1]) : Number.NaN;
+    return matched ? Number(matched[1]) : NaN;
 }
