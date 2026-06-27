@@ -1547,6 +1547,9 @@
   "/cebbank/quotation/history/:type": [
     "linbuxiao"
   ],
+  "/cefco/research/news": [
+    "TonyRL"
+  ],
   "/ceph/blog/:topic?": [
     "pandada8"
   ],
@@ -3904,6 +3907,9 @@
   "/gov/npc/:caty": [
     "233yeee"
   ],
+  "/gov/nppa/:path{.+}": [
+    "y2361547758"
+  ],
   "/gov/nrta/dsj/:category?": [
     "nczitzk"
   ],
@@ -4034,6 +4040,12 @@
   "/gov/zhengce/zuixin": [
     "SettingDust",
     "nczitzk"
+  ],
+  "/gov/zj/zfcg-helper": [
+    "TonyRL"
+  ],
+  "/gov/zj/zfcg/:code?": [
+    "TonyRL"
   ],
   "/gov/zj/ningbogzw-notice/:colId?": [
     "HaoyuLee"
