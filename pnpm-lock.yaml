@@ -206,8 +206,8 @@ importers:
         specifier: 1.61.1
         version: 1.61.1
       query-string:
-        specifier: 9.4.0
-        version: 9.4.0
+        specifier: 9.4.1
+        version: 9.4.1
       rate-limiter-flexible:
         specifier: 11.2.0
         version: 11.2.0
@@ -2712,9 +2712,6 @@ packages:
   '@vitest/utils@4.1.9':
     resolution: {integrity: sha512-A51o8ymO5PpqlWNnBP9ZHPXDIpuMtTLlGSjN7la4US+LJzoUMyhwjA5QXlm39JexgwHKW4Xjs8Z2d3dLCXOeuA==}
 
-  '@zone-eu/mailsplit@5.4.12':
-    resolution: {integrity: sha512-w7Gy+NvjZ0MiXm8F6zfjImAqcTONKDImgWVBjDKQVFUXWuz3VFM5levNArkL2M877ajql5+bkS2pDV56injlmg==}
-
   '@zone-eu/mailsplit@5.4.13':
     resolution: {integrity: sha512-j40NeNlSAivqnKEjzZYsGP/bKWr2zwuyb8XOYsC3i0ZlfM5UnTYTa7aCRkE8rYQvVzE1dRjVYdvZ1Epi6x+h6w==}
 
@@ -4187,9 +4184,6 @@ packages:
   libbase64@1.3.0:
     resolution: {integrity: sha512-GgOXd0Eo6phYgh0DJtjQ2tO8dc0IVINtZJeARPeiIJqge+HdsWSuaDTe8ztQ7j/cONByDZ3zeB325AHiv5O0dg==}
 
-  libmime@5.3.8:
-    resolution: {integrity: sha512-ZrCY+Q66mPvasAfjsQ/IgahzoBvfE1VdtGRpo1hwRB1oK3wJKxhKA3GOcd2a6j7AH5eMFccxK9fBoCpRZTf8ng==}
-
   libmime@5.4.0:
     resolution: {integrity: sha512-MAWyU2qYtCsrZ6GClgukz2jx73NQrzA6ASo9qzThuTG+A7+H3lWQuBsjoy9lls+v6q/epAeBdEMJ3T0f4b+uRw==}
 
@@ -4882,8 +4876,8 @@ packages:
   quansync@1.0.0:
     resolution: {integrity: sha512-5xZacEEufv3HSTPQuchrvV6soaiACMFnq1H8wkVioctoH3TRha9Sz66lOxRwPK/qZj7HPiSveih9yAyh98gvqA==}
 
-  query-string@9.4.0:
-    resolution: {integrity: sha512-ivvWyHqU9K1Log4hJFhqVIIMoEi0nzmlRhvk2pPcTuQH/Y0K5iTTMxEx7R0PRHD2Z1hMVbWnjfsEWbIKIK+3IA==}
+  query-string@9.4.1:
+    resolution: {integrity: sha512-lSyJeN3RuaG7DZGWThtYRhk96+kEyZ/+doZpERuWbjeFL+Ok3vEat/swU498rAI0NcVt5/RJp8UDuLz7FckxrA==}
     engines: {node: '>=18'}
 
   querystringify@2.2.0:
@@ -7823,12 +7817,6 @@ snapshots:
       convert-source-map: 2.0.0
       tinyrainbow: 3.1.0
 
-  '@zone-eu/mailsplit@5.4.12':
-    dependencies:
-      libbase64: 1.3.0
-      libmime: 5.3.8
-      libqp: 2.1.1
-
   '@zone-eu/mailsplit@5.4.13':
     dependencies:
       libbase64: 1.3.0
@@ -8714,7 +8702,7 @@ snapshots:
       he: 1.2.0
       hmacsha1: 1.0.0
       oauth-1.0a: 2.2.6
-      query-string: 9.4.0
+      query-string: 9.4.1
 
   fast-content-type-parse@3.0.0: {}
 
@@ -9395,13 +9383,6 @@ snapshots:
       type-check: 0.4.0
 
   libbase64@1.3.0: {}
-
-  libmime@5.3.8:
-    dependencies:
-      encoding-japanese: 2.2.0
-      iconv-lite: 0.7.2
-      libbase64: 1.3.0
-      libqp: 2.1.1
 
   libmime@5.4.0:
     dependencies:
@@ -10333,7 +10314,7 @@ snapshots:
 
   quansync@1.0.0: {}
 
-  query-string@9.4.0:
+  query-string@9.4.1:
     dependencies:
       decode-uri-component: 0.4.1
       filter-obj: 5.1.0
