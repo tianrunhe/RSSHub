@@ -2724,8 +2724,6 @@ export type RoutePath =
   | `/swpu/dxy/:code`
   | `/swpu/is/:code`
   | `/swpu/scs/:code`
-  | `/sxhm/announcement`
-  | `/sxhm/temporary`
   | `/sycl/:feed?`
   | `/syosetu/:ncode`
   | `/syosetu/dev`
