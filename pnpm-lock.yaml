@@ -140,8 +140,8 @@ importers:
         specifier: 9.1.0
         version: 9.1.0
       iconv-lite:
-        specifier: 0.7.2
-        version: 0.7.2
+        specifier: 0.7.3
+        version: 0.7.3
       imapflow:
         specifier: 1.4.3
         version: 1.4.3
@@ -3902,6 +3902,10 @@ packages:
 
   iconv-lite@0.7.2:
     resolution: {integrity: sha512-im9DjEDQ55s9fL4EYzOAv0yMqmMBSZp6G0VvFyTMPKWxiSBHUj9NW/qqLmXUwXrrM7AvqSlTCfvqRb0cM8yYqw==}
+    engines: {node: '>=0.10.0'}
+
+  iconv-lite@0.7.3:
+    resolution: {integrity: sha512-IKXpvIzjnC9XTAUbVBcMfGS0EPaIXtW6v+zr+RRp+hqULEpo0owZax6wyRwPOJbWbzjYspQwusTsfVr0ifh4uQ==}
     engines: {node: '>=0.10.0'}
 
   ieee754@1.2.1:
@@ -9130,6 +9134,10 @@ snapshots:
     dependencies:
       safer-buffer: '@nolyfill/safer-buffer@1.0.44'
 
+  iconv-lite@0.7.3:
+    dependencies:
+      safer-buffer: '@nolyfill/safer-buffer@1.0.44'
+
   ieee754@1.2.1: {}
 
   ignore@5.3.2: {}
@@ -9997,7 +10005,7 @@ snapshots:
   node-network-devtools@1.0.30(undici@8.6.0)(utf-8-validate@5.0.10):
     dependencies:
       bufferutil: 4.1.0
-      iconv-lite: 0.7.2
+      iconv-lite: 0.7.3
       inspector: 0.5.0
       open: 8.4.2
       undici: 8.6.0
