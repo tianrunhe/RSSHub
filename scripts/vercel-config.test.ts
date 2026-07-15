@@ -10,4 +10,14 @@ describe('vercel config', () => {
 
         expect(includeFiles).toBe('node_modules/.pnpm/patchright-core@*/node_modules/patchright-core/browsers.json');
     });
+
+    it('bundles sanitize-html for ESM-only transitive dependencies', async () => {
+        const { default: config } = await import('../tsdown-vercel.config');
+
+        expect(config).toMatchObject({
+            deps: {
+                alwaysBundle: ['sanitize-html'],
+            },
+        });
+    });
 });
