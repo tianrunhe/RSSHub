@@ -56,6 +56,8 @@ Refer to [Quick Start](https://docs.rsshub.app/joinus/)
 
 Refer to [Deployment](https://docs.rsshub.app/deploy/)
 
+Fork maintainers should also follow the local [maintenance runbook](./MAINTENANCE.md) after upstream syncs and production deployments.
+
 ## Special Thanks
 
 <div align="center">
