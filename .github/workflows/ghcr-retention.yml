@@ -7,13 +7,17 @@ on:
 
 jobs:
     cleanup:
-        if: vars.DOCKER_USERNAME != ''
         runs-on: ubuntu-slim
         permissions:
             packages: write
             contents: read
         steps:
+            - name: Skip cleanup when Docker publishing is disabled
+              if: vars.DOCKER_USERNAME == ''
+              run: echo 'Docker publishing is not configured; there is no GHCR package to clean up.'
+
             - name: Delete old container versions (30+ days)
+              if: vars.DOCKER_USERNAME != ''
               uses: dataaxiom/ghcr-cleanup-action@d52806a0dc70b430571a37da1fde39733ffd640f # v1.2.2
               with:
                   dry-run: false

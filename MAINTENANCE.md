@@ -11,7 +11,7 @@ This fork tracks `DIYgod/RSSHub` while preserving fork-local behavior, especiall
 
 ## Fork-Specific CI Guards
 
-This fork does not publish Docker or GHCR images unless the `DOCKER_USERNAME` repository variable is configured. Keep the matching `vars.DOCKER_USERNAME != ''` job guard in `.github/workflows/ghcr-retention.yml`; without it, the inherited weekly cleanup workflow fails because there is no `ghcr.io/tianrunhe/rsshub` package to clean up.
+This fork does not publish Docker or GHCR images unless the `DOCKER_USERNAME` repository variable is configured. Keep the matching conditional steps in `.github/workflows/ghcr-retention.yml`: perform a successful no-op when the variable is absent, and run the cleanup action only when it is present. Without these guards, the inherited weekly cleanup workflow fails because there is no `ghcr.io/tianrunhe/rsshub` package to clean up.
 
 Validate this invariant with:
 
