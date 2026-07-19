@@ -9,6 +9,16 @@ This fork tracks `DIYgod/RSSHub` while preserving fork-local behavior, especiall
 3. Prefer upstream package and toolchain versions when resolving dependency conflicts. Retain a fork-local package change only when taking upstream would clearly break a required local patch.
 4. Preserve TopHub source and tests. Current TopHub test placement is `lib/routes/tophub.test.ts`: it is excluded from route discovery and from the orphan-test guard introduced upstream.
 
+## Fork-Specific CI Guards
+
+This fork does not publish Docker or GHCR images unless the `DOCKER_USERNAME` repository variable is configured. Keep the matching `vars.DOCKER_USERNAME != ''` job guard in `.github/workflows/ghcr-retention.yml`; without it, the inherited weekly cleanup workflow fails because there is no `ghcr.io/tianrunhe/rsshub` package to clean up.
+
+Validate this invariant with:
+
+```bash
+npx pnpm@10.34.5 exec vitest scripts/ghcr-retention.test.ts
+```
+
 ## Deployment Gate
 
 Do not call a sync complete immediately after pushing. The production deployment is complete only when all of the following succeed:
