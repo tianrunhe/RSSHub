@@ -1272,14 +1272,14 @@
   "/orcid/:id": [
     "OrangeEd1t"
   ],
+  "/pawchive/:service/:id": [
+    "TonyRL"
+  ],
   "/pixabay/search/:q/:order?": [
     "TonyRL"
   ],
   "/rattibha/user/:user": [
     "yshalsager"
-  ],
-  "/scmuseum/exhibition/:type?": [
-    "magazian"
   ],
   "/sctv/programme/:id?/:limit?/:isFull?": [
     "nczitzk"
@@ -1447,22 +1447,22 @@
   "/bsky/profile/:handle/:routeParams?": [
     "TonyRL"
   ],
-  "/daily/discussed/:period?/:dateSort?": [
+  "/daily/discussed/:period?/:innerSharedContent?/:dateSort?": [
     "Rjnishant530"
   ],
-  "/daily/popular/:dateSort?": [
+  "/daily/popular/:innerSharedContent?/:dateSort?": [
     "Rjnishant530"
   ],
-  "/daily/source/:sourceId": [
+  "/daily/source/:sourceId/:innerSharedContent?": [
     "TonyRL"
   ],
-  "/daily/squads/:squads": [
+  "/daily/squads/:squads/:innerSharedContent?": [
     "Rjnishant530"
   ],
-  "/daily/upvoted/:period?/:dateSort?": [
+  "/daily/upvoted/:period?/:innerSharedContent?/:dateSort?": [
     "Rjnishant530"
   ],
-  "/daily/user/:userId": [
+  "/daily/user/:userId/:innerSharedContent?": [
     "TonyRL"
   ],
   "/discord/quests": [
@@ -1901,9 +1901,6 @@
   "/3dmgame/news/:category?": [
     "zhboner",
     "lyqluis"
-  ],
-  "/3gmuseum/tempexhibition": [
-    "magazian"
   ],
   "/3kns/:filters?/:order?": [
     "xzzpig"
@@ -2604,12 +2601,6 @@
   "/canada.ca/news/:lang/:department?": [
     "elibroftw"
   ],
-  "/capitalmuseum/exhibition/:type?": [
-    "magazian"
-  ],
-  "/capitalmuseum/news/:type?": [
-    "magazian"
-  ],
   "/cartoonmad/comic/:id": [
     "KellyHwong"
   ],
@@ -2809,9 +2800,6 @@
   ],
   "/chinaratings/CreditResearch/:category{.+}?": [
     "nczitzk"
-  ],
-  "/chinasilkmuseum/zz": [
-    "magazian"
   ],
   "/chinathinktanks/:id": [
     "Aeliu"
@@ -3138,12 +3126,6 @@
   ],
   "/csu/mail/:type?": [
     "j1g5awi"
-  ],
-  "/csust/tggs": [
-    "powerfullz"
-  ],
-  "/csust/xkxs": [
-    "powerfullz"
   ],
   "/ctbu/xxgg": [
     "Skylwn"
@@ -3960,12 +3942,6 @@
   "/gc.ca/pm/:language?": [
     "elibroftw"
   ],
-  "/gdmuseum/exhibition/:type?": [
-    "magazian"
-  ],
-  "/gdmuseum/information": [
-    "magazian"
-  ],
   "/gdsrx/:id?": [],
   "/gdufs/news": [
     "gz4zzxc"
@@ -4184,15 +4160,6 @@
   ],
   "/guozaoke/default": [
     "xiaoshame"
-  ],
-  "/gxmzu/aitzgg": [
-    "real-jiakai"
-  ],
-  "/gxmzu/libzxxx": [
-    "real-jiakai"
-  ],
-  "/gxmzu/yjszsgg": [
-    "real-jiakai"
   ],
   "/gzdaily/app/:column?": [
     "TimWu007"
@@ -4774,12 +4741,6 @@
   ],
   "/joins/chinese/:category?": [
     "nczitzk"
-  ],
-  "/jou/tzgg": [
-    "real-jiakai"
-  ],
-  "/jou/yztzgg": [
-    "real-jiakai"
   ],
   "/jpmorganchase/": [
     "dousha"
@@ -5542,12 +5503,6 @@
     "MilkShakeYoung",
     "jasongzy"
   ],
-  "/njxzc/tzgg": [
-    "real-jiakai"
-  ],
-  "/njxzc/libtzgg": [
-    "real-jiakai"
-  ],
   "/nlc/read/:type?": [
     "nczitzk"
   ],
@@ -5950,9 +5905,6 @@
     "Maecenas",
     "nczitzk",
     "dvorak0"
-  ],
-  "/pawchive/:service/:id": [
-    "TonyRL"
   ],
   "/pconline/focus/:category?": [
     "CH563"
@@ -7016,9 +6968,6 @@
   "/szftedu/gonggao": [
     "valuex"
   ],
-  "/szmuseum/temporary": [
-    "magazian"
-  ],
   "/szse/inquire/:category?/:select?/:keyword?": [
     "Jeason0228",
     "nczitzk"
@@ -7229,12 +7178,6 @@
   ],
   "/tisi/latest": [
     "Fatpandac"
-  ],
-  "/tjbwg/exhibition": [
-    "magazian"
-  ],
-  "/tjbwg/news": [
-    "magazian"
   ],
   "/tju/cic/:type?": [
     "AlanZeng423",
@@ -8022,9 +7965,6 @@
   "/zju/list/:type": [
     "Jeason0228"
   ],
-  "/zju/math/:type": [
-    "Alex222222222222"
-  ],
   "/zju/physics/:type": [
     "Caicailiushui"
   ],
@@ -8555,6 +8495,12 @@
   ],
   "/css-tricks/popular": [
     "Rjnishant530"
+  ],
+  "/csust/tggs": [
+    "powerfullz"
+  ],
+  "/csust/xkxs": [
+    "powerfullz"
   ],
   "/cw/author/:channel": [
     "TonyRL"
@@ -9175,6 +9121,15 @@
     "alphardex",
     "nczitzk"
   ],
+  "/gxmzu/libzxxx": [
+    "real-jiakai"
+  ],
+  "/gxmzu/aitzgg": [
+    "real-jiakai"
+  ],
+  "/gxmzu/yjszsgg": [
+    "real-jiakai"
+  ],
   "/hafu/news/:type?": [],
   "/hdu/cs": [
     "legr4ndk"
@@ -9390,6 +9345,12 @@
   "/joshwcomeau/popular": [
     "Rjnishant530"
   ],
+  "/jou/tzgg": [
+    "real-jiakai"
+  ],
+  "/jou/yztzgg": [
+    "real-jiakai"
+  ],
   "/juejin/books": [
     "xyqfer"
   ],
@@ -9548,6 +9509,12 @@
     "real-jiakai"
   ],
   "/njucm/grabszs": [
+    "real-jiakai"
+  ],
+  "/njxzc/libtzgg": [
+    "real-jiakai"
+  ],
+  "/njxzc/tzgg": [
     "real-jiakai"
   ],
   "/nua/dc/:type": [
