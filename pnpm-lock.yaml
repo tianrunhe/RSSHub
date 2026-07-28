@@ -35,8 +35,8 @@ importers:
         specifier: 4.3.1
         version: 4.3.1
       '@bbob/plugin-helper':
-        specifier: 4.3.1
-        version: 4.3.1
+        specifier: 4.4.1
+        version: 4.4.1
       '@bbob/preset-html5':
         specifier: 4.3.1
         version: 4.3.1
@@ -562,8 +562,8 @@ packages:
   '@bbob/parser@4.3.1':
     resolution: {integrity: sha512-BqDo8PDLcVLhFvOMdLmeaWk5qqD8E1bEdvzSJQuJC/U1XFs1tMC4lwZ4oPBFmZCeCLNsYFawqjP/S5MDdr7/Tg==}
 
-  '@bbob/plugin-helper@4.3.1':
-    resolution: {integrity: sha512-0gyhW5sU270iCBvaRO1jYDTs1oGHu913yB9tqxPO9zT5OIDhu47PwensdJ7EuZwgYKEyQ4zZZ+1jvDzkubjdyQ==}
+  '@bbob/plugin-helper@4.4.1':
+    resolution: {integrity: sha512-vTjwNiiIHhihyD41DuxrUFVCuGPr1EB1fXvy5+HHnmcvWmOH5BzPSgSEs+KCdpWF+hIDMAho2toAHiDmYurCJQ==}
 
   '@bbob/preset-html5@4.3.1':
     resolution: {integrity: sha512-6Yn8kOrBWt/2u4ZUt7nSTzWP+xvTaH4TlAds6p+BcBRbs4Ov2f1zkRgCh1JlckMXwhH9q9CGF0wn6w8bkUYcFA==}
@@ -6614,33 +6614,33 @@ snapshots:
   '@bbob/core@4.3.1':
     dependencies:
       '@bbob/parser': 4.3.1
-      '@bbob/plugin-helper': 4.3.1
+      '@bbob/plugin-helper': 4.4.1
       '@bbob/types': 4.3.1
 
   '@bbob/html@4.3.1':
     dependencies:
       '@bbob/core': 4.3.1
-      '@bbob/plugin-helper': 4.3.1
+      '@bbob/plugin-helper': 4.4.1
       '@bbob/types': 4.3.1
 
   '@bbob/parser@4.3.1':
     dependencies:
-      '@bbob/plugin-helper': 4.3.1
+      '@bbob/plugin-helper': 4.4.1
       '@bbob/types': 4.3.1
 
-  '@bbob/plugin-helper@4.3.1':
+  '@bbob/plugin-helper@4.4.1':
     dependencies:
       '@bbob/types': 4.3.1
 
   '@bbob/preset-html5@4.3.1':
     dependencies:
-      '@bbob/plugin-helper': 4.3.1
+      '@bbob/plugin-helper': 4.4.1
       '@bbob/preset': 4.3.1
       '@bbob/types': 4.3.1
 
   '@bbob/preset@4.3.1':
     dependencies:
-      '@bbob/plugin-helper': 4.3.1
+      '@bbob/plugin-helper': 4.4.1
       '@bbob/types': 4.3.1
 
   '@bbob/types@4.3.1': {}
