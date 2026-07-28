@@ -38,8 +38,8 @@ importers:
         specifier: 4.3.1
         version: 4.3.1
       '@bbob/preset-html5':
-        specifier: 4.3.1
-        version: 4.3.1
+        specifier: 4.4.1
+        version: 4.4.1
       '@googleapis/youtube':
         specifier: 33.0.0
         version: 33.0.0
@@ -565,11 +565,11 @@ packages:
   '@bbob/plugin-helper@4.3.1':
     resolution: {integrity: sha512-0gyhW5sU270iCBvaRO1jYDTs1oGHu913yB9tqxPO9zT5OIDhu47PwensdJ7EuZwgYKEyQ4zZZ+1jvDzkubjdyQ==}
 
-  '@bbob/preset-html5@4.3.1':
-    resolution: {integrity: sha512-6Yn8kOrBWt/2u4ZUt7nSTzWP+xvTaH4TlAds6p+BcBRbs4Ov2f1zkRgCh1JlckMXwhH9q9CGF0wn6w8bkUYcFA==}
+  '@bbob/preset-html5@4.4.1':
+    resolution: {integrity: sha512-rk8T9NnaVQRciHklMY1s5FefswT777XKZ+uQISGToUzrkTPQh2B3E5tLlJN4Z0Cb0n9IKCuDxy6sqaCVfPwxOg==}
 
-  '@bbob/preset@4.3.1':
-    resolution: {integrity: sha512-we6ITgrwciNIdpZRRJl4y3OOEbXEEVA21895JUInvYXevZBrIgIAvO502qlEYQtqhJqQ1HxY5xyhDjZ9rEYQHg==}
+  '@bbob/preset@4.4.1':
+    resolution: {integrity: sha512-QX68ZKgmX8oLzB7TRaoUlXXX+CN/Mf/TtczH29QIHzwWNTXze04/4njYNulzmIJC7/VcABkK7feEbw8M96rU8Q==}
 
   '@bbob/types@4.3.1':
     resolution: {integrity: sha512-TXxFPfKvZVH/sR0mfn5I99bEFmbnAzIoqFBxG1htRiKyJUx7Yb/ZNS/OsQD1mIsR6+srDqXFDaWbDgVudTTjvQ==}
@@ -6632,13 +6632,13 @@ snapshots:
     dependencies:
       '@bbob/types': 4.3.1
 
-  '@bbob/preset-html5@4.3.1':
+  '@bbob/preset-html5@4.4.1':
     dependencies:
       '@bbob/plugin-helper': 4.3.1
-      '@bbob/preset': 4.3.1
+      '@bbob/preset': 4.4.1
       '@bbob/types': 4.3.1
 
-  '@bbob/preset@4.3.1':
+  '@bbob/preset@4.4.1':
     dependencies:
       '@bbob/plugin-helper': 4.3.1
       '@bbob/types': 4.3.1
