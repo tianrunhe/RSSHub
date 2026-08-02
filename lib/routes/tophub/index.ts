@@ -39,15 +39,13 @@ export const route: Route = {
 async function handler(ctx) {
     const id = ctx.req.param('id');
     const threshold = Number(ctx.req.param('threshold')) || 0;
-    const headers = {
-        Referer: 'https://tophub.today',
-        Cookie: config.tophub?.cookie ?? '',
-    };
 
     const rootUrl = 'https://tophub.today/';
     const link = new URL(`/n/${id}`, rootUrl).href;
     const response = await ofetch(rootUrl, {
-        headers,
+        headers: {
+            Cookie: config.tophub?.cookie ?? '',
+        },
     });
     const $ = load(response);
     const container = $(`.i-o[hashid="${id}"]`).closest('.cc-cd');
