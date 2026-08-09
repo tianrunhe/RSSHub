@@ -1505,7 +1505,6 @@ export type RoutePath =
   | `/huxiu/search/:keyword`
   | `/huxiu/tag/:id`
   | `/hyperdash/top-traders`
-  | `/hypergryph/arknights/announce/:platform?/:group?`
   | `/hypergryph/arknights/arktca`
   | `/hypergryph/arknights/japan`
   | `/hypergryph/arknights/news/:group?`
@@ -2273,6 +2272,7 @@ export type RoutePath =
   | `/penguin-random-house/the-read-down`
   | `/people/:site?/:category{.+}?`
   | `/people/liuyan/:id/:state?`
+  | `/people/paper/:page?`
   | `/people/xjpjh/:keyword?/:year?`
   | `/peopo/topic/:topicId?`
   | `/perplexity/blog`
@@ -2942,7 +2942,7 @@ export type RoutePath =
   | `/tribalfootball/`
   | `/trow/portal`
   | `/tsdm39/bd/:type?`
-  | `/tsinghua/lib/tzgg/:category`
+  | `/tsinghua/lib/tzgg/:category?`
   | `/tsinghua/lib/zydt/:category?`
   | `/tsinghua/news/:category?`
   | `/ttv/:category?`
@@ -3147,6 +3147,7 @@ export type RoutePath =
   | `/wtu/:type`
   | `/wtu/job/:type`
   | `/wufazhuce/one`
+  | `/wuzhongmuseum/exhibition/:type?`
   | `/wyzxwk/article/:id?`
   | `/wzu/news/:type?`
   | `/x-mol/news/:tag?`
