@@ -1,3 +1,4 @@
+import type { Context } from 'hono';
 import { http, HttpResponse } from 'msw';
 import { describe, expect, it } from 'vitest';
 
@@ -16,7 +17,17 @@ function createCtx({ id = 'Om4ejxvxEN', threshold }: { id?: string; threshold?: 
                 }
             },
         },
-    };
+    } as unknown as Context;
+}
+
+async function getFeed(options?: { id?: string; threshold?: string }) {
+    const feed = await route.handler(createCtx(options));
+
+    if (!feed || feed instanceof Response || !feed.item) {
+        throw new Error('Expected the TopHub route to return feed data');
+    }
+
+    return { ...feed, item: feed.item };
 }
 
 const homepage = `
@@ -110,7 +121,7 @@ describe('/tophub/:id/:threshold?', () => {
 
         server.use(http.get('https://tophub.today/', () => HttpResponse.html(homepage)));
 
-        const feed = await route.handler(createCtx());
+        const feed = await getFeed();
 
         expect(feed.title).toBe('百度贴吧 - 热议榜');
         expect(feed.description).toBe('5分钟前');
@@ -132,7 +143,7 @@ describe('/tophub/:id/:threshold?', () => {
 
         server.use(http.get('https://tophub.today/', () => HttpResponse.html(homepage)));
 
-        const feed = await route.handler(createCtx({ threshold: '100' }));
+        const feed = await getFeed({ threshold: '100' });
 
         expect(feed.item).toHaveLength(1);
         expect(feed.item[0].title).toBe('一眼假!造谣山姆偷吃者被拘 (173.1W实时讨论)');
