@@ -37616,6 +37616,19 @@
       }
     ]
   },
+  "schwabnetwork.com": {
+    "_name": "Schwab Network",
+    ".": [
+      {
+        "title": "市场新闻",
+        "docs": "https://docs.rsshub.app/routes/finance",
+        "source": [
+          "/markets"
+        ],
+        "target": "/schwabnetwork/markets"
+      }
+    ]
+  },
   "science.org": {
     "_name": "Science Magazine",
     ".": [
@@ -38771,7 +38784,7 @@
     "apps": [
       {
         "title": "App reviews",
-        "docs": "https://docs.rsshub.app/routes/other",
+        "docs": "https://docs.rsshub.app/routes/programming",
         "source": [
           "/:handle"
         ],
@@ -38779,11 +38792,33 @@
       },
       {
         "title": "App store search",
-        "docs": "https://docs.rsshub.app/routes/other",
+        "docs": "https://docs.rsshub.app/routes/programming",
         "source": [
           "/search"
         ],
         "target": "/shopify(_params,url)=>{const searchParams=new URL(url).searchParams;if(!searchParams.has(\"q\")){return\"\"}return`/shopify/apps/search/${searchParams.get(\"q\")}`}"
+      }
+    ]
+  },
+  "shopify.engineering": {
+    "_name": "Shopify",
+    ".": [
+      {
+        "title": "Engineering",
+        "docs": "https://docs.rsshub.app/routes/programming",
+        "source": [
+          "/",
+          "/latest"
+        ],
+        "target": "/shopify/engineering"
+      },
+      {
+        "title": "Engineering",
+        "docs": "https://docs.rsshub.app/routes/programming",
+        "source": [
+          "/topics/:topic"
+        ],
+        "target": "/shopify/engineering/:topic"
       }
     ]
   },
@@ -53720,6 +53755,20 @@
           "/tag/:topic"
         ],
         "target": "/finology/tag/:topic"
+      }
+    ]
+  },
+  "ryo.lu": {
+    "_name": "Ryo Lu",
+    ".": [
+      {
+        "title": "Journal",
+        "docs": "https://docs.rsshub.app/routes/blog",
+        "source": [
+          "/journal",
+          "/"
+        ],
+        "target": "/ryo.lu/journal"
       }
     ]
   },

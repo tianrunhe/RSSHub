@@ -2832,6 +2832,7 @@ export type RoutePath =
   | `/runyeah/`
   | `/rustcc/jobs`
   | `/rustcc/news`
+  | `/ryo.lu/journal/:lang?`
   | `/sakurazaka46/blog/:id?/:page?`
   | `/sakurazaka46/news`
   | `/samd/news/:typeId`
@@ -2847,6 +2848,7 @@ export type RoutePath =
   | `/sass/gs/:type`
   | `/scau/yjsy`
   | `/scau/yzb`
+  | `/schwabnetwork/markets`
   | `/science/blogs/:name?`
   | `/science/cover`
   | `/science/current/:journal?`
@@ -2963,6 +2965,7 @@ export type RoutePath =
   | `/shopback/:store`
   | `/shopify/apps/:handle/reviews/:page?`
   | `/shopify/apps/search/:q`
+  | `/shopify/engineering/:topic?`
   | `/shoppingdesign/posts`
   | `/shou/www/:type`
   | `/showstart/artist/:id`
@@ -3261,6 +3264,7 @@ export type RoutePath =
   | `/thoughtco/:category?`
   | `/thoughtworks/blog`
   | `/threads/:user/:routeParams?`
+  | `/threads/search/:keyword/:routeParams?`
   | `/thunderbird/release`
   | `/thwiki/calendar/:before?/:after?`
   | `/thzt/blog`

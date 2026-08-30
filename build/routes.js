@@ -103507,6 +103507,44 @@ export default {
     "url": "yzb.scau.edu.cn",
     "lang": "zh-CN"
   },
+  "schwabnetwork": {
+    "routes": {
+      "/markets": {
+        "path": "/markets",
+        "categories": [
+          "finance"
+        ],
+        "view": 5,
+        "example": "/schwabnetwork/markets",
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "schwabnetwork.com/markets"
+            ]
+          }
+        ],
+        "name": "市场新闻",
+        "maintainers": [
+          "hutianyu2006"
+        ],
+        "url": "schwabnetwork.com/markets",
+        "location": "markets.tsx",
+        "module": () => import('@/routes/schwabnetwork/markets.tsx')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Schwab Network",
+    "url": "schwabnetwork.com",
+    "description": "Charles Schwab Media Productions Company"
+  },
   "science": {
     "routes": {
       "/blogs/:name?": {
@@ -106375,6 +106413,47 @@ export default {
         ],
         "location": "apps/search.ts",
         "module": () => import('@/routes/shopify/apps/search.ts')
+      },
+      "/engineering/:topic?": {
+        "path": "/engineering/:topic?",
+        "categories": [
+          "programming"
+        ],
+        "example": "/shopify/engineering",
+        "parameters": {
+          "topic": "Topic slug from `/topics/:topic`, e.g. `mobile`, `ai-machine-learning`. Defaults to the latest listing."
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "shopify.engineering/",
+              "shopify.engineering/latest"
+            ],
+            "target": "/engineering"
+          },
+          {
+            "source": [
+              "shopify.engineering/topics/:topic"
+            ],
+            "target": "/engineering/:topic"
+          }
+        ],
+        "name": "Engineering",
+        "maintainers": [
+          "zhsama"
+        ],
+        "url": "shopify.engineering/latest",
+        "location": "engineering.ts",
+        "module": () => import('@/routes/shopify/engineering.ts')
       }
     },
     "apiRoutes": {},
@@ -113642,6 +113721,55 @@ export default {
     "url": "thoughtco.com",
     "lang": "en"
   },
+  "threads": {
+    "routes": {
+      "/:user/:routeParams?": {
+        "path": "/:user/:routeParams?",
+        "categories": [
+          "social-media"
+        ],
+        "view": 1,
+        "example": "/threads/zuck",
+        "parameters": {
+          "user": "Username",
+          "routeParams": {
+            "description": "Extra parameters, see the table below\nSpecify options (in the format of query string) in parameter `routeParams` to control some extra features for threads\n\n| Key                            | Description                                                                                                                  | Accepts                | Defaults to |\n| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------- |\n| `showAuthorInTitle`            | Show author name in title                                                                                                    | `0`/`1`/`true`/`false` | `true`      |\n| `showAuthorInDesc`             | Show author name in description (RSS body)                                                                                   | `0`/`1`/`true`/`false` | `true`      |\n| `showQuotedAuthorAvatarInDesc` | Show avatar of quoted author in description (RSS body) (Not recommended if your RSS reader extracts images from description) | `0`/`1`/`true`/`false` | `false`     |\n| `showAuthorAvatarInDesc`       | Show avatar of author in description (RSS body) (Not recommended if your RSS reader extracts images from description)        | `0`/`1`/`true`/`false` | `falseP`    |\n| `showEmojiForQuotesAndReply`   | Use \"🔁\" instead of \"QT\", \"↩️\" instead of \"Re\"                                                                               | `0`/`1`/`true`/`false` | `true`      |\n| `showQuotedInTitle`            | Show quoted tweet in title                                                                                                   | `0`/`1`/`true`/`false` | `true`      |\n| `replies`                      | Show replies                                                                                                                 | `0`/`1`/`true`/`false` | `true`      |"
+          }
+        },
+        "name": "User timeline",
+        "maintainers": [
+          "ninboy",
+          "pseudoyu"
+        ],
+        "location": "index.ts",
+        "module": () => import('@/routes/threads/index.ts')
+      },
+      "/search/:keyword/:routeParams?": {
+        "path": "/search/:keyword/:routeParams?",
+        "categories": [
+          "social-media"
+        ],
+        "view": 1,
+        "example": "/threads/search/RSS",
+        "parameters": {
+          "keyword": "Search keyword",
+          "routeParams": {
+            "description": "Extra parameters, in the format of query string. Accepts the same options as User timeline, plus:\n\n| Key         | Description | Accepts                    | Defaults to |\n| ----------- | ----------- | -------------------------- | ----------- |\n| `serpType` | Search type | `tags`/`default`/`recent` | `tags`      |"
+          }
+        },
+        "name": "Search",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "location": "search.ts",
+        "module": () => import('@/routes/threads/search.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Threads",
+    "url": "threads.net",
+    "lang": "en"
+  },
   "thunderbird": {
     "routes": {
       "/release": {
@@ -113890,7 +114018,7 @@ export default {
         "features": {
           "requireConfig": false,
           "requirePuppeteer": false,
-          "antiCrawler": false,
+          "antiCrawler": true,
           "supportBT": false,
           "supportPodcast": false,
           "supportScihub": false
@@ -113922,8 +114050,8 @@ export default {
         },
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
-          "antiCrawler": false,
+          "requirePuppeteer": false,
+          "antiCrawler": true,
           "supportBT": false,
           "supportPodcast": false,
           "supportScihub": false
@@ -155221,35 +155349,6 @@ export default {
     "description": "以下所有路由可使用参数`old`以采取旧全文获取方法。该方法会另外获取网页中的图片与视频资源。在原始 url 追加`?old=yes`以启用.",
     "lang": "zh-CN"
   },
-  "threads": {
-    "routes": {
-      "/:user/:routeParams?": {
-        "path": "/:user/:routeParams?",
-        "categories": [
-          "social-media"
-        ],
-        "view": 1,
-        "example": "/threads/zuck",
-        "parameters": {
-          "user": "Username",
-          "routeParams": {
-            "description": "Extra parameters, see the table below\nSpecify options (in the format of query string) in parameter `routeParams` to control some extra features for threads\n\n| Key                            | Description                                                                                                                  | Accepts                | Defaults to |\n| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------- |\n| `showAuthorInTitle`            | Show author name in title                                                                                                    | `0`/`1`/`true`/`false` | `true`      |\n| `showAuthorInDesc`             | Show author name in description (RSS body)                                                                                   | `0`/`1`/`true`/`false` | `true`      |\n| `showQuotedAuthorAvatarInDesc` | Show avatar of quoted author in description (RSS body) (Not recommended if your RSS reader extracts images from description) | `0`/`1`/`true`/`false` | `false`     |\n| `showAuthorAvatarInDesc`       | Show avatar of author in description (RSS body) (Not recommended if your RSS reader extracts images from description)        | `0`/`1`/`true`/`false` | `falseP`    |\n| `showEmojiForQuotesAndReply`   | Use \"🔁\" instead of \"QT\", \"↩️\" instead of \"Re\"                                                                               | `0`/`1`/`true`/`false` | `true`      |\n| `showQuotedInTitle`            | Show quoted tweet in title                                                                                                   | `0`/`1`/`true`/`false` | `true`      |\n| `replies`                      | Show replies                                                                                                                 | `0`/`1`/`true`/`false` | `true`      |"
-          }
-        },
-        "name": "User timeline",
-        "maintainers": [
-          "ninboy",
-          "pseudoyu"
-        ],
-        "location": "index.ts",
-        "module": () => import('@/routes/threads/index.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Threads",
-    "url": "threads.net",
-    "lang": "en"
-  },
   "tmtpost": {
     "routes": {
       "/nictation": {
@@ -158818,6 +158917,66 @@ export default {
     "apiRoutes": {},
     "name": "Finology Insider",
     "url": "insider.finology.in",
+    "lang": "en"
+  },
+  "ryo.lu": {
+    "routes": {
+      "/journal/:lang?": {
+        "path": "/journal/:lang?",
+        "categories": [
+          "blog"
+        ],
+        "view": 0,
+        "example": "/ryo.lu/journal",
+        "parameters": {
+          "lang": {
+            "description": "Language",
+            "default": "en",
+            "options": [
+              {
+                "value": "en",
+                "label": "English"
+              },
+              {
+                "value": "zh",
+                "label": "中文"
+              },
+              {
+                "value": "ja",
+                "label": "日本語"
+              }
+            ]
+          }
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "ryo.lu/journal",
+              "ryo.lu/"
+            ],
+            "target": "/journal"
+          }
+        ],
+        "name": "Journal",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "url": "ryo.lu/journal",
+        "location": "journal.tsx",
+        "module": () => import('@/routes/ryo.lu/journal.tsx')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Ryo Lu",
+    "url": "ryo.lu",
     "lang": "en"
   },
   "taptap": {
