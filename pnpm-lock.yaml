@@ -465,8 +465,8 @@ importers:
         specifier: 0.3.1
         version: 0.3.1
       vite-tsconfig-paths:
-        specifier: 7.0.0-alpha.2
-        version: 7.0.0-alpha.2(vite@7.3.1(@types/node@26.2.0)(lightningcss@1.32.0)(tsx@4.23.12)(yaml@2.9.0))
+        specifier: 7.0.0-alpha.3
+        version: 7.0.0-alpha.3(vite@7.3.1(@types/node@26.2.0)(lightningcss@1.32.0)(tsx@4.23.12)(yaml@2.9.0))
       vitest:
         specifier: 4.1.11
         version: 4.1.11(@opentelemetry/api@1.9.1)(@types/node@26.2.0)(@vitest/coverage-v8@4.1.11)(jsdom@30.0.1(@noble/hashes@2.3.0))(msw@2.15.0(@types/node@26.2.0)(@typescript/typescript6@6.0.2))(vite@7.3.1(@types/node@26.2.0)(lightningcss@1.32.0)(tsx@4.23.12)(yaml@2.9.0))
@@ -6241,8 +6241,8 @@ packages:
   vfile@6.0.3:
     resolution: {integrity: sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q==}
 
-  vite-tsconfig-paths@7.0.0-alpha.2:
-    resolution: {integrity: sha512-zjaHcDShN4E8x3tvfVdDWi4XSzKRIMncxo0QzxV50lPuyyE2eZ+7AiFFg6ECR/uEQvZ4IwP1qJWkwD7XbjFE4w==}
+  vite-tsconfig-paths@7.0.0-alpha.3:
+    resolution: {integrity: sha512-uPXtQM+KtQHUsRDgIw+09oSk9XWPUrSmTYkT8ByNO+stMTUiqKL+ABGAS0taO827NKkTGVL2InQVTNydFB9+DQ==}
     engines: {node: '>=20.20.0'}
     peerDependencies:
       vite: '>=5.0.0'
@@ -12051,7 +12051,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite-tsconfig-paths@7.0.0-alpha.2(vite@7.3.1(@types/node@26.2.0)(lightningcss@1.32.0)(tsx@4.23.12)(yaml@2.9.0)):
+  vite-tsconfig-paths@7.0.0-alpha.3(vite@7.3.1(@types/node@26.2.0)(lightningcss@1.32.0)(tsx@4.23.12)(yaml@2.9.0)):
     dependencies:
       debug: 4.4.3
       get-tsconfig: 5.0.0-beta.6
