@@ -14549,6 +14549,47 @@ export default {
     "url": "mall.nanhua.net",
     "lang": "zh-CN"
   },
+  "onlyfans": {
+    "routes": {
+      "/:username": {
+        "path": "/:username",
+        "categories": [
+          "social-media"
+        ],
+        "features": {
+          "requireConfig": [
+            {
+              "name": "ONLYFANS_COOKIE",
+              "optional": true,
+              "description": "The `Cookie` header of a logged-in session."
+            }
+          ],
+          "nsfw": true
+        },
+        "example": "/onlyfans/sports",
+        "parameters": {
+          "username": "Creator username"
+        },
+        "radar": [
+          {
+            "source": [
+              "onlyfans.com/:username"
+            ]
+          }
+        ],
+        "name": "Creator Posts",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "url": "onlyfans.com",
+        "location": "user.ts",
+        "module": () => import('@/routes/onlyfans/user.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "OnlyFans",
+    "url": "onlyfans.com"
+  },
   "openalex": {
     "routes": {
       "/:journals/:type?/:ids?": {
@@ -17983,6 +18024,65 @@ export default {
     "lang": "zh-CN",
     "description": "FoodTalks 全球食品资讯网是一个提供食品饮料行业新闻、资讯、分析和商业资源的领先在线平台。它涵盖行业趋势、市场动态、产品创新、投融资信息以及企业新闻，连接行业内的专业人士、企业和消费者。"
   },
+  "gamebase": {
+    "routes": {
+      "/news/:type?/:category?": {
+        "path": "/news/:type?/:category?",
+        "name": "新聞",
+        "url": "news.gamebase.com.tw",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "example": "/gamebase/news",
+        "parameters": {
+          "type": "類型，見下表，預設為 newslist",
+          "category": "分類，預設為 `all`，即全部，可在對應分類頁 URL 中找到"
+        },
+        "description": "::: tip\n若訂閱 [手機遊戲新聞](https://news.gamebase.com.tw/news/newslist?type=mobile)，網址為 `https://news.gamebase.com.tw/news/newslist?type=mobile`，請截取 `https://news.gamebase.com.tw/news/` 到末尾的部分 `newslist` 作為 `type` 參數填入，`mobile` 作為 `category` 參數填入，此時目標路由為 [`/gamebase/news/newslist/mobile`](https://rsshub.app/gamebase/news/newslist/mobile)。\n:::\n\n| newslist | r18list |\n| -------- | ------- |",
+        "categories": [
+          "game"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "news.gamebase.com.tw/news",
+              "news.gamebase.com.tw/news/:type"
+            ]
+          }
+        ],
+        "view": 0,
+        "zh": {
+          "path": "/news/:type?/:category?",
+          "name": "新闻",
+          "url": "news.gamebase.com.tw",
+          "maintainers": [
+            "nczitzk"
+          ],
+          "example": "/gamebase/news",
+          "parameters": {
+            "type": "类型，见下表，默认为 newslist",
+            "category": "分类，默认为 `all`，即全部，可在对应分类页 URL 中找到"
+          },
+          "description": "::: tip\n若订阅 [手机游戏新闻](https://news.gamebase.com.tw/news/newslist?type=mobile)，网址为 `https://news.gamebase.com.tw/news/newslist?type=mobile`，请截取 `https://news.gamebase.com.tw/news/` 到末尾的部分 `newslist` 作为 `type` 参数填入，`mobile` 作为 `category` 参数填入，此时目标路由为 [`/gamebase/news/newslist/mobile`](https://rsshub.app/gamebase/news/newslist/mobile)。\n:::\n\n| newslist | r18list |\n| -------- | ------- |"
+        },
+        "location": "news.tsx",
+        "module": () => import('@/routes/gamebase/news.tsx')
+      }
+    },
+    "apiRoutes": {},
+    "name": "遊戲基地 Gamebase",
+    "url": "news.gamebase.com.tw",
+    "lang": "zh-TW"
+  },
   "gettr": {
     "routes": {
       "/user/:id": {
@@ -20297,7 +20397,7 @@ export default {
         "radar": [
           {
             "source": [
-              "www.shanghaimuseum.net/mu/frontend/pg/infomation/news"
+              "www.shanghaimuseum.cn/mu/frontend/pg/infomation/news"
             ],
             "target": "/information/news"
           }
@@ -20321,7 +20421,7 @@ export default {
         "radar": [
           {
             "source": [
-              "www.shanghaimuseum.net/mu/frontend/pg/display/offline-exhibit"
+              "www.shanghaimuseum.cn/mu/frontend/pg/display/offline-exhibit"
             ],
             "target": "/display/offline-exhibit"
           }
@@ -20332,7 +20432,7 @@ export default {
     },
     "apiRoutes": {},
     "name": "Shanghai Museum",
-    "url": "www.shanghaimuseum.net",
+    "url": "www.shanghaimuseum.cn",
     "zh": {
       "name": "上海博物馆"
     }
@@ -20635,40 +20735,6 @@ export default {
     "apiRoutes": {},
     "name": "听听 FM",
     "url": "mobile.tingtingfm.com",
-    "lang": "zh-CN"
-  },
-  "toutiao": {
-    "routes": {
-      "/user/token/:token": {
-        "path": "/user/token/:token",
-        "categories": [
-          "new-media"
-        ],
-        "example": "/toutiao/user/token/MS4wLjABAAAApOspM7AnWqplD9FIBGnhJRfUjFT_msD1KZMfNPBZa-c",
-        "parameters": {
-          "token": "用户 token，可在用户主页 URL 找到"
-        },
-        "features": {
-          "antiCrawler": true
-        },
-        "radar": [
-          {
-            "source": [
-              "www.toutiao.com/c/user/token/:token"
-            ]
-          }
-        ],
-        "name": "头条主页",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "location": "user.tsx",
-        "module": () => import('@/routes/toutiao/user.tsx')
-      }
-    },
-    "apiRoutes": {},
-    "name": "今日头条",
-    "url": "www.toutiao.com",
     "lang": "zh-CN"
   },
   "tqyb": {
@@ -37831,47 +37897,128 @@ export default {
         "location": "gushitong/index.tsx",
         "module": () => import('@/routes/baidu/gushitong/index.tsx')
       },
-      "/tieba/forum/good/:kw/:cid?/:sortBy?": {
-        "path": [
-          "/tieba/forum/good/:kw/:cid?/:sortBy?",
-          "/tieba/forum/:kw/:sortBy?"
-        ],
-        "categories": [
-          "bbs"
-        ],
-        "example": "/baidu/tieba/forum/good/女图",
-        "parameters": {
-          "kw": "吧名",
-          "cid": "精品分类，默认为 `0`（全部分类），如果不传 `cid` 则获取全部分类",
-          "sortBy": "排序方式：`created`, `replied`。默认为 `created`"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "BAIDU_COOKIE",
-              "optional": false,
-              "description": "百度 cookie 值，用于需要登录的贴吧页面"
-            }
-          ],
-          "requirePuppeteer": false,
-          "antiCrawler": true,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "精品帖子",
-        "maintainers": [
-          "u3u",
-          "FlanChanXwO"
-        ],
-        "location": "tieba/forum.tsx",
-        "module": () => import('@/routes/baidu/tieba/forum.tsx')
-      },
       "/tieba/forum/:kw/:sortBy?": {
-        "path": [
-          "/tieba/forum/good/:kw/:cid?/:sortBy?",
-          "/tieba/forum/:kw/:sortBy?"
+        "path": "/tieba/forum/:kw/:sortBy?",
+        "categories": [
+          "bbs"
         ],
+        "example": "/baidu/tieba/forum/孙笑川",
+        "parameters": {
+          "kw": "吧名",
+          "sortBy": "排序方式：`created`, `replied`。默认为 `created`"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "BAIDU_COOKIE",
+              "optional": true,
+              "description": "百度 cookie 值，用于需要登录的贴吧页面"
+            }
+          ],
+          "antiCrawler": true
+        },
+        "name": "帖子列表",
+        "maintainers": [
+          "u3u",
+          "FlanChanXwO"
+        ],
+        "location": "tieba/forum.ts",
+        "module": () => import('@/routes/baidu/tieba/forum.ts')
+      },
+      "/tieba/post/:id": {
+        "path": "/tieba/post/:id",
+        "categories": [
+          "bbs"
+        ],
+        "example": "/baidu/tieba/post/686961453",
+        "parameters": {
+          "id": "帖子 ID"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "BAIDU_COOKIE",
+              "optional": true,
+              "description": "百度 cookie 值，用于需要登录的贴吧页面"
+            }
+          ],
+          "antiCrawler": true
+        },
+        "radar": [
+          {
+            "source": [
+              "tieba.baidu.com/p/:id"
+            ]
+          }
+        ],
+        "name": "帖子动态",
+        "maintainers": [
+          "u3u",
+          "FlanChanXwO"
+        ],
+        "location": "tieba/post.ts",
+        "module": () => import('@/routes/baidu/tieba/post.ts')
+      },
+      "/tieba/search/:qw/:routeParams?": {
+        "path": "/tieba/search/:qw/:routeParams?",
+        "categories": [
+          "bbs"
+        ],
+        "example": "/baidu/tieba/search/neuro",
+        "parameters": {
+          "qw": "搜索关键词",
+          "routeParams": "额外参数；请参阅以下说明和表格"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "BAIDU_COOKIE",
+              "optional": true,
+              "description": "百度 cookie 值，用于需要登录的贴吧页面"
+            }
+          ],
+          "antiCrawler": true
+        },
+        "name": "贴吧搜索",
+        "maintainers": [
+          "JimenezLi",
+          "FlanChanXwO"
+        ],
+        "description": "| 键           | 含义                                                       | 接受的值      | 默认值 |\n| ------------ | ---------------------------------------------------------- | ------------- | ------ |\n| kw           | 在名为 kw 的贴吧中搜索                                     | 任意名称 / 无 | 无     |\n| only\\_thread | 只看主题帖，默认为 0 关闭                                  | 0/1           | 0      |\n| rn           | 返回条目的数量                                             | 1-20          | 20     |\n| sm           | 排序方式，0 为按时间顺序，1 为按时间倒序，2 为按相关性顺序 | 0/1/2         | 1      |\n\n用例：`/baidu/tieba/search/neuro/kw=neurosama&only_thread=1&sm=2`",
+        "location": "tieba/search.ts",
+        "module": () => import('@/routes/baidu/tieba/search.ts')
+      },
+      "/tieba/user/:uid": {
+        "path": "/tieba/user/:uid",
+        "categories": [
+          "bbs"
+        ],
+        "example": "/baidu/tieba/user/斗鱼游戏君",
+        "parameters": {
+          "uid": "用户 ID"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "BAIDU_COOKIE",
+              "optional": true,
+              "description": "百度 cookie 值，用于需要登录的贴吧页面"
+            }
+          ],
+          "antiCrawler": true
+        },
+        "name": "用户帖子",
+        "maintainers": [
+          "igxlin",
+          "nczitzk",
+          "FlanChanXwO"
+        ],
+        "description": "用户 ID 可以通过打开用户的主页后查看地址栏的 `un` 字段来获取。",
+        "location": "tieba/user.ts",
+        "module": () => import('@/routes/baidu/tieba/user.ts')
+      },
+      "/tieba/forum/good/:kw/:cid?/:sortBy?": {
+        "path": "/tieba/forum/good/:kw/:cid?/:sortBy?",
         "categories": [
           "bbs"
         ],
@@ -37885,23 +38032,81 @@ export default {
           "requireConfig": [
             {
               "name": "BAIDU_COOKIE",
-              "optional": false,
+              "optional": true,
               "description": "百度 cookie 值，用于需要登录的贴吧页面"
             }
           ],
-          "requirePuppeteer": false,
-          "antiCrawler": true,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
+          "antiCrawler": true
         },
         "name": "精品帖子",
         "maintainers": [
           "u3u",
           "FlanChanXwO"
         ],
-        "location": "tieba/forum.tsx",
-        "module": () => import('@/routes/baidu/tieba/forum.tsx')
+        "location": "tieba/forum-good.ts",
+        "module": () => import('@/routes/baidu/tieba/forum-good.ts')
+      },
+      "/tieba/post/lz/:id": {
+        "path": "/tieba/post/lz/:id",
+        "categories": [
+          "bbs"
+        ],
+        "example": "/baidu/tieba/post/lz/686961453",
+        "parameters": {
+          "id": "帖子 ID"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "BAIDU_COOKIE",
+              "optional": true,
+              "description": "百度 cookie 值，用于需要登录的贴吧页面"
+            }
+          ],
+          "antiCrawler": true
+        },
+        "name": "楼主动态",
+        "maintainers": [
+          "u3u",
+          "FlanChanXwO"
+        ],
+        "location": "tieba/post-lz.ts",
+        "module": () => import('@/routes/baidu/tieba/post-lz.ts')
+      },
+      "/baijiahao/:id/:tab?": {
+        "path": "/baijiahao/:id/:tab?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/baidu/baijiahao/3617",
+        "parameters": {
+          "id": "Account id, the `app_id` in the URL of the author page",
+          "tab": {
+            "description": "Content type",
+            "options": [
+              {
+                "value": "main",
+                "label": "全部"
+              },
+              {
+                "value": "article",
+                "label": "文章"
+              },
+              {
+                "value": "dynamic",
+                "label": "动态"
+              }
+            ],
+            "default": "main"
+          }
+        },
+        "name": "百家号",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "url": "baijiahao.baidu.com",
+        "location": "baijiahao.ts",
+        "module": () => import('@/routes/baidu/baijiahao.ts')
       },
       "/search/:keyword": {
         "path": "/search/:keyword",
@@ -37926,154 +38131,6 @@ export default {
         ],
         "location": "search.tsx",
         "module": () => import('@/routes/baidu/search.tsx')
-      },
-      "/tieba/post/:id": {
-        "path": [
-          "/tieba/post/:id",
-          "/tieba/post/lz/:id"
-        ],
-        "categories": [
-          "bbs"
-        ],
-        "example": "/baidu/tieba/post/686961453",
-        "parameters": {
-          "id": "帖子 ID"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "BAIDU_COOKIE",
-              "optional": false,
-              "description": "百度 cookie 值，用于需要登录的贴吧页面"
-            }
-          ],
-          "requirePuppeteer": true,
-          "antiCrawler": true,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "tieba.baidu.com/p/:id"
-            ]
-          }
-        ],
-        "name": "帖子动态",
-        "maintainers": [
-          "u3u",
-          "FlanChanXwO"
-        ],
-        "location": "tieba/post.tsx",
-        "module": () => import('@/routes/baidu/tieba/post.tsx')
-      },
-      "/tieba/post/lz/:id": {
-        "path": [
-          "/tieba/post/:id",
-          "/tieba/post/lz/:id"
-        ],
-        "categories": [
-          "bbs"
-        ],
-        "example": "/baidu/tieba/post/686961453",
-        "parameters": {
-          "id": "帖子 ID"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "BAIDU_COOKIE",
-              "optional": false,
-              "description": "百度 cookie 值，用于需要登录的贴吧页面"
-            }
-          ],
-          "requirePuppeteer": true,
-          "antiCrawler": true,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "tieba.baidu.com/p/:id"
-            ]
-          }
-        ],
-        "name": "帖子动态",
-        "maintainers": [
-          "u3u",
-          "FlanChanXwO"
-        ],
-        "location": "tieba/post.tsx",
-        "module": () => import('@/routes/baidu/tieba/post.tsx')
-      },
-      "/tieba/search/:qw/:routeParams?": {
-        "path": "/tieba/search/:qw/:routeParams?",
-        "categories": [
-          "bbs"
-        ],
-        "example": "/baidu/tieba/search/neuro",
-        "parameters": {
-          "qw": "搜索关键词",
-          "routeParams": "额外参数；请参阅以下说明和表格"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "BAIDU_COOKIE",
-              "optional": false,
-              "description": "百度 cookie 值，用于需要登录的贴吧页面"
-            }
-          ],
-          "requirePuppeteer": true,
-          "antiCrawler": true,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "贴吧搜索",
-        "maintainers": [
-          "JimenezLi",
-          "FlanChanXwO"
-        ],
-        "description": "| 键           | 含义                                                       | 接受的值      | 默认值 |\n| ------------ | ---------------------------------------------------------- | ------------- | ------ |\n| kw           | 在名为 kw 的贴吧中搜索                                     | 任意名称 / 无 | 无     |\n| only\\_thread | 只看主题帖，默认为 0 关闭                                  | 0/1           | 0      |\n| rn           | 返回条目的数量                                             | 1-20          | 20     |\n| sm           | 排序方式，0 为按时间顺序，1 为按时间倒序，2 为按相关性顺序 | 0/1/2         | 1      |\n\n用例：`/baidu/tieba/search/neuro/kw=neurosama&only_thread=1&sm=2`",
-        "location": "tieba/search.tsx",
-        "module": () => import('@/routes/baidu/tieba/search.tsx')
-      },
-      "/tieba/user/:uid": {
-        "path": "/tieba/user/:uid",
-        "categories": [
-          "bbs"
-        ],
-        "example": "/baidu/tieba/user/斗鱼游戏君",
-        "parameters": {
-          "uid": "用户 ID"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "BAIDU_COOKIE",
-              "optional": false,
-              "description": "百度 cookie 值，用于需要登录的贴吧页面"
-            }
-          ],
-          "requirePuppeteer": true,
-          "antiCrawler": true,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "用户帖子",
-        "maintainers": [
-          "igxlin",
-          "nczitzk",
-          "FlanChanXwO"
-        ],
-        "description": "用户 ID 可以通过打开用户的主页后查看地址栏的 `un` 字段来获取。",
-        "location": "tieba/user.tsx",
-        "module": () => import('@/routes/baidu/tieba/user.tsx')
       },
       "/top/:board?": {
         "path": "/top/:board?",
@@ -42996,6 +43053,61 @@ export default {
     "url": "www.canada.ca",
     "description": "Government of Canada news by department",
     "lang": "en"
+  },
+  "canalmuseum": {
+    "routes": {
+      "/consulting/:type": {
+        "path": "/consulting/:type",
+        "categories": [
+          "travel"
+        ],
+        "example": "/canalmuseum/consulting/tzgg",
+        "parameters": {
+          "type": "News type, supported values: tzgg（通知公告）, xwdt（新闻动态）"
+        },
+        "radar": [
+          {
+            "source": [
+              "www.canalmuseum.org.cn/consulting.html"
+            ],
+            "target": "/consulting/tzgg"
+          }
+        ],
+        "name": "NEWS",
+        "maintainers": [
+          "magazian"
+        ],
+        "location": "consulting.ts",
+        "module": () => import('@/routes/canalmuseum/consulting.ts')
+      },
+      "/lszl": {
+        "path": "/lszl",
+        "categories": [
+          "travel"
+        ],
+        "example": "/canalmuseum/lszl",
+        "radar": [
+          {
+            "source": [
+              "www.canalmuseum.org.cn/lszl.html"
+            ],
+            "target": "/lszl"
+          }
+        ],
+        "name": "临时展览",
+        "maintainers": [
+          "magazian"
+        ],
+        "location": "lszl.tsx",
+        "module": () => import('@/routes/canalmuseum/lszl.tsx')
+      }
+    },
+    "apiRoutes": {},
+    "name": "The Grand Canal Museum of Beijing",
+    "url": "www.canalmuseum.org.cn",
+    "zh": {
+      "name": "北京大运河博物馆"
+    }
   },
   "capitalmuseum": {
     "routes": {
@@ -63291,65 +63403,6 @@ export default {
     "name": "GameApps.hk 香港手机游戏网",
     "url": "gameapps.hk",
     "lang": "zh-HK"
-  },
-  "gamebase": {
-    "routes": {
-      "/news/:type?/:category?": {
-        "path": "/news/:type?/:category?",
-        "name": "新聞",
-        "url": "news.gamebase.com.tw",
-        "maintainers": [
-          "nczitzk"
-        ],
-        "example": "/gamebase/news",
-        "parameters": {
-          "type": "類型，見下表，預設為 newslist",
-          "category": "分類，預設為 `all`，即全部，可在對應分類頁 URL 中找到"
-        },
-        "description": "::: tip\n若訂閱 [手機遊戲新聞](https://news.gamebase.com.tw/news/newslist?type=mobile)，網址為 `https://news.gamebase.com.tw/news/newslist?type=mobile`，請截取 `https://news.gamebase.com.tw/news/` 到末尾的部分 `newslist` 作為 `type` 參數填入，`mobile` 作為 `category` 參數填入，此時目標路由為 [`/gamebase/news/newslist/mobile`](https://rsshub.app/gamebase/news/newslist/mobile)。\n:::\n\n| newslist | r18list |\n| -------- | ------- |",
-        "categories": [
-          "game"
-        ],
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportRadar": true,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "news.gamebase.com.tw/news",
-              "news.gamebase.com.tw/news/:type"
-            ]
-          }
-        ],
-        "view": 0,
-        "zh": {
-          "path": "/news/:type?/:category?",
-          "name": "新闻",
-          "url": "news.gamebase.com.tw",
-          "maintainers": [
-            "nczitzk"
-          ],
-          "example": "/gamebase/news",
-          "parameters": {
-            "type": "类型，见下表，默认为 newslist",
-            "category": "分类，默认为 `all`，即全部，可在对应分类页 URL 中找到"
-          },
-          "description": "::: tip\n若订阅 [手机游戏新闻](https://news.gamebase.com.tw/news/newslist?type=mobile)，网址为 `https://news.gamebase.com.tw/news/newslist?type=mobile`，请截取 `https://news.gamebase.com.tw/news/` 到末尾的部分 `newslist` 作为 `type` 参数填入，`mobile` 作为 `category` 参数填入，此时目标路由为 [`/gamebase/news/newslist/mobile`](https://rsshub.app/gamebase/news/newslist/mobile)。\n:::\n\n| newslist | r18list |\n| -------- | ------- |"
-        },
-        "location": "news.tsx",
-        "module": () => import('@/routes/gamebase/news.tsx')
-      }
-    },
-    "apiRoutes": {},
-    "name": "遊戲基地 Gamebase",
-    "url": "news.gamebase.com.tw",
-    "lang": "zh-TW"
   },
   "gamegene": {
     "routes": {
@@ -114883,6 +114936,149 @@ export default {
     "url": "toranoana.jp",
     "lang": "ja"
   },
+  "toutiao": {
+    "routes": {
+      "/user/token/:token": {
+        "path": "/user/token/:token",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/toutiao/user/token/MS4wLjABAAAApOspM7AnWqplD9FIBGnhJRfUjFT_msD1KZMfNPBZa-c",
+        "parameters": {
+          "token": "用户 token，可在用户主页 URL 找到"
+        },
+        "features": {
+          "antiCrawler": true
+        },
+        "radar": [
+          {
+            "source": [
+              "www.toutiao.com/c/user/token/:token"
+            ]
+          }
+        ],
+        "name": "头条主页",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "location": "user.tsx",
+        "module": () => import('@/routes/toutiao/user.tsx')
+      },
+      "/channel/:category": {
+        "path": "/channel/:category",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/toutiao/channel/news_tech",
+        "parameters": {
+          "category": {
+            "description": "频道",
+            "options": [
+              {
+                "value": "recommend",
+                "label": "推荐"
+              },
+              {
+                "value": "news_hot",
+                "label": "热点"
+              },
+              {
+                "value": "news_tech",
+                "label": "科技"
+              },
+              {
+                "value": "news_finance",
+                "label": "财经"
+              },
+              {
+                "value": "news_entertainment",
+                "label": "娱乐"
+              },
+              {
+                "value": "news_sports",
+                "label": "体育"
+              },
+              {
+                "value": "news_world",
+                "label": "国际"
+              },
+              {
+                "value": "news_military",
+                "label": "军事"
+              },
+              {
+                "value": "news_history",
+                "label": "历史"
+              },
+              {
+                "value": "news_essay",
+                "label": "美文"
+              },
+              {
+                "value": "news_food",
+                "label": "美食"
+              },
+              {
+                "value": "news_travel",
+                "label": "旅游"
+              },
+              {
+                "value": "news_fashion",
+                "label": "时尚"
+              },
+              {
+                "value": "news_game",
+                "label": "游戏"
+              },
+              {
+                "value": "news_baby",
+                "label": "育儿"
+              },
+              {
+                "value": "news_regimen",
+                "label": "养生"
+              },
+              {
+                "value": "digital",
+                "label": "数码"
+              },
+              {
+                "value": "video",
+                "label": "视频"
+              }
+            ]
+          }
+        },
+        "features": {
+          "antiCrawler": true
+        },
+        "radar": [
+          {
+            "source": [
+              "www.toutiao.com/ch/:category"
+            ]
+          },
+          {
+            "title": "推荐",
+            "source": [
+              "www.toutiao.com/"
+            ],
+            "target": "/channel/recommend"
+          }
+        ],
+        "name": "频道",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "location": "channel.ts",
+        "module": () => import('@/routes/toutiao/channel.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "今日头条",
+    "url": "www.toutiao.com",
+    "lang": "zh-CN"
+  },
   "towardsdatascience": {
     "routes": {
       "/latest": {
@@ -130608,6 +130804,48 @@ export default {
     "name": "Bloomberg",
     "url": "www.bloomberg.com",
     "lang": "en"
+  },
+  "br-klassik": {
+    "routes": {
+      "/aktuell": {
+        "path": "/aktuell",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/br-klassik/aktuell",
+        "parameters": {},
+        "features": {
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false,
+          "requireConfig": false
+        },
+        "name": "Aktuell (News & Kritik)",
+        "maintainers": [
+          "wongJG"
+        ],
+        "description": "News und Kritik aus der Welt der Klassischen Musik.",
+        "radar": [
+          {
+            "source": [
+              "www.br-klassik.de/aktuell/index.html"
+            ],
+            "target": "/aktuell"
+          }
+        ],
+        "location": "aktuell.ts",
+        "module": () => import('@/routes/br-klassik/aktuell.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "BR-Klassik",
+    "url": "br-klassik.de",
+    "lang": "de",
+    "categories": [
+      "traditional-media"
+    ]
   },
   "brooklynmuseum": {
     "routes": {

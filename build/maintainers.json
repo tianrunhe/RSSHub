@@ -1133,6 +1133,9 @@
   "/nanhua/report/:type1/:type2": [
     "TonyRL"
   ],
+  "/onlyfans/:username": [
+    "TonyRL"
+  ],
   "/openalex/:journals/:type?/:ids?": [
     "emdoe"
   ],
@@ -1399,6 +1402,9 @@
   "/foodtalks/news/tag/:tagId": [
     "TonyRL"
   ],
+  "/gamebase/news/:type?/:category?": [
+    "nczitzk"
+  ],
   "/gettr/user/:id": [
     "TonyRL"
   ],
@@ -1610,9 +1616,6 @@
     "TonyRL"
   ],
   "/tingtingfm/program/:programId": [
-    "TonyRL"
-  ],
-  "/toutiao/user/token/:token": [
     "TonyRL"
   ],
   "/tqyb/sncsyjxh": [
@@ -2741,22 +2744,11 @@
     "CaoMeiYouRen",
     "hutianyu2006"
   ],
-  "/baidu/tieba/forum/good/:kw/:cid?/:sortBy?": [
-    "u3u",
-    "FlanChanXwO"
-  ],
   "/baidu/tieba/forum/:kw/:sortBy?": [
     "u3u",
     "FlanChanXwO"
   ],
-  "/baidu/search/:keyword": [
-    "CaoMeiYouRen"
-  ],
   "/baidu/tieba/post/:id": [
-    "u3u",
-    "FlanChanXwO"
-  ],
-  "/baidu/tieba/post/lz/:id": [
     "u3u",
     "FlanChanXwO"
   ],
@@ -2768,6 +2760,20 @@
     "igxlin",
     "nczitzk",
     "FlanChanXwO"
+  ],
+  "/baidu/tieba/forum/good/:kw/:cid?/:sortBy?": [
+    "u3u",
+    "FlanChanXwO"
+  ],
+  "/baidu/tieba/post/lz/:id": [
+    "u3u",
+    "FlanChanXwO"
+  ],
+  "/baidu/baijiahao/:id/:tab?": [
+    "TonyRL"
+  ],
+  "/baidu/search/:keyword": [
+    "CaoMeiYouRen"
   ],
   "/baidu/top/:board?": [
     "xyqfer"
@@ -3096,6 +3102,12 @@
   ],
   "/canada.ca/news/:lang/:department?": [
     "elibroftw"
+  ],
+  "/canalmuseum/consulting/:type": [
+    "magazian"
+  ],
+  "/canalmuseum/lszl": [
+    "magazian"
   ],
   "/capitalmuseum/exhibition/:type?": [
     "magazian"
@@ -4686,9 +4698,6 @@
   ],
   "/gameapps/": [
     "TonyRL"
-  ],
-  "/gamebase/news/:type?/:category?": [
-    "nczitzk"
   ],
   "/gamegene/news": [
     "lone1y-51"
@@ -8506,6 +8515,12 @@
   "/toranoana/news/:category?": [
     "Tsuyumi25"
   ],
+  "/toutiao/user/token/:token": [
+    "TonyRL"
+  ],
+  "/toutiao/channel/:category": [
+    "TonyRL"
+  ],
   "/towardsdatascience/latest": [
     "mintyfrankie"
   ],
@@ -9941,6 +9956,9 @@
   ],
   "/bloomberg/:site?": [
     "bigfei"
+  ],
+  "/br-klassik/aktuell": [
+    "wongJG"
   ],
   "/brooklynmuseum/exhibitions/:state?": [
     "chazeon"
