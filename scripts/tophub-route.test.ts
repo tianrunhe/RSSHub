@@ -2,7 +2,7 @@ import type { Context } from 'hono';
 import { http, HttpResponse } from 'msw';
 import { describe, expect, it } from 'vitest';
 
-import { route } from './tophub';
+import { route } from '../lib/routes/tophub';
 
 function createCtx({ id = 'Om4ejxvxEN', threshold }: { id?: string; threshold?: string } = {}) {
     return {
@@ -117,7 +117,7 @@ const homepage = `
 
 describe('/tophub/:id/:threshold?', () => {
     it('builds the feed from the homepage card when the detail page is blocked', async () => {
-        const { default: server } = await import('@/setup.test');
+        const { default: server } = await import('../lib/setup.test');
 
         server.use(http.get('https://tophub.today/', () => HttpResponse.html(homepage)));
 
@@ -139,7 +139,7 @@ describe('/tophub/:id/:threshold?', () => {
     });
 
     it('filters items by threshold only when the heat value is numeric', async () => {
-        const { default: server } = await import('@/setup.test');
+        const { default: server } = await import('../lib/setup.test');
 
         server.use(http.get('https://tophub.today/', () => HttpResponse.html(homepage)));
 
