@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-import { cloudflareTest } from '@cloudflare/vitest-pool-workers';
+import { cloudflareTest } from '@cloudflare/vitest-plugin';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import { defineConfig, type Plugin } from 'vitest/config';
 
@@ -55,9 +55,10 @@ export default defineConfig({
     plugins: [
         cloudflareTest({
             miniflare: {
-                compatibilityDate: '2026-08-22',
-                compatibilityFlags: ['nodejs_compat'],
+                compatibilityDate: '2026-09-01',
+                compatibilityFlags: ['global_fetch_strictly_public'],
                 kvNamespaces: ['CACHE'],
+                modulesRules: [{ type: 'CompiledWasm', include: ['**/*.wasm'] }],
             },
         }),
         workerAliasPlugin(),
@@ -69,6 +70,6 @@ export default defineConfig({
         },
     },
     test: {
-        include: ['lib/**/*.worker.test.ts'],
+        include: ['lib/**/*.worker.test.ts', 'tests/**/*.worker.test.ts', 'lib/utils/parse-script-data.test.ts', 'lib/utils/parse-date-in-timezone.test.ts', 'tests/source-date-routes.test.ts', 'tests/cache-coordination.test.ts'],
     },
 });
