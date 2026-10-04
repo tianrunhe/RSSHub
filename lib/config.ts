@@ -98,6 +98,8 @@ type ConfigEnvKeys =
     | 'BUKENAVI_PASSWORD'
     | 'CAIXIN_COOKIE'
     | 'CIVITAI_COOKIE'
+    | 'COOMER_ASSETS_URL'
+    | 'COOMER_ROOT_URL'
     | 'DIANPING_COOKIE'
     | 'DIDA365_USERNAME'
     | 'DIDA365_PASSWORD'
@@ -133,14 +135,14 @@ type ConfigEnvKeys =
     | 'HUITUN_COOKIE'
     | 'INFZM_COOKIE'
     | 'INITIUM_MEMBER_COOKIE'
-    | 'IG_USERNAME'
-    | 'IG_PASSWORD'
-    | 'IG_PROXY'
     | 'IG_COOKIE'
+    | 'INSTAGRAM_COOKIE'
     | 'IWARA_USERNAME'
     | 'IWARA_PASSWORD'
     | 'JAVDB_SESSION'
     | 'JUMEILI_COOKIE'
+    | 'KEMONO_ASSETS_URL'
+    | 'KEMONO_ROOT_URL'
     | 'KEYLOL_COOKIE'
     | 'LASTFM_API_KEY'
     | 'LOCALS_SESSION'
@@ -242,7 +244,6 @@ type ConfigEnvKeys =
     | 'XIAOHONGSHU_PROXY'
     | 'XIMALAYA_TOKEN'
     | 'XSIJISHE_COOKIE'
-    | 'XSIJISHE_USER_AGENT'
     | 'XUEQIU_COOKIES'
     | 'YAMIBO_SALT'
     | 'YAMIBO_AUTH'
@@ -399,6 +400,10 @@ export type Config = {
     civitai: {
         cookie?: string;
     };
+    coomer: {
+        assetsUrl: string;
+        rootUrl: string;
+    };
     dianping: {
         cookie?: string;
     };
@@ -483,9 +488,6 @@ export type Config = {
         memberCookie?: string;
     };
     instagram: {
-        username?: string;
-        password?: string;
-        proxy?: string;
         cookie?: string;
     };
     iwara: {
@@ -497,6 +499,10 @@ export type Config = {
     };
     jumeili: {
         cookie?: string;
+    };
+    kemono: {
+        assetsUrl: string;
+        rootUrl: string;
     };
     keylol: {
         cookie?: string;
@@ -706,7 +712,6 @@ export type Config = {
     };
     xsijishe: {
         cookie?: string;
-        userAgent?: string;
     };
     xueqiu: {
         cookies?: string;
@@ -751,6 +756,16 @@ const toBoolean = (value: string | undefined, defaultValue: boolean) => {
 };
 
 const toInt = (value: string | undefined, defaultValue?: number) => (value === undefined ? defaultValue : Number.parseInt(value));
+
+const getAssetsUrl = (rootUrl: string, assetsUrl?: string) => {
+    if (assetsUrl) {
+        return assetsUrl.replace(/\/+$/, '');
+    }
+
+    const url = new URL(rootUrl);
+    url.hostname = `img.${url.hostname}`;
+    return url.href.replace(/\/+$/, '');
+};
 
 const calculateValue = () => {
     const bilibili_cookies: Record<string, string | undefined> = {};
@@ -920,6 +935,10 @@ const calculateValue = () => {
         civitai: {
             cookie: envs.CIVITAI_COOKIE,
         },
+        coomer: {
+            assetsUrl: getAssetsUrl(envs.COOMER_ROOT_URL || 'https://coomer.st', envs.COOMER_ASSETS_URL),
+            rootUrl: (envs.COOMER_ROOT_URL || 'https://coomer.st').replace(/\/+$/, ''),
+        },
         dianping: {
             cookie: envs.DIANPING_COOKIE,
         },
@@ -1004,10 +1023,7 @@ const calculateValue = () => {
             memberCookie: envs.INITIUM_MEMBER_COOKIE,
         },
         instagram: {
-            username: envs.IG_USERNAME,
-            password: envs.IG_PASSWORD,
-            proxy: envs.IG_PROXY,
-            cookie: envs.IG_COOKIE,
+            cookie: envs.INSTAGRAM_COOKIE ?? envs.IG_COOKIE,
         },
         iwara: {
             username: envs.IWARA_USERNAME,
@@ -1018,6 +1034,10 @@ const calculateValue = () => {
         },
         jumeili: {
             cookie: envs.JUMEILI_COOKIE,
+        },
+        kemono: {
+            assetsUrl: getAssetsUrl(envs.KEMONO_ROOT_URL || 'https://kemono.cr', envs.KEMONO_ASSETS_URL),
+            rootUrl: (envs.KEMONO_ROOT_URL || 'https://kemono.cr').replace(/\/+$/, ''),
         },
         keylol: {
             cookie: envs.KEYLOL_COOKIE,
@@ -1227,7 +1247,6 @@ const calculateValue = () => {
         },
         xsijishe: {
             cookie: envs.XSIJISHE_COOKIE,
-            user_agent: envs.XSIJISHE_USER_AGENT,
         },
         xueqiu: {
             cookies: envs.XUEQIU_COOKIES,
