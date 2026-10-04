@@ -93,9 +93,6 @@
   "/atptour/news/:lang?": [
     "LM1207"
   ],
-  "/autotrader/:query": [
-    "HenryQW"
-  ],
   "/azurlane/news/:server/:type?": [
     "AnitsuriW"
   ],
@@ -534,12 +531,6 @@
   ],
   "/zhimap/:categoryUuid?/:recommend?": [
     "laampui"
-  ],
-  "/zsxq/group/:id/:scope?": [
-    "KarasuShin"
-  ],
-  "/zsxq/user/:id": [
-    "KarasuShin"
   ],
   "/abmedia/:category?": [
     "Fatpandac"
@@ -1078,6 +1069,12 @@
   "/zjmuseum/exhibition/:type?": [
     "magazian"
   ],
+  "/zsxq/group/:id/:scope?": [
+    "KarasuShin"
+  ],
+  "/zsxq/user/:id": [
+    "KarasuShin"
+  ],
   "/zyw/hot/:site?": [
     "nczitzk"
   ],
@@ -1095,6 +1092,9 @@
   ],
   "/aicaijing/recommend": [
     "nczitzk"
+  ],
+  "/autotrader/:query": [
+    "HenryQW"
   ],
   "/bt0/mv/:number/:domain?": [
     "miemieYaho"
@@ -1119,18 +1119,6 @@
     "Kiotlin",
     "ZeroClad",
     "15x15G"
-  ],
-  "/foresightnews/article": [
-    "nczitzk"
-  ],
-  "/foresightnews/column/:id": [
-    "nczitzk"
-  ],
-  "/foresightnews/": [
-    "nczitzk"
-  ],
-  "/foresightnews/news": [
-    "nczitzk"
   ],
   "/gelbooru/post/:tags?/:quality?": [
     "magicFeirl"
@@ -1362,6 +1350,18 @@
   "/fffdm/manhua/:id/:cdn?": [
     "zytomorrow"
   ],
+  "/foresightnews/article": [
+    "nczitzk"
+  ],
+  "/foresightnews/column/:id": [
+    "nczitzk"
+  ],
+  "/foresightnews/": [
+    "nczitzk"
+  ],
+  "/foresightnews/news": [
+    "nczitzk"
+  ],
   "/gamebase/news/:type?/:category?": [
     "nczitzk"
   ],
@@ -1426,6 +1426,13 @@
     "TonyRL"
   ],
   "/inspirehep/authors/:id": [
+    "TonyRL"
+  ],
+  "/instagram/:category/:key": [
+    "oppilate",
+    "DIYgod"
+  ],
+  "/instagram/2/:category/:key": [
     "TonyRL"
   ],
   "/iresearch/weekly/:id?": [
@@ -2151,6 +2158,47 @@
   ],
   "/zuvio/student5/boards": [
     "TonyRL"
+  ],
+  "/twitter/trends/:woeid?": [
+    "sakamossan"
+  ],
+  "/twitter/home_latest/:routeParams?": [
+    "DIYgod",
+    "CaoMeiYouRen"
+  ],
+  "/twitter/home/:routeParams?": [
+    "DIYgod",
+    "CaoMeiYouRen"
+  ],
+  "/twitter/keyword/:keyword/:routeParams?": [
+    "DIYgod",
+    "yindaheng98",
+    "Rongronggg9",
+    "pseudoyu"
+  ],
+  "/twitter/likes/:id/:routeParams?": [
+    "xyqfer"
+  ],
+  "/twitter/list/:id/:routeParams?": [
+    "DIYgod",
+    "xyqfer",
+    "pseudoyu"
+  ],
+  "/twitter/media/:id/:routeParams?": [
+    "DIYgod",
+    "yindaheng98",
+    "Rongronggg9"
+  ],
+  "/twitter/tweet/:id/status/:status/:original?": [
+    "LarchLiu",
+    "Rongronggg9"
+  ],
+  "/twitter/user/:id/:routeParams?": [
+    "DIYgod",
+    "yindaheng98",
+    "Rongronggg9",
+    "CaoMeiYouRen",
+    "pseudoyu"
   ],
   "/fanfou/home_timeline": [
     "junbaor"
@@ -4501,9 +4549,6 @@
   "/etoland/:bo_table": [
     "mengx8"
   ],
-  "/eurogamer/:category?": [
-    "mcdp-adk"
-  ],
   "/europapress/:category?": [
     "nczitzk"
   ],
@@ -5860,9 +5905,6 @@
   ],
   "/koreaherald/:category{.+}?": [
     "quiniapiezoelectricity"
-  ],
-  "/kosmofoto/:category?": [
-    "IvanWng97"
   ],
   "/kovidgoyal/kitty/changelog": [
     "xbot"
@@ -8489,9 +8531,6 @@
     "ninboy",
     "pseudoyu"
   ],
-  "/threads/:user/post/:id/:routeParams?": [
-    "TonyRL"
-  ],
   "/threads/search/:keyword/:routeParams?": [
     "TonyRL"
   ],
@@ -9154,12 +9193,6 @@
   ],
   "/wzbc/:type?": [
     "howel52"
-  ],
-  "/wzbwg/news/:type": [
-    "magazian"
-  ],
-  "/wzbwg/zhanlan/specialexhibition": [
-    "magazian"
   ],
   "/wzu/news/:type?": [
     "Chandler-Lu"
@@ -10280,9 +10313,6 @@
   "/dongqiudi/top_news/:id?": [
     "HendricksZheng"
   ],
-  "/dr/:category?": [
-    "cufezhusy"
-  ],
   "/dribbble/keyword/:keyword": [
     "DIYgod",
     "loganrockmore"
@@ -11090,9 +11120,6 @@
     "KarasuShin",
     "ranpox",
     "xyqfer"
-  ],
-  "/instagram/:category/:key": [
-    "TonyRL"
   ],
   "/jandan/": [
     "lonelykid",
@@ -12335,9 +12362,6 @@
   "/zhihu/zhuanlan/:id": [
     "DIYgod"
   ],
-  "/czechstepbystep/kratke-ceske-zpravy": [
-    "cmp0xff"
-  ],
   "/finology/bullets": [
     "Rjnishant530"
   ],
@@ -12448,6 +12472,9 @@
   "/youtube/c/:username/:embed?": [
     "TonyRL"
   ],
+  "/youtube/live/:username/:embed?": [
+    "sussurr127"
+  ],
   "/youtube/charts/:category?/:country?/:embed?": [
     "TonyRL"
   ],
@@ -12458,59 +12485,14 @@
     "DIYgod",
     "pseudoyu"
   ],
-  "/youtube/live/:username/:embed?": [
-    "sussurr127",
-    "ouuan"
-  ],
   "/youtube/playlist/:id/:embed?": [
     "HenryQW"
   ],
-  "/youtube/shows/:username": [
-    "TonyRL"
+  "/youtube/streams/:handle/:routeParams?": [
+    "ouuan"
   ],
   "/youtube/user/:username/:routeParams?": [
     "DIYgod",
-    "pseudoyu"
-  ],
-  "/twitter/trends/:woeid?": [
-    "sakamossan"
-  ],
-  "/twitter/home_latest/:routeParams?": [
-    "DIYgod",
-    "CaoMeiYouRen"
-  ],
-  "/twitter/home/:routeParams?": [
-    "DIYgod",
-    "CaoMeiYouRen"
-  ],
-  "/twitter/keyword/:keyword/:routeParams?": [
-    "DIYgod",
-    "yindaheng98",
-    "Rongronggg9",
-    "pseudoyu"
-  ],
-  "/twitter/likes/:id/:routeParams?": [
-    "xyqfer"
-  ],
-  "/twitter/list/:id/:routeParams?": [
-    "DIYgod",
-    "xyqfer",
-    "pseudoyu"
-  ],
-  "/twitter/media/:id/:routeParams?": [
-    "DIYgod",
-    "yindaheng98",
-    "Rongronggg9"
-  ],
-  "/twitter/tweet/:id/status/:status/:original?": [
-    "LarchLiu",
-    "Rongronggg9"
-  ],
-  "/twitter/user/:id/:routeParams?": [
-    "DIYgod",
-    "yindaheng98",
-    "Rongronggg9",
-    "CaoMeiYouRen",
     "pseudoyu"
   ],
   "/economist/global-business-review/:language?": [

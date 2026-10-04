@@ -825,7 +825,6 @@ export type RoutePath =
   | `/cyzone/:id?`
   | `/cyzone/author/:id`
   | `/cyzone/label/:name`
-  | `/czechstepbystep/kratke-ceske-zpravy`
   | `/cztv/zjxwlb`
   | `/cztv/zjxwlb/daily`
   | `/dahecube/:type?`
@@ -998,7 +997,6 @@ export type RoutePath =
   | `/douyu/post/:id`
   | `/douyu/room/:id`
   | `/dpm/exhibitions/:type?`
-  | `/dr/:category?`
   | `/dribbble/keyword/:keyword`
   | `/dribbble/popular/:timeframe?`
   | `/dribbble/user/:name`
@@ -1107,7 +1105,6 @@ export type RoutePath =
   | `/esquirehk/tag/:id?`
   | `/etherscan/transactions/:address`
   | `/etoland/:bo_table`
-  | `/eurogamer/:category?`
   | `/europapress/:category?`
   | `/europechinese/latest`
   | `/eventbrite/:region/:eventType?/:includePromoted?`
@@ -1809,6 +1806,7 @@ export type RoutePath =
   | `/inspirehep/authors/:id`
   | `/inspirehep/literature/:q`
   | `/instagram/:category/:key`
+  | `/instagram/2/:category/:key`
   | `/instructables/projects/:category?`
   | `/inuki-ichiba/rent/:pref?`
   | `/investor/:id{.+}?`
@@ -2004,7 +2002,6 @@ export type RoutePath =
   | `/kongfz/shop/:id/:cat?`
   | `/konghq/blog-posts`
   | `/koreaherald/:category{.+}?`
-  | `/kosmofoto/:category?`
   | `/kovidgoyal/kitty/changelog`
   | `/koyso/:category?/:sort?`
   | `/kpmg/insights/:lang?`
@@ -3314,7 +3311,6 @@ export type RoutePath =
   | `/thoughtco/:category?`
   | `/thoughtworks/blog`
   | `/threads/:user/:routeParams?`
-  | `/threads/:user/post/:id/:routeParams?`
   | `/threads/search/:keyword/:routeParams?`
   | `/thunderbird/release`
   | `/thwiki/calendar/:before?/:after?`
@@ -3637,8 +3633,6 @@ export type RoutePath =
   | `/wuzhongmuseum/exhibition/:type?`
   | `/wyzxwk/article/:id?`
   | `/wzbc/:type?`
-  | `/wzbwg/news/:type`
-  | `/wzbwg/zhanlan/specialexhibition`
   | `/wzu/news/:type?`
   | `/x-mol/news/:tag?`
   | `/x-mol/paper/:type/:magazine`
@@ -3789,7 +3783,7 @@ export type RoutePath =
   | `/youtube/community/:handle`
   | `/youtube/live/:username/:embed?`
   | `/youtube/playlist/:id/:embed?`
-  | `/youtube/shows/:username`
+  | `/youtube/streams/:handle/:routeParams?`
   | `/youtube/subscriptions/:embed?`
   | `/youtube/user/:username/:routeParams?`
   | `/youzan/goods/:id`
