@@ -163,6 +163,7 @@ describe('getPlaywrightPage (mocked)', () => {
     it('uses the packaged Chromium binary on Vercel', async () => {
         resetMocks();
         vi.stubEnv('VERCEL', '1');
+        vi.stubEnv('CHROMIUM_EXECUTABLE_PATH', '');
         launch.mockResolvedValue(mockBrowser);
         proxyMock.getCurrentProxy.mockReturnValue(null);
 
