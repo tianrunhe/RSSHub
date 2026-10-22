@@ -4,7 +4,6 @@
     "outputDirectory": "src",
     "functions": {
         "src/server.mjs": {
-            "maxDuration": 60,
             "includeFiles": "node_modules/.pnpm/{patchright-core@*/node_modules/patchright-core/**,@sparticuz+chromium@*/node_modules/@sparticuz/chromium/bin/**}"
         }
     },
