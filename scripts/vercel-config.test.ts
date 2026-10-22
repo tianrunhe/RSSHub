@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { globSync, readFileSync } from 'node:fs';
 
 import { describe, expect, it } from 'vitest';
 
@@ -8,7 +8,10 @@ describe('vercel config', () => {
 
         const includeFiles = config.functions?.['src/server.mjs']?.includeFiles;
 
-        expect(includeFiles).toEqual(['node_modules/.pnpm/patchright-core@*/node_modules/patchright-core/**', 'node_modules/.pnpm/@sparticuz+chromium@*/node_modules/@sparticuz/chromium/bin/**']);
+        expect(typeof includeFiles).toBe('string');
+        const files = globSync(includeFiles);
+        expect(files.some((file) => file.endsWith('/patchright-core/browsers.json'))).toBe(true);
+        expect(files.some((file) => file.endsWith('/chromium/bin/chromium.br'))).toBe(true);
     });
 
     it('bundles sanitize-html for ESM-only transitive dependencies', async () => {
