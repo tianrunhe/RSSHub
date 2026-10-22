@@ -4,7 +4,7 @@
     "outputDirectory": "src",
     "functions": {
         "src/server.mjs": {
-            "includeFiles": "node_modules/.pnpm/patchright-core@*/node_modules/patchright-core/**"
+            "includeFiles": ["node_modules/.pnpm/patchright-core@*/node_modules/patchright-core/**", "node_modules/.pnpm/@sparticuz+chromium@*/node_modules/@sparticuz/chromium/bin/**"]
         }
     },
     "rewrites": [

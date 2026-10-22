@@ -47,12 +47,23 @@ const getProxyOptions = (currentProxy: ProxyState | null | undefined) => {
 // Patchright already patches playwright's default args (e.g. injects --disable-blink-features=AutomationControlled and strips --enable-automation)
 const COMMON_LAUNCH_ARGS = ['--no-sandbox', '--disable-setuid-sandbox', '--window-position=0,0', '--ignore-certificate-errors', '--ignore-certificate-errors-spki-list'];
 
-const getLaunchOptions = (currentProxy?: ProxyState | null): LaunchOptions => ({
-    args: COMMON_LAUNCH_ARGS,
-    executablePath: config.chromiumExecutablePath || undefined,
-    headless: true,
-    ...getProxyOptions(currentProxy),
-});
+const getLaunchOptions = async (currentProxy?: ProxyState | null): Promise<LaunchOptions> => {
+    let args = COMMON_LAUNCH_ARGS;
+    let executablePath = config.chromiumExecutablePath || undefined;
+
+    if (process.env.VERCEL && !executablePath) {
+        const { default: serverlessChromium } = await import('@sparticuz/chromium');
+        args = [...serverlessChromium.args, ...args];
+        executablePath = await serverlessChromium.executablePath();
+    }
+
+    return {
+        args,
+        executablePath,
+        headless: true,
+        ...getProxyOptions(currentProxy),
+    };
+};
 
 type BrowserlessLaunchOptions = Pick<LaunchOptions, 'args' | 'headless' | 'proxy'>;
 type BrowserlessCdpLaunchOptions = Omit<BrowserlessLaunchOptions, 'proxy'> & { stealth?: boolean };
@@ -97,7 +108,7 @@ const launchBrowser = async (currentProxy?: ProxyState | null, javaScriptEnabled
     } else if (config.playwrightWSEndpoint) {
         browser = await chromium.connect(getBrowserlessEndpoint(config.playwrightWSEndpoint, toBrowserlessLaunchOptions(currentProxy)));
     } else {
-        browser = await chromium.launch(getLaunchOptions(currentProxy));
+        browser = await chromium.launch(await getLaunchOptions(currentProxy));
     }
     try {
         const context = await browser.newContext(getContextOptions(javaScriptEnabled));
