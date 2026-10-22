@@ -8,6 +8,8 @@ export default defineConfig({
     minify: true,
     shims: true,
     clean: true,
+    // Keep Vercel's function configuration as a literal export after minification.
+    banner: ({ fileName }) => (fileName === 'server.mjs' ? 'export const config = { maxDuration: 60 };' : undefined),
     // copy: [{ from: 'lib/assets', to: 'dist' }],
     deps: {
         alwaysBundle: ['sanitize-html'],

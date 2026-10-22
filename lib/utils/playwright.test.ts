@@ -9,6 +9,7 @@ import wait from './wait';
 const connect = vi.fn<(endpoint: string) => Promise<Browser>>();
 const connectOverCDP = vi.fn<(endpoint: string) => Promise<Browser>>();
 const launch = vi.fn();
+const serverlessExecutablePath = vi.fn();
 
 let mockPage: any;
 let mockContext: any;
@@ -65,6 +66,12 @@ const loadPlaywright = async () => {
             launch,
         },
     }));
+    vi.doMock('@sparticuz/chromium', () => ({
+        default: {
+            args: ['--serverless-chromium'],
+            executablePath: serverlessExecutablePath,
+        },
+    }));
     vi.doMock('@/utils/proxy', () => ({
         default: proxyMock,
     }));
@@ -77,6 +84,7 @@ const resetMocks = () => {
     connect.mockReset();
     connectOverCDP.mockReset();
     launch.mockReset();
+    serverlessExecutablePath.mockReset().mockResolvedValue('/tmp/chromium');
     proxyMock.multiProxy = undefined;
     proxyMock.getCurrentProxy.mockReset();
     proxyMock.markProxyFailed.mockReset();
@@ -105,7 +113,9 @@ afterEach(async () => {
 
     vi.doUnmock('dotenv/config');
     vi.doUnmock('patchright');
+    vi.doUnmock('@sparticuz/chromium');
     vi.doUnmock('@/utils/proxy');
+    vi.unstubAllEnvs();
 
     vi.resetModules();
 });
@@ -150,6 +160,58 @@ describe('playwright', () => {
 });
 
 describe('getPlaywrightPage (mocked)', () => {
+    it('uses the packaged Chromium binary on Vercel', async () => {
+        resetMocks();
+        vi.stubEnv('VERCEL', '1');
+        vi.stubEnv('CHROMIUM_EXECUTABLE_PATH', '');
+        launch.mockResolvedValue(mockBrowser);
+        proxyMock.getCurrentProxy.mockReturnValue(null);
+
+        const getPlaywrightPage = await loadPlaywright();
+        const result = await getPlaywrightPage('https://example.com', { noGoto: true });
+
+        expect(serverlessExecutablePath).toHaveBeenCalledOnce();
+        expect(launch).toHaveBeenCalledWith(
+            expect.objectContaining({
+                executablePath: '/tmp/chromium',
+                args: expect.arrayContaining(['--serverless-chromium', '--no-sandbox']),
+                headless: true,
+            })
+        );
+        await result.destroy();
+    });
+
+    it('preserves an explicitly configured Chromium executable on Vercel', async () => {
+        resetMocks();
+        vi.stubEnv('VERCEL', '1');
+        vi.stubEnv('CHROMIUM_EXECUTABLE_PATH', '/opt/chromium');
+        launch.mockResolvedValue(mockBrowser);
+        proxyMock.getCurrentProxy.mockReturnValue(null);
+
+        const getPlaywrightPage = await loadPlaywright();
+        const result = await getPlaywrightPage('https://example.com', { noGoto: true });
+
+        expect(serverlessExecutablePath).not.toHaveBeenCalled();
+        expect(launch).toHaveBeenCalledWith(expect.objectContaining({ executablePath: '/opt/chromium' }));
+        await result.destroy();
+    });
+
+    it('does not extract local Chromium when Vercel uses a remote browser', async () => {
+        resetMocks();
+        vi.stubEnv('VERCEL', '1');
+        process.env.PLAYWRIGHT_WS_ENDPOINT = 'ws://localhost:3000/?token=abc';
+        connect.mockResolvedValue(mockBrowser);
+        proxyMock.getCurrentProxy.mockReturnValue(null);
+
+        const getPlaywrightPage = await loadPlaywright();
+        const result = await getPlaywrightPage('https://example.com', { noGoto: true });
+
+        expect(serverlessExecutablePath).not.toHaveBeenCalled();
+        expect(launch).not.toHaveBeenCalled();
+        expect(connect).toHaveBeenCalledOnce();
+        await result.destroy();
+    });
+
     it('connects via ws endpoint and runs onBeforeLoad', async () => {
         vi.useFakeTimers();
         try {

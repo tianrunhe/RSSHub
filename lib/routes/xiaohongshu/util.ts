@@ -9,6 +9,7 @@ import logger from '@/utils/logger';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
 import playwright, { getPlaywrightPage } from '@/utils/playwright';
+import { setCookies } from '@/utils/playwright-utils';
 
 declare global {
     interface Window {
@@ -73,6 +74,9 @@ const getUser = (url, cache) =>
             // Use Playwright
             const { page, destroy } = await getPlaywrightPage(url, {
                 onBeforeLoad: async (page) => {
+                    if (config.xiaohongshu.cookie) {
+                        await setCookies(page, config.xiaohongshu.cookie, '.xiaohongshu.com');
+                    }
                     await page.route('**/*', (route) => {
                         const request = route.request();
                         request.resourceType() === 'document' || request.resourceType() === 'script' || request.resourceType() === 'xhr' || request.resourceType() === 'other' ? route.continue() : route.abort();
