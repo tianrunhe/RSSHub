@@ -735,6 +735,60 @@ export default {
     "url": "8264.com",
     "lang": "zh-CN"
   },
+  "10086": {
+    "routes": {
+      "/b2b/:type?": {
+        "path": "/b2b/:type?",
+        "categories": [
+          "other"
+        ],
+        "example": "/10086/b2b/PROCUREMENT",
+        "parameters": {
+          "type": {
+            "description": "公告类型",
+            "options": [
+              {
+                "value": "PROCUREMENT",
+                "label": "招标采购公告"
+              },
+              {
+                "value": "PURCHASE_SERVICE",
+                "label": "采购服务"
+              },
+              {
+                "value": "VENDOR",
+                "label": "供应商公告"
+              },
+              {
+                "value": "IMPORTANT_NOTICE",
+                "label": "系统通知"
+              }
+            ],
+            "default": "PROCUREMENT"
+          }
+        },
+        "radar": [
+          {
+            "source": [
+              "b2b.10086.cn/"
+            ],
+            "target": "/b2b"
+          }
+        ],
+        "name": "采购与招标网公告",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "url": "b2b.10086.cn",
+        "location": "b2b.ts",
+        "module": () => import('@/routes/10086/b2b.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "中国移动",
+    "url": "10086.cn",
+    "lang": "zh-CN"
+  },
   "12306": {
     "routes": {
       "/:date/:from/:to/:type?": {
@@ -920,44 +974,6 @@ export default {
     "apiRoutes": {},
     "name": "FreeBuf",
     "url": "freebuf.com",
-    "lang": "zh-CN"
-  },
-  "fuliba": {
-    "routes": {
-      "/latest": {
-        "path": "/latest",
-        "categories": [
-          "new-media"
-        ],
-        "example": "/fuliba/latest",
-        "parameters": {},
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "fuliba2023.net/"
-            ]
-          }
-        ],
-        "name": "最新",
-        "maintainers": [
-          "shinemoon"
-        ],
-        "url": "fuliba2023.net/",
-        "location": "latest.ts",
-        "module": () => import('@/routes/fuliba/latest.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "福利吧",
-    "url": "fuliba2023.net",
     "lang": "zh-CN"
   },
   "7gogo": {
@@ -2238,6 +2254,36 @@ export default {
       "game"
     ],
     "lang": "zh-CN"
+  },
+  "datalekt": {
+    "routes": {
+      "/incidents": {
+        "path": "/incidents",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/datalekt/incidents",
+        "name": "Incidents",
+        "maintainers": [
+          "shoeper"
+        ],
+        "description": "Latest cyber incidents listed by Datalekt",
+        "radar": [
+          {
+            "source": [
+              "datalekt.nl/incidenten/"
+            ],
+            "target": "/incidents"
+          }
+        ],
+        "location": "incidents.ts",
+        "module": () => import('@/routes/datalekt/incidents.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Datalekt",
+    "url": "datalekt.nl",
+    "description": "Cyberincidenten in Nederland"
   },
   "daum": {
     "name": "daum",
@@ -14524,85 +14570,6 @@ export default {
     "name": "EVERIA.CLUB",
     "url": "everia.club"
   },
-  "facebook": {
-    "routes": {
-      "/group/:id": {
-        "path": "/group/:id",
-        "categories": [
-          "social-media"
-        ],
-        "example": "/facebook/group/613870175328566",
-        "parameters": {
-          "id": "Group ID or group username"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "FACEBOOK_COOKIE",
-              "optional": true,
-              "description": "Facebook cookie, only `c_user` and `xs` are required. Set this if you see `Rate limit exceeded`."
-            }
-          ],
-          "antiCrawler": true
-        },
-        "radar": [
-          {
-            "source": [
-              "www.facebook.com/groups/:id"
-            ]
-          }
-        ],
-        "name": "Group",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "url": "www.facebook.com",
-        "location": "group.ts",
-        "module": () => import('@/routes/facebook/group.ts')
-      },
-      "/page/:id": {
-        "path": "/page/:id",
-        "categories": [
-          "social-media"
-        ],
-        "example": "/facebook/page/NASA",
-        "parameters": {
-          "id": "Page or profile username, or numeric ID"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "FACEBOOK_COOKIE",
-              "optional": true,
-              "description": "Facebook cookie, only `c_user` and `xs` are required. Set this if you see `Rate limit exceeded`."
-            }
-          ],
-          "antiCrawler": true
-        },
-        "radar": [
-          {
-            "source": [
-              "www.facebook.com/:id",
-              "www.facebook.com/people/:name/:id"
-            ],
-            "target": "/page/:id"
-          }
-        ],
-        "name": "Page / Profile",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "description": "Works for pages and public personal profiles. Posts behind a login wall require `FACEBOOK_COOKIE`.",
-        "url": "www.facebook.com",
-        "location": "page.ts",
-        "module": () => import('@/routes/facebook/page.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Facebook",
-    "url": "www.facebook.com",
-    "lang": "en"
-  },
   "fediverse": {
     "routes": {
       "/timeline/:account": {
@@ -19407,7 +19374,6 @@ export default {
           "shopping"
         ],
         "example": "/xiaomiyoupin/crowdfunding",
-        "parameters": {},
         "features": {
           "requireConfig": false,
           "requirePuppeteer": false,
@@ -19425,9 +19391,11 @@ export default {
         ],
         "name": "众筹",
         "maintainers": [
-          "bigfei"
+          "bigfei",
+          "nuomi1"
         ],
         "url": "xiaomiyoupin.com/",
+        "view": 5,
         "location": "crowdfunding.ts",
         "module": () => import('@/routes/xiaomiyoupin/crowdfunding.ts')
       },
@@ -19437,7 +19405,6 @@ export default {
           "shopping"
         ],
         "example": "/xiaomiyoupin/latest",
-        "parameters": {},
         "features": {
           "requireConfig": false,
           "requirePuppeteer": false,
@@ -19453,13 +19420,15 @@ export default {
             ]
           }
         ],
-        "name": "每日上新",
+        "name": "上新",
         "maintainers": [
           "xyqfer",
           "DIYgod",
-          "bigfei"
+          "bigfei",
+          "nuomi1"
         ],
         "url": "xiaomiyoupin.com/",
+        "view": 5,
         "location": "latest.ts",
         "module": () => import('@/routes/xiaomiyoupin/latest.ts')
       }
@@ -20910,6 +20879,156 @@ export default {
     "apiRoutes": {},
     "name": "Discord",
     "url": "discord.com",
+    "lang": "en"
+  },
+  "facebook": {
+    "routes": {
+      "/group/:id": {
+        "path": "/group/:id",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/facebook/group/613870175328566",
+        "parameters": {
+          "id": "Group ID or group username"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "FACEBOOK_COOKIE",
+              "optional": true,
+              "description": "Facebook cookie, only `c_user` and `xs` are required. Set this if you see `Rate limit exceeded`."
+            }
+          ],
+          "antiCrawler": true
+        },
+        "radar": [
+          {
+            "source": [
+              "www.facebook.com/groups/:id"
+            ]
+          }
+        ],
+        "name": "Group",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "url": "www.facebook.com",
+        "location": "group.ts",
+        "module": () => import('@/routes/facebook/group.ts')
+      },
+      "/page/:id": {
+        "path": "/page/:id",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/facebook/page/NASA",
+        "parameters": {
+          "id": "Page or profile username, or numeric ID"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "FACEBOOK_COOKIE",
+              "optional": true,
+              "description": "Facebook cookie, only `c_user` and `xs` are required. Set this if you see `Rate limit exceeded`."
+            }
+          ],
+          "antiCrawler": true
+        },
+        "radar": [
+          {
+            "source": [
+              "www.facebook.com/:id",
+              "www.facebook.com/people/:name/:id"
+            ],
+            "target": "/page/:id"
+          }
+        ],
+        "name": "Page / Profile",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "description": "Works for pages and public personal profiles. Posts behind a login wall require `FACEBOOK_COOKIE`.",
+        "url": "www.facebook.com",
+        "location": "page.ts",
+        "module": () => import('@/routes/facebook/page.ts')
+      },
+      "/photos/:id": {
+        "path": "/photos/:id",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/facebook/photos/NASA",
+        "parameters": {
+          "id": "Page or profile username"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "FACEBOOK_COOKIE",
+              "optional": true,
+              "description": "Facebook cookie, only `c_user` and `xs` are required. Set this if you see `Rate limit exceeded`."
+            }
+          ],
+          "antiCrawler": true
+        },
+        "radar": [
+          {
+            "source": [
+              "www.facebook.com/:id/photos",
+              "www.facebook.com/:id/photos_by"
+            ],
+            "target": "/photos/:id"
+          }
+        ],
+        "name": "Photos",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "url": "www.facebook.com",
+        "location": "photos.ts",
+        "module": () => import('@/routes/facebook/photos.ts')
+      },
+      "/reels/:id": {
+        "path": "/reels/:id",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/facebook/reels/Microsoft",
+        "parameters": {
+          "id": "Page or profile username"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "FACEBOOK_COOKIE",
+              "optional": true,
+              "description": "Facebook cookie, only `c_user` and `xs` are required. Set this if you see `Rate limit exceeded`."
+            }
+          ],
+          "antiCrawler": true
+        },
+        "radar": [
+          {
+            "source": [
+              "www.facebook.com/:id/reels"
+            ],
+            "target": "/reels/:id"
+          }
+        ],
+        "name": "Reels",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "url": "www.facebook.com",
+        "location": "reels.ts",
+        "module": () => import('@/routes/facebook/reels.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Facebook",
+    "url": "www.facebook.com",
     "lang": "en"
   },
   "fanbox": {
@@ -22620,7 +22739,7 @@ export default {
         "categories": [
           "game"
         ],
-        "example": "/mihoyo/bbs/official/2/3/20/",
+        "example": "/mihoyo/bbs/official/2/3/20",
         "parameters": {
           "gids": "游戏id",
           "type": "公告类型，默认为 2(即 活动)",
@@ -34703,55 +34822,6 @@ export default {
     "url": "atcoder.jp",
     "lang": "en"
   },
-  "athome": {
-    "routes": {
-      "/rent-store/:pref/:city": {
-        "path": "/rent-store/:pref/:city",
-        "name": "貸店舗",
-        "url": "www.athome.co.jp",
-        "maintainers": [
-          "pseudoyu"
-        ],
-        "example": "/athome/rent-store/tokyo/shinjuku-city",
-        "parameters": {
-          "pref": {
-            "description": "都道府県 slug, e.g. `tokyo`, `kanagawa`"
-          },
-          "city": {
-            "description": "市区町村 slug as the site spells it — `shinjuku-city`, `minato-city`, `yokohama_naka-city`. Note the underscore in 政令指定都市 slugs; a hyphen there 404s."
-          }
-        },
-        "description": "貸店舗 listings on アットホーム for one 市区町村，newest first.\n\nThis route needs a browser, and the browser is not a convenience. The page is Angular Universal SSR behind a JavaScript interstitial, and only the settled page carries the `#serverApp-state` payload the route reads. A plain HTTP client is served normally for about four requests and then gets the 「認証中」 interstitial on everything afterwards, and pacing the requests 3s apart does not lift it. A browser gets a far larger allowance — dozens of navigations — but **is not exempt**: push hard enough and it is refused too, so this is a matter of cadence rather than of using the right client. The interstitial reloads itself, which stops a `domcontentloaded` navigation from ever settling, so the page is opened with `commit` and every wait is bounded here, against a deadline measured from the start of the request rather than from the navigation.\n\nThe 「認証中」 page can be a normal temporary authentication step: its scripts resolve it and reload to the listing page. The route therefore waits for attached `#serverApp-state` within the existing 26s list-page deadline, and only checks for a remaining authentication page after that wait fails. A temporary title alone does not prove that the client was refused. The deadline is measured from the start of the request because the SSR state sits well into a large document. Images, fonts, stylesheets and media are not fetched; scripts remain available for the authentication step. Keep polling infrequent and the cache warm rather than retrying blocked requests. An unsettled page surfaces as an error rather than a silently empty feed.\n\n情報公開日，the coordinates and the fee detail exist only on each listing's own page, so the route visits them — reusing one browser tab rather than opening a browser per listing, and caching per listing so a repeated poll only pays for listings it has not seen before.\n\nEach of those visits is a full browser navigation, and on a modest VPS one can take several seconds, so at the default `limit` a cold cache can outrun RSSHub's own 30s request timeout. Enrichment therefore runs on a 20s budget: listings reached within it are enriched, the rest are returned with their list-page fields and a warning is logged. A cache hit needs no navigation and so never draws on the budget, which means a warm poll still returns everything fully enriched. A listing whose own page fails is logged and returned with list-page fields too — only the list page failing is fatal.\n\n**Everything the listing itself states — 所在地 down to the 丁目，階，面積，賃料 and the ward — is already on the list page.** If that is all you need, `detail=0` skips the per-listing visits entirely and makes this an ordinary fast route; `listed_at`，`pubDate`, the coordinates and the fee detail are then `null`.\n\n**The site's own ordering is not chronological**, so the feed is re-sorted by 情報公開日，newest first. Without that a newly published listing could sit well down the list and never reach a monitor watching the first page.\n\n`_extra` follows the shared listing shape: `listed_at` and `pubDate` from 情報公開日，`heavy_food_ok` and `business_limit` from the published notice flags (「飲食店不可」 etc.), `fixtures_transfer_jpy` from 造作譲渡，`tags` from the site's 特徴 list, and `condition` / `prev_business` from the 店舗プラス block (`isInuki` / `isSkeleton` / `lastTenanto`) rather than guessed from prose — though most listings leave those two unset. `deposit_months` prefers 保証金 and falls back to 敷金.\n\n`raw` additionally carries what the shared contract has no field for: `lat` / `lng`, the full 所在地 including its 都道府県，建物名 + 部屋番号，設備，築年月，敷引，償却，その他一時金 and the 定期借家 flag.\n\n| Query    | Description                                                               | Default |\n| -------- | ------------------------------------------------------------------------- | ------- |\n| `limit`  | Listings to return, max 30                                                | 10      |\n| `detail` | `0` skips the per-listing detail visits and returns list-page fields only | `1`     |",
-        "categories": [
-          "other"
-        ],
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": true,
-          "antiCrawler": true,
-          "supportRadar": true
-        },
-        "radar": [
-          {
-            "source": [
-              "www.athome.co.jp/rent_store/:pref/:city/list"
-            ],
-            "target": "/rent-store/:pref/:city"
-          }
-        ],
-        "location": "rent-store.ts",
-        "module": () => import('@/routes/athome/rent-store.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "at home",
-    "url": "www.athome.co.jp",
-    "description": "アットホーム — 不動産情報サイト（貸店舗・事業用物件）",
-    "lang": "ja",
-    "ja": {
-      "name": "アットホーム"
-    }
-  },
   "augmentcode": {
     "routes": {
       "/blog": {
@@ -40157,6 +40227,50 @@ export default {
     "name": "Caixin Global",
     "url": "caixinglobal.com",
     "lang": "en"
+  },
+  "calif": {
+    "routes": {
+      "/research": {
+        "path": "/research",
+        "name": "Research",
+        "url": "calif.io",
+        "maintainers": [
+          "shoeper"
+        ],
+        "example": "/calif/research",
+        "description": "Calif security research articles and write-ups.",
+        "categories": [
+          "new-media"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "calif.io/research"
+            ],
+            "target": "/research"
+          }
+        ],
+        "location": "index.ts",
+        "module": () => import('@/routes/calif/index.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Calif",
+    "url": "calif.io",
+    "categories": [
+      "new-media"
+    ],
+    "description": "Security research from Calif.",
+    "lang": "en-us"
   },
   "camchina": {
     "routes": {
@@ -46012,6 +46126,50 @@ export default {
     },
     "apiRoutes": {}
   },
+  "cloudflare": {
+    "routes": {
+      "/blog": {
+        "path": "/blog",
+        "name": "Blog",
+        "url": "blog.cloudflare.com",
+        "example": "/cloudflare/blog",
+        "categories": [
+          "programming"
+        ],
+        "maintainers": [
+          "ljh12138164"
+        ],
+        "description": "Uses the [official RSS feed](https://blog.cloudflare.com/rss/) for article metadata and fetches full articles from [Cloudflare Blog](https://blog.cloudflare.com/), including inline images, code blocks, and copyable prompts.",
+        "zh": {
+          "description": "来源：[Cloudflare Blog](https://blog.cloudflare.com/)。使用[官方 RSS](https://blog.cloudflare.com/rss/)获取文章列表、作者、日期和标签，再抓取并缓存网页正文，补齐图片、代码块和可复制的提示词。"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "blog.cloudflare.com"
+            ],
+            "target": "/blog"
+          }
+        ],
+        "view": 0,
+        "location": "blog.ts",
+        "module": () => import('@/routes/cloudflare/blog.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Cloudflare",
+    "url": "blog.cloudflare.com",
+    "lang": "en"
+  },
   "cloudnative": {
     "routes": {
       "/blog": {
@@ -47814,7 +47972,7 @@ export default {
         "categories": [
           "anime"
         ],
-        "example": "/collabo-cafe/",
+        "example": "/collabo-cafe",
         "features": {
           "requireConfig": false,
           "requirePuppeteer": false,
@@ -60368,6 +60526,44 @@ export default {
     ],
     "lang": "zh-CN"
   },
+  "fuliba": {
+    "routes": {
+      "/latest": {
+        "path": "/latest",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/fuliba/latest",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "fuliba2023.net/"
+            ]
+          }
+        ],
+        "name": "最新",
+        "maintainers": [
+          "shinemoon"
+        ],
+        "url": "fuliba2023.net/",
+        "location": "latest.ts",
+        "module": () => import('@/routes/fuliba/latest.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "福利吧",
+    "url": "fuliba2023.net",
+    "lang": "zh-CN"
+  },
   "funresearch": {
     "routes": {
       "/grants": {
@@ -62327,6 +62523,187 @@ export default {
         "location": "notifications.ts",
         "module": () => import('@/routes/github/notifications.ts')
       },
+      "/pull/:user/:repo/:state?/:labels?": {
+        "path": "/pull/:user/:repo/:state?/:labels?",
+        "categories": [
+          "programming"
+        ],
+        "example": "/github/pull/DIYgod/RSSHub",
+        "parameters": {
+          "user": "GitHub username",
+          "repo": "GitHub repo name",
+          "state": {
+            "description": "the state of pull requests.",
+            "default": "open",
+            "options": [
+              {
+                "label": "Open",
+                "value": "open"
+              },
+              {
+                "label": "Closed",
+                "value": "closed"
+              },
+              {
+                "label": "All",
+                "value": "all"
+              }
+            ]
+          },
+          "labels": "a list of comma separated label names"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "github.com/:user/:repo/pulls",
+              "github.com/:user/:repo/pulls/:id",
+              "github.com/:user/:repo"
+            ],
+            "target": "/pull/:user/:repo"
+          }
+        ],
+        "name": "Repo Pull Requests",
+        "maintainers": [
+          "hashman",
+          "TonyRL"
+        ],
+        "location": "pulls.ts",
+        "module": () => import('@/routes/github/pulls.ts')
+      },
+      "/repos/:user/:type?/:sort?": {
+        "path": "/repos/:user/:type?/:sort?",
+        "categories": [
+          "programming"
+        ],
+        "example": "/github/repos/DIYgod",
+        "parameters": {
+          "user": "GitHub username",
+          "type": "Type of repository, can be `all`, `owner`, `member`, `public`, `private`, `forks`, `sources`",
+          "sort": "Sort by `created`, `updated`, `pushed`, `full_name`"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "github.com/:user"
+            ]
+          }
+        ],
+        "name": "User Repo",
+        "maintainers": [
+          "DIYgod"
+        ],
+        "location": "repos.ts",
+        "module": () => import('@/routes/github/repos.ts')
+      },
+      "/search/:query/:sort?/:order?": {
+        "path": "/search/:query/:sort?/:order?",
+        "categories": [
+          "programming"
+        ],
+        "example": "/github/search/RSSHub/bestmatch/desc",
+        "parameters": {
+          "query": "search keyword",
+          "sort": "Sort options (default to bestmatch)",
+          "order": "Sort order, desc and asc (desc descending by default)"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "Search Result",
+        "maintainers": [
+          "LogicJake"
+        ],
+        "description": "| Sort options     | sort      |\n| ---------------- | --------- |\n| Best match       | bestmatch |\n| Most stars       | stars     |\n| Most forks       | forks     |\n| Recently updated | updated   |",
+        "location": "search.ts",
+        "module": () => import('@/routes/github/search.ts')
+      },
+      "/stars/:user/:repo": {
+        "path": "/stars/:user/:repo",
+        "categories": [
+          "programming"
+        ],
+        "example": "/github/stars/DIYgod/RSSHub",
+        "view": 5,
+        "parameters": {
+          "user": "GitHub username",
+          "repo": "GitHub repo name"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "GITHUB_ACCESS_TOKEN",
+              "description": "GitHub Access Token"
+            }
+          ]
+        },
+        "radar": [
+          {
+            "source": [
+              "github.com/:user/:repo/stargazers",
+              "github.com/:user/:repo"
+            ]
+          }
+        ],
+        "name": "Repo Stars",
+        "maintainers": [
+          "HenryQW"
+        ],
+        "location": "star.ts",
+        "module": () => import('@/routes/github/star.ts')
+      },
+      "/starred_repos/:user": {
+        "path": "/starred_repos/:user",
+        "categories": [
+          "programming"
+        ],
+        "example": "/github/starred_repos/DIYgod",
+        "parameters": {
+          "user": "User name"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "GITHUB_ACCESS_TOKEN",
+              "optional": true,
+              "description": "To get more requests"
+            }
+          ]
+        },
+        "radar": [
+          {
+            "source": [
+              "github.com/:user"
+            ]
+          }
+        ],
+        "name": "User Starred Repositories",
+        "maintainers": [
+          "LanceZhu"
+        ],
+        "location": "starred-repos.ts",
+        "module": () => import('@/routes/github/starred-repos.ts')
+      },
       "/org_event/:org/:types?": {
         "path": "/org_event/:org/:types?",
         "categories": [
@@ -62533,61 +62910,6 @@ export default {
         "location": "private-feed.ts",
         "module": () => import('@/routes/github/private-feed.ts')
       },
-      "/pull/:user/:repo/:state?/:labels?": {
-        "path": "/pull/:user/:repo/:state?/:labels?",
-        "categories": [
-          "programming"
-        ],
-        "example": "/github/pull/DIYgod/RSSHub",
-        "parameters": {
-          "user": "GitHub username",
-          "repo": "GitHub repo name",
-          "state": {
-            "description": "the state of pull requests.",
-            "default": "open",
-            "options": [
-              {
-                "label": "Open",
-                "value": "open"
-              },
-              {
-                "label": "Closed",
-                "value": "closed"
-              },
-              {
-                "label": "All",
-                "value": "all"
-              }
-            ]
-          },
-          "labels": "a list of comma separated label names"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "github.com/:user/:repo/pulls",
-              "github.com/:user/:repo/pulls/:id",
-              "github.com/:user/:repo"
-            ],
-            "target": "/pull/:user/:repo"
-          }
-        ],
-        "name": "Repo Pull Requests",
-        "maintainers": [
-          "hashman",
-          "TonyRL"
-        ],
-        "location": "pulls.ts",
-        "module": () => import('@/routes/github/pulls.ts')
-      },
       "/repo_event/:owner/:repo/:types?": {
         "path": "/repo_event/:owner/:repo/:types?",
         "categories": [
@@ -62701,132 +63023,6 @@ export default {
         ],
         "location": "repo-event.ts",
         "module": () => import('@/routes/github/repo-event.ts')
-      },
-      "/repos/:user/:type?/:sort?": {
-        "path": "/repos/:user/:type?/:sort?",
-        "categories": [
-          "programming"
-        ],
-        "example": "/github/repos/DIYgod",
-        "parameters": {
-          "user": "GitHub username",
-          "type": "Type of repository, can be `all`, `owner`, `member`, `public`, `private`, `forks`, `sources`",
-          "sort": "Sort by `created`, `updated`, `pushed`, `full_name`"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "github.com/:user"
-            ]
-          }
-        ],
-        "name": "User Repo",
-        "maintainers": [
-          "DIYgod"
-        ],
-        "location": "repos.ts",
-        "module": () => import('@/routes/github/repos.ts')
-      },
-      "/search/:query/:sort?/:order?": {
-        "path": "/search/:query/:sort?/:order?",
-        "categories": [
-          "programming"
-        ],
-        "example": "/github/search/RSSHub/bestmatch/desc",
-        "parameters": {
-          "query": "search keyword",
-          "sort": "Sort options (default to bestmatch)",
-          "order": "Sort order, desc and asc (desc descending by default)"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "Search Result",
-        "maintainers": [
-          "LogicJake"
-        ],
-        "description": "| Sort options     | sort      |\n| ---------------- | --------- |\n| Best match       | bestmatch |\n| Most stars       | stars     |\n| Most forks       | forks     |\n| Recently updated | updated   |",
-        "location": "search.ts",
-        "module": () => import('@/routes/github/search.ts')
-      },
-      "/stars/:user/:repo": {
-        "path": "/stars/:user/:repo",
-        "categories": [
-          "programming"
-        ],
-        "example": "/github/stars/DIYgod/RSSHub",
-        "view": 5,
-        "parameters": {
-          "user": "GitHub username",
-          "repo": "GitHub repo name"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "GITHUB_ACCESS_TOKEN",
-              "description": "GitHub Access Token"
-            }
-          ]
-        },
-        "radar": [
-          {
-            "source": [
-              "github.com/:user/:repo/stargazers",
-              "github.com/:user/:repo"
-            ]
-          }
-        ],
-        "name": "Repo Stars",
-        "maintainers": [
-          "HenryQW"
-        ],
-        "location": "star.ts",
-        "module": () => import('@/routes/github/star.ts')
-      },
-      "/starred_repos/:user": {
-        "path": "/starred_repos/:user",
-        "categories": [
-          "programming"
-        ],
-        "example": "/github/starred_repos/DIYgod",
-        "parameters": {
-          "user": "User name"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "GITHUB_ACCESS_TOKEN",
-              "optional": true,
-              "description": "To get more requests"
-            }
-          ]
-        },
-        "radar": [
-          {
-            "source": [
-              "github.com/:user"
-            ]
-          }
-        ],
-        "name": "User Starred Repositories",
-        "maintainers": [
-          "LanceZhu"
-        ],
-        "location": "starred-repos.ts",
-        "module": () => import('@/routes/github/starred-repos.ts')
       },
       "/user_event/:username/:types?": {
         "path": "/user_event/:username/:types?",
@@ -91097,25 +91293,13 @@ export default {
           },
           {
             "source": [
-              "www.nippon.com/cn/sci-tech"
-            ],
-            "target": "/Science,Technology"
-          },
-          {
-            "source": [
-              "www.nippon.com/cn/in-depth"
+              "www.nippon.com/cn/insight"
             ],
             "target": "/In-depth"
           },
           {
             "source": [
-              "www.nippon.com/cn/japan-topics"
-            ],
-            "target": "/japan-topics"
-          },
-          {
-            "source": [
-              "www.nippon.com/cn/japan-data"
+              "www.nippon.com/cn/data"
             ],
             "target": "/japan-data"
           },
@@ -91139,7 +91323,7 @@ export default {
           }
         ],
         "name": "政治外交",
-        "description": "| 政治     | 经济    | 社会    | 展览预告 | 焦点专题           | 深度报道 | 话题         | 日本信息库 | 日本一蹩      | 人物访谈 | 编辑部通告    |\n| -------- | ------- | ------- | -------- | ------------------ | -------- | ------------ | ---------- | ------------- | -------- | ------------- |\n| Politics | Economy | Society | Culture  | Science,Technology | In-depth | japan-topics | japan-data | japan-glances | People   | Announcements |",
+        "description": "| 政治     | 财经    | 社会    | 日本文化 | 深度报道 | 日本信息库 | 日本一瞥      | 人物   | 编辑部通知    |\n| -------- | ------- | ------- | -------- | -------- | ---------- | ------------- | ------ | ------------- |\n| Politics | Economy | Society | Culture  | In-depth | japan-data | japan-glances | People | Announcements |",
         "maintainers": [
           "laampui"
         ],
@@ -104726,6 +104910,29 @@ export default {
   },
   "reuters": {
     "routes": {
+      "/investigates": {
+        "path": "/investigates",
+        "categories": [
+          "traditional-media"
+        ],
+        "view": 0,
+        "example": "/reuters/investigates",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "Investigates",
+        "maintainers": [
+          "LyleLee"
+        ],
+        "location": "investigates.ts",
+        "module": () => import('@/routes/reuters/investigates.ts')
+      },
       "/my-news": {
         "path": "/my-news",
         "categories": [
@@ -104827,29 +105034,6 @@ export default {
         "description": "- `:category`:\n\n  | World | Business | Legal | Markets | Breakingviews | Technology | Graphics |\n  | ----- | -------- | ----- | ------- | ------------- | ---------- | -------- |\n  | world | business | legal | markets | breakingviews | technology | graphics |\n\n- `world/:topic`:\n\n  | All | Africa | Americas | Asia Pacific | China | Europe | India | Middle East | United Kingdom | United States | The Great Reboot | Reuters Next |\n  | --- | ------ | -------- | ------------ | ----- | ------ | ----- | ----------- | -------------- | ------------- | ---------------- | ------------ |\n  |     | africa | americas | asia-pacific | china | europe | india | middle-east | uk             | us            | the-great-reboot | reuters-next |\n\n- `business/:topic`:\n\n  | All | Aerospace & Defense | Autos & Transportation | Energy | Environment | Finance | Healthcare & Pharmaceuticals | Media & Telecom | Retail & Consumer | Sustainable Business | Charged | Future of Health | Future of Money | Take Five | Reuters Impact |\n  | --- | ------------------- | ---------------------- | ------ | ----------- | ------- | ---------------------------- | --------------- | ----------------- | -------------------- | ------- | ---------------- | --------------- | --------- | -------------- |\n  |     | aerospace-defense   | autos-transportation   | energy | environment | finance | healthcare-pharmaceuticals   | media-telecom   | retail-consumer   | sustainable-business | charged | future-of-health | future-of-money | take-five | reuters-impact |\n\n- `legal/:topic`:\n\n  | All | Government | Legal Industry | Litigation | Transactional |\n  | --- | ---------- | -------------- | ---------- | ------------- |\n  |     | government | legalindustry  | litigation | transactional |\n\n- `authors/:topic`:\n\n  | Default | Jonathan Landay | any other authors |\n  | ------- | --------------- | ----------------- |\n  | reuters | jonathan-landay | their name in URL |\n\nMore could be found in the URL of the category/topic page.",
         "location": "common.tsx",
         "module": () => import('@/routes/reuters/common.tsx')
-      },
-      "/investigates": {
-        "path": "/investigates",
-        "categories": [
-          "traditional-media"
-        ],
-        "view": 0,
-        "example": "/reuters/investigates",
-        "parameters": {},
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "Investigates",
-        "maintainers": [
-          "LyleLee"
-        ],
-        "location": "investigates.ts",
-        "module": () => import('@/routes/reuters/investigates.ts')
       }
     },
     "apiRoutes": {},
@@ -116391,7 +116575,7 @@ export default {
           "synchrone",
           "pseudoyu"
         ],
-        "description": "::: tip\nDue to Telegram restrictions, some channels involving pornography, copyright, and politics cannot be subscribed. You can confirm by visiting `https://t.me/s/:username`, it's recommended to deploy your own instance with telegram api configs (create your telegram application via `https://core.telegram.org/api/obtaining_api_id`, run this command `node ./lib/routes/telegram/scripts/get-telegram-session.mjs` to get `TELEGRAM_SESSION` and set it as Environment Variable).\nMTProto connections can use a SOCKS4/5 `PROXY_URI` (for example, `socks5://127.0.0.1:1080`) or the dedicated `TELEGRAM_PROXY_HOST`, `TELEGRAM_PROXY_PORT`, and `TELEGRAM_PROXY_SECRET` MTProxy settings, which take precedence. HTTP proxies only apply to the public web feed; use a SOCKS or MTProxy endpoint for authenticated MTProto feeds.\nWhen MTProto fails or gives no response within `REQUEST_TIMEOUT`, the route falls back to the public web feed. Cloudflare Workers deployments always use the public web feed.\n\nWhen a reverse proxy removes a public URL prefix (for example, `/rss`), set its `X-Forwarded-Prefix` request header to that prefix so Telegram media links include it. Access-control `key` and `code` parameters are preserved in these media links.\n:::",
+        "description": "::: tip\nDue to Telegram restrictions, some channels involving pornography, copyright, and politics cannot be subscribed. You can confirm by visiting `https://t.me/s/:username`, it's recommended to deploy your own instance with telegram api configs (create your telegram application via `https://core.telegram.org/api/obtaining_api_id`, run this command `node ./lib/routes/telegram/scripts/get-telegram-session.mjs` to get `TELEGRAM_SESSION` and set it as Environment Variable).\nMTProto connections can use a SOCKS4/5 `PROXY_URI` (for example, `socks5://127.0.0.1:1080`) or the dedicated `TELEGRAM_PROXY_HOST`, `TELEGRAM_PROXY_PORT`, and `TELEGRAM_PROXY_SECRET` MTProxy settings, which take precedence. HTTP proxies only apply to the public web feed; use a SOCKS or MTProxy endpoint for authenticated MTProto feeds.\nWhen MTProto hits a flood wait or gives no response within `REQUEST_TIMEOUT`, the route falls back to the public web feed. Other MTProto errors fail the feed. Cloudflare Workers deployments always use the public web feed.\n\nWhen a reverse proxy removes a public URL prefix (for example, `/rss`), set its `X-Forwarded-Prefix` request header to that prefix so Telegram media links include it. Access-control `key` and `code` parameters are preserved in these media links.\n:::",
         "location": "channel.ts",
         "module": () => import('@/routes/telegram/channel.ts')
       }
@@ -118758,7 +118942,7 @@ export default {
         "parameters": {
           "user": "Username",
           "routeParams": {
-            "description": "Extra parameters, see the table below\nSpecify options (in the format of query string) in parameter `routeParams` to control some extra features for threads\n\n| Key                            | Description                                                                                                                  | Accepts                | Defaults to |\n| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------- |\n| `showAuthorInTitle`            | Show author name in title                                                                                                    | `0`/`1`/`true`/`false` | `true`      |\n| `showAuthorInDesc`             | Show author name in description (RSS body)                                                                                   | `0`/`1`/`true`/`false` | `true`      |\n| `showQuotedAuthorAvatarInDesc` | Show avatar of quoted author in description (RSS body) (Not recommended if your RSS reader extracts images from description) | `0`/`1`/`true`/`false` | `false`     |\n| `showAuthorAvatarInDesc`       | Show avatar of author in description (RSS body) (Not recommended if your RSS reader extracts images from description)        | `0`/`1`/`true`/`false` | `false`    |\n| `showEmojiForQuotesAndReply`   | Use \"🔁\" instead of \"QT\", \"↩️\" instead of \"Re\"                                                                               | `0`/`1`/`true`/`false` | `true`      |\n| `showQuotedInTitle`            | Show quoted tweet in title                                                                                                   | `0`/`1`/`true`/`false` | `true`      |\n| `replies`                      | Show replies                                                                                                                 | `0`/`1`/`true`/`false` | `true`      |"
+            "description": "Extra parameters, see the table below\nSpecify options (in the format of query string) in parameter `routeParams` to control some extra features for threads\n\n| Key                            | Description                                                                                                                  | Accepts                | Defaults to |\n| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------- |\n| `showAuthorInTitle`            | Show author name in title                                                                                                    | `0`/`1`/`true`/`false` | `true`      |\n| `showAuthorInDesc`             | Show author name in description (RSS body)                                                                                   | `0`/`1`/`true`/`false` | `true`      |\n| `showQuotedAuthorAvatarInDesc` | Show avatar of quoted author in description (RSS body) (Not recommended if your RSS reader extracts images from description) | `0`/`1`/`true`/`false` | `false`     |\n| `showAuthorAvatarInDesc`       | Show avatar of author in description (RSS body) (Not recommended if your RSS reader extracts images from description)        | `0`/`1`/`true`/`false` | `false`    |\n| `showEmojiForQuotesAndReply`   | Use \"🔁\" instead of \"QT\", \"↩️\" instead of \"Re\"                                                                               | `0`/`1`/`true`/`false` | `true`      |\n| `showQuotedInTitle`            | Show quoted tweet in title                                                                                                   | `0`/`1`/`true`/`false` | `true`      |\n| `replies`                      | Show replies                                                                                                                 | `0`/`1`/`true`/`false` | `false`     |"
           }
         },
         "name": "User timeline",
@@ -122094,7 +122278,7 @@ export default {
           "mobyw"
         ],
         "url": "www.jwc.uestc.edu.cn/",
-        "description": "| 重要公告  | 学生事务公告 | 教师事务公告 | 教学新闻 | 办公室 |\n| --------- | ------------ | ------------ | -------- | ------ |\n| important | student      | teacher      | teaching | office |",
+        "description": "| 通知公告  | 学生事务公告 | 教师事务公告 | 教学新闻 | 办公室公告 |\n| --------- | ------------ | ------------ | -------- | ---------- |\n| important | student      | teacher      | teaching | office     |",
         "location": "jwc.ts",
         "module": () => import('@/routes/uestc/jwc.ts')
       },
@@ -123006,7 +123190,7 @@ export default {
         "maintainers": [
           "henbf"
         ],
-        "description": "| 全部 | 学院新闻 | 学术活动 | 城市建设学院 | 信息工程学院 | 经济学院 | 管理学院 | 材料系 | 机械工程系 | 护理系 | 法律系 | 外语系 | 艺术系 |\n| ---- | -------- | -------- | ------------ | ------------ | -------- | -------- | ------ | ---------- | ------ | ------ | ------ | ------ |\n| all  | xyxw     | xshhd    | csjsxy       | xxgcxy       | jjx      | glxy     | clx    | jxgcx      | hlx    | flx    | wyx    | ysx    |",
+        "description": "| 全部 | 学院新闻 | 城市建设学院 | 材料科学与工程学院 | 智能制造学院 | 人工智能学院 | 低空技术与工程学院 | 经济学院 | 管理学院 |\n| ---- | -------- | ------------ | ------------------ | ------------ | ------------ | ------------------ | -------- | -------- |\n| all  | xyxw     | csjsxy       | clkxygcxy          | znzzxy       | rgznxy       | dkjsygcxy          | jjxy     | glxy     |\n\n| 大健康学院 | 外国语学院 | 艺术学院 | 法学院 | 劳动学院 | 马克思主义学院 | 明德通识学院 | 体育部 | 基础部 |\n| ---------- | ---------- | -------- | ------ | -------- | -------------- | ------------ | ------ | ------ |\n| djkxy      | wgyxy      | ysxy     | fxy    | ldxy     | mkszyxy        | mdtsxy       | tyb    | jcb    |",
         "location": "tj/news.ts",
         "module": () => import('@/routes/ustb/tj/news.ts')
       },
@@ -135457,6 +135641,170 @@ export default {
     "name": "Asian to lick",
     "url": "asiantolick.com",
     "lang": "zh-CN"
+  },
+  "athome": {
+    "routes": {
+      "/rent-store/:pref/:city": {
+        "path": "/rent-store/:pref/:city",
+        "name": "貸店舗",
+        "url": "www.athome.co.jp",
+        "maintainers": [
+          "pseudoyu"
+        ],
+        "example": "/athome/rent-store/tokyo/shinjuku-city",
+        "parameters": {
+          "pref": {
+            "description": "都道府県 slug, e.g. `tokyo`, `kanagawa`"
+          },
+          "city": {
+            "description": "市区町村 slug as the site spells it — `shinjuku-city`, `minato-city`, `yokohama_naka-city`. Note the underscore in 政令指定都市 slugs; a hyphen there 404s."
+          }
+        },
+        "description": "貸店舗 listings on アットホーム for one 市区町村，newest first.\n\nThis route needs a browser, and the browser is not a convenience. The page is Angular Universal SSR behind a JavaScript interstitial, and only the settled page carries the `#serverApp-state` payload the route reads. A plain HTTP client is served normally for about four requests and then gets the 「認証中」 interstitial on everything afterwards, and pacing the requests 3s apart does not lift it. A browser gets a far larger allowance — dozens of navigations — but **is not exempt**: push hard enough and it is refused too, so this is a matter of cadence rather than of using the right client. The interstitial reloads itself, which stops a `domcontentloaded` navigation from ever settling, so the page is opened with `commit` and every wait is bounded here, against a deadline measured from the start of the request rather than from the navigation.\n\nThe 「認証中」 page can be a normal temporary authentication step: its scripts resolve it and reload to the listing page. The route therefore waits for attached `#serverApp-state` within the existing 26s list-page deadline, and only checks for a remaining authentication page after that wait fails. A temporary title alone does not prove that the client was refused. The deadline is measured from the start of the request because the SSR state sits well into a large document. Images, fonts, stylesheets and media are not fetched; scripts remain available for the authentication step. Keep polling infrequent and the cache warm rather than retrying blocked requests. An unsettled page surfaces as an error rather than a silently empty feed.\n\n情報公開日，the coordinates and the fee detail exist only on each listing's own page, so the route visits them — reusing one browser tab rather than opening a browser per listing, and caching per listing so a repeated poll only pays for listings it has not seen before.\n\nEach of those visits is a full browser navigation, and on a modest VPS one can take several seconds, so at the default `limit` a cold cache can outrun RSSHub's own 30s request timeout. Enrichment therefore runs on a 20s budget: listings reached within it are enriched, the rest are returned with their list-page fields and a warning is logged. A cache hit needs no navigation and so never draws on the budget, which means a warm poll still returns everything fully enriched. A listing whose own page fails is logged and returned with list-page fields too — only the list page failing is fatal.\n\n**Everything the listing itself states — 所在地 down to the 丁目，階，面積，賃料 and the ward — is already on the list page.** If that is all you need, `detail=0` skips the per-listing visits entirely and makes this an ordinary fast route; `listed_at`，`pubDate`, the coordinates and the fee detail are then `null`.\n\n**The site's own ordering is not chronological**, so the feed is re-sorted by 情報公開日，newest first. Without that a newly published listing could sit well down the list and never reach a monitor watching the first page.\n\n`_extra` follows the shared listing shape: `listed_at` and `pubDate` from 情報公開日，`heavy_food_ok` and `business_limit` from the published notice flags (「飲食店不可」 etc.), `fixtures_transfer_jpy` from 造作譲渡，`tags` from the site's 特徴 list, and `condition` / `prev_business` from the 店舗プラス block (`isInuki` / `isSkeleton` / `lastTenanto`) rather than guessed from prose — though most listings leave those two unset. `deposit_months` prefers 保証金 and falls back to 敷金.\n\n`raw` additionally carries what the shared contract has no field for: `lat` / `lng`, the full 所在地 including its 都道府県，建物名 + 部屋番号，設備，築年月，敷引，償却，その他一時金 and the 定期借家 flag.\n\n| Query    | Description                                                               | Default |\n| -------- | ------------------------------------------------------------------------- | ------- |\n| `limit`  | Listings to return, max 30                                                | 10      |\n| `detail` | `0` skips the per-listing detail visits and returns list-page fields only | `1`     |",
+        "categories": [
+          "other"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": true,
+          "antiCrawler": true,
+          "supportRadar": true
+        },
+        "radar": [
+          {
+            "source": [
+              "www.athome.co.jp/rent_store/:pref/:city/list"
+            ],
+            "target": "/rent-store/:pref/:city"
+          }
+        ],
+        "location": "rent-store.ts",
+        "module": () => import('@/routes/athome/rent-store.ts')
+      },
+      "/chintai/:pref/:city/:page?": {
+        "path": "/chintai/:pref/:city/:page?",
+        "name": "賃貸物件",
+        "url": "www.athome.co.jp",
+        "maintainers": [
+          "pseudoyu"
+        ],
+        "example": "/athome/chintai/tokyo/minato-city",
+        "parameters": {
+          "pref": {
+            "description": "都道府県 slug, e.g. `tokyo`, `kanagawa`"
+          },
+          "city": {
+            "description": "市区町村 slug as the site spells it — `minato-city`, `yokohama_naka-city`. Note the underscore in 政令指定都市 slugs."
+          },
+          "page": {
+            "description": "List page to read, from 1, in the same 新着順; a page past the last returns no item",
+            "default": "1"
+          }
+        },
+        "description": "賃貸 rooms on アットホーム for one 市区町村，newest first (the page's own 新着順).\n\nEvery field comes from the list page's own SSR state, read in a browser like the 貸店舗 route (the page sits behind a self-clearing JavaScript interstitial, and a plain HTTP client is refused after a handful of requests). Each room is one item, with the building's 種目，name, 所在地，交通，階建 and 築年月 copied on and the room's 階，部屋番号 (where the site prints one), 賃料，管理費，敷金，礼金，間取り and 専有面積. The per-room pages are not visited: one browser navigation per room is what gets a client refused.\n\n`_extra` follows the shared residential shape. `address` is printed by the site from the 区 on, without the 都道府県. `raw.same_room_ids` is the site's own list of listings of the same room by other agents, useful for deduplication. `listed_at` stays `null`: the 情報公開日 is only on the room's own page.\n\n| Query   | Description                            | Default |\n| ------- | -------------------------------------- | ------- |\n| `limit` | Rooms to return, at most one list page | 20      |",
+        "categories": [
+          "other"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": true,
+          "antiCrawler": true,
+          "supportRadar": true
+        },
+        "radar": [
+          {
+            "source": [
+              "www.athome.co.jp/chintai/:pref/:city/list"
+            ],
+            "target": "/chintai/:pref/:city"
+          }
+        ],
+        "location": "chintai.ts",
+        "module": () => import('@/routes/athome/chintai.ts')
+      },
+      "/kodate/chuko/:pref/:city": {
+        "path": "/kodate/chuko/:pref/:city",
+        "name": "中古一戸建て",
+        "url": "www.athome.co.jp",
+        "maintainers": [
+          "pseudoyu"
+        ],
+        "example": "/athome/kodate/chuko/tokyo/setagaya-city",
+        "parameters": {
+          "pref": {
+            "description": "都道府県 slug, e.g. `tokyo`, `kanagawa`"
+          },
+          "city": {
+            "description": "市区町村 slug as the site spells it — `setagaya-city`, `yokohama_naka-city`. Note the underscore in 政令指定都市 slugs."
+          }
+        },
+        "description": "中古一戸建て for sale on アットホーム for one 市区町村，newest first (the page's own 新着順).\n\nEvery field comes from the list page's own SSR state, read in a browser like the 貸店舗，賃貸 and 中古マンション routes; the per-house pages are not visited. Each house carries 価格，間取り，建物面積，土地面積，階建，築年月，構造，所在地，交通，土地権利，建ぺい率 and 容積率.\n\n`_extra` follows the shared residential shape with `deal_kind: 'sale'`: `area_m2` is the 建物面積 and `land_area_m2` the 土地面積. A house whose 種目 reads more precisely than the page (中古テラスハウス，リフォーム・リノベーション) keeps that label in `raw.syumoku` and as a tag. The 情報公開日 is only on the house's own page and stays `null`.\n\n| Query   | Description                             | Default |\n| ------- | --------------------------------------- | ------- |\n| `limit` | Houses to return, at most one list page | 20      |",
+        "categories": [
+          "other"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": true,
+          "antiCrawler": true,
+          "supportRadar": true
+        },
+        "radar": [
+          {
+            "source": [
+              "www.athome.co.jp/kodate/chuko/:pref/:city/list"
+            ],
+            "target": "/kodate/chuko/:pref/:city"
+          }
+        ],
+        "location": "kodate-chuko.ts",
+        "module": () => import('@/routes/athome/kodate-chuko.ts')
+      },
+      "/mansion/chuko/:pref/:city": {
+        "path": "/mansion/chuko/:pref/:city",
+        "name": "中古マンション",
+        "url": "www.athome.co.jp",
+        "maintainers": [
+          "pseudoyu"
+        ],
+        "example": "/athome/mansion/chuko/tokyo/minato-city",
+        "parameters": {
+          "pref": {
+            "description": "都道府県 slug, e.g. `tokyo`, `kanagawa`"
+          },
+          "city": {
+            "description": "市区町村 slug as the site spells it — `minato-city`, `yokohama_naka-city`. Note the underscore in 政令指定都市 slugs."
+          }
+        },
+        "description": "中古マンション for sale on アットホーム for one 市区町村，newest first (the page's own 新着順).\n\nEvery field comes from the list page's own SSR state, read in a browser like the 貸店舗 and 賃貸 routes; the per-unit pages are not visited. Each unit carries its building name and 部屋番号 (split from the site's title), 価格，間取り，専有面積，所在階 / 階建，築年月，構造，所在地，交通 and 土地権利，plus what the site publishes for investors: `raw.yield` (表面利回り) and an オーナーチェンジ tag when the unit is sold with a tenant in it.\n\n`_extra` follows the shared residential shape with `deal_kind: 'sale'`. The building plot (`tochiMs`) is the whole building's 敷地面積 and is kept in `raw.site_area`, never in `land_area_m2`. A unit whose 種目 reads 「リフォーム・リノベーション」 keeps that label in `raw.syumoku` and as a tag. 管理費，修繕積立金 and the 情報公開日 are only on the unit's own page and stay `null`.\n\n| Query   | Description                            | Default |\n| ------- | -------------------------------------- | ------- |\n| `limit` | Units to return, at most one list page | 20      |",
+        "categories": [
+          "other"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": true,
+          "antiCrawler": true,
+          "supportRadar": true
+        },
+        "radar": [
+          {
+            "source": [
+              "www.athome.co.jp/mansion/chuko/:pref/:city/list"
+            ],
+            "target": "/mansion/chuko/:pref/:city"
+          }
+        ],
+        "location": "mansion-chuko.ts",
+        "module": () => import('@/routes/athome/mansion-chuko.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "at home",
+    "url": "www.athome.co.jp",
+    "description": "アットホーム — 不動産情報サイト（賃貸・中古マンション・中古一戸建て・貸店舗）",
+    "lang": "ja",
+    "ja": {
+      "name": "アットホーム"
+    }
   },
   "bandcamp": {
     "routes": {
@@ -150607,7 +150955,7 @@ export default {
         "categories": [
           "government"
         ],
-        "example": "/gov/tianjin/tjrcgzw-notice/rczc/sjrczc/",
+        "example": "/gov/tianjin/tjrcgzw-notice/rczc/sjrczc",
         "parameters": {
           "cate": "栏目分类，可在源网站 URL 中找到，例如 rczc（人才政策）",
           "subCate": "子栏目分类，例如 sjrczc（市级人才政策）"
@@ -151620,6 +151968,141 @@ export default {
     "name": "香港 01",
     "url": "hk01.com",
     "lang": "zh-HK"
+  },
+  "homes": {
+    "routes": {
+      "/chintai/:pref/:city/:page?": {
+        "path": "/chintai/:pref/:city/:page?",
+        "name": "賃貸物件",
+        "url": "www.homes.co.jp",
+        "maintainers": [
+          "pseudoyu"
+        ],
+        "example": "/homes/chintai/tokyo/minato-city",
+        "parameters": {
+          "pref": {
+            "description": "都道府県 slug, e.g. `tokyo`, `kanagawa`"
+          },
+          "city": {
+            "description": "市区町村 slug as LIFULL HOME'S spells it — `minato-city` for `/chintai/tokyo/minato-city/list/`"
+          },
+          "page": {
+            "description": "List page to read, from 1, in the same 新着順; a page past the last returns no item",
+            "default": "1"
+          }
+        },
+        "description": "賃貸 rooms on LIFULL HOME'S for one 市区町村，newest first (the page's own 新着順).\n\nEach room row of a building block is one item; the building's 種目，name, 所在地，交通 and 階数 are copied onto it, and the row adds 階，部屋番号 where the site prints one, 賃料，管理費等，敷金 / 礼金 / 保証金 / 敷引・償却，間取り，専有面積 and the 定期借家 badge. The sponsored rows at the top of the page are not read. Each room's own page is then read once (cached per listing) for 築年月，構造，総戸数，現況，入居可能時期，契約期間，更新料，保証会社 and the 情報公開日 / 情報更新日.\n\n`_extra` follows the shared residential shape. LIFULL HOME'S quotes 敷金 / 礼金 either in months or in yen, and each lands in its own field (`deposit_months` or `deposit_jpy`), never converted. `listed_at` is the 情報公開日.\n\nThe site sits behind AWS WAF, which starts answering a client with an empty challenge page after only a few requests: measured on 2026-10-31 at about fifteen in an hour and again at about eight in ten minutes, from one address, and lifted within the hour. The route reports that as an error naming the challenge rather than as an empty feed, and does not try to get past it. To stay under that, one poll requests at most five detail pages it has not cached yet, and stops requesting altogether once the site has challenged it; items past that keep their list fields until a later poll fills them in. A challenged list page fails the feed. Poll each area infrequently and not several areas at once, and pass `detail=0` to make one request per poll instead of one per item.\n\n| Query    | Description                                                    | Default |\n| -------- | -------------------------------------------------------------- | ------- |\n| `limit`  | Rooms to return, at most one list page                         | 20      |\n| `detail` | `0` skips the per-room pages and returns list-page fields only | `1`     |",
+        "categories": [
+          "other"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": true,
+          "supportRadar": true
+        },
+        "radar": [
+          {
+            "source": [
+              "www.homes.co.jp/chintai/:pref/:city/list"
+            ],
+            "target": "/chintai/:pref/:city"
+          }
+        ],
+        "location": "chintai.ts",
+        "module": () => import('@/routes/homes/chintai.ts')
+      },
+      "/kodate/chuko/:pref/:city/:page?": {
+        "path": "/kodate/chuko/:pref/:city/:page?",
+        "name": "中古一戸建て",
+        "url": "www.homes.co.jp",
+        "maintainers": [
+          "pseudoyu"
+        ],
+        "example": "/homes/kodate/chuko/tokyo/setagaya-city",
+        "parameters": {
+          "pref": {
+            "description": "都道府県 slug, e.g. `tokyo`, `kanagawa`"
+          },
+          "city": {
+            "description": "市区町村 slug as LIFULL HOME'S spells it — `setagaya-city` for `/kodate/chuko/tokyo/setagaya-city/list/`"
+          },
+          "page": {
+            "description": "List page to read, from 1, in the same 新着順; a page past the last returns no item",
+            "default": "1"
+          }
+        },
+        "description": "中古一戸建て for sale on LIFULL HOME'S for one 市区町村，newest first (the page's own 新着順).\n\nEach house block of the list page is one item: 交通，所在地，建築年，現況 and 主要採光面 from the block, 価格，間取り，土地面積 and 建物面積 from its row, and a 価格更新 note when the price moved (`raw.price_updated`). Each house's own page is then read once (cached per listing) for 建物構造，接道状況，都市計画，用途地域，建ぺい率，容積率，土地権利，引渡し，取引態様 and the 情報公開日 / 最新情報提供日.\n\n`_extra` follows the shared residential shape with `deal_kind: 'sale'`: `area_m2` is the 建物面積，`land_area_m2` the 土地面積 and `listed_at` the 情報公開日.\n\nThe site sits behind AWS WAF, which starts answering a client with an empty challenge page after only a few requests: measured on 2026-10-31 at about fifteen in an hour and again at about eight in ten minutes, from one address, and lifted within the hour. The route reports that as an error naming the challenge rather than as an empty feed, and does not try to get past it. To stay under that, one poll requests at most five detail pages it has not cached yet, and stops requesting altogether once the site has challenged it; items past that keep their list fields until a later poll fills them in. A challenged list page fails the feed. Poll each area infrequently and not several areas at once, and pass `detail=0` to make one request per poll instead of one per item.\n\n| Query    | Description                                                     | Default |\n| -------- | --------------------------------------------------------------- | ------- |\n| `limit`  | Houses to return, at most one list page                         | 20      |\n| `detail` | `0` skips the per-house pages and returns list-page fields only | `1`     |",
+        "categories": [
+          "other"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": true,
+          "supportRadar": true
+        },
+        "radar": [
+          {
+            "source": [
+              "www.homes.co.jp/kodate/chuko/:pref/:city/list"
+            ],
+            "target": "/kodate/chuko/:pref/:city"
+          }
+        ],
+        "location": "kodate-chuko.ts",
+        "module": () => import('@/routes/homes/kodate-chuko.ts')
+      },
+      "/mansion/chuko/:pref/:city/:page?": {
+        "path": "/mansion/chuko/:pref/:city/:page?",
+        "name": "中古マンション",
+        "url": "www.homes.co.jp",
+        "maintainers": [
+          "pseudoyu"
+        ],
+        "example": "/homes/mansion/chuko/tokyo/minato-city",
+        "parameters": {
+          "pref": {
+            "description": "都道府県 slug, e.g. `tokyo`, `kanagawa`"
+          },
+          "city": {
+            "description": "市区町村 slug as LIFULL HOME'S spells it — `minato-city` for `/mansion/chuko/tokyo/minato-city/list/`"
+          },
+          "page": {
+            "description": "List page to read, from 1, in the same 新着順; a page past the last returns no item",
+            "default": "1"
+          }
+        },
+        "description": "中古マンション for sale on LIFULL HOME'S for one 市区町村，newest first (the page's own 新着順).\n\nEach unit row of a building block is one item: the block gives 交通，所在地，構造，階数，築年月 and 総戸数，the row 階，価格，間取り，専有面積，主要採光面 and a 価格更新 note when the price moved (`raw.price_updated`). Each unit's own page is then read once (cached per listing) for 管理費等，修繕積立金，用途地域，土地権利，管理，現況，引渡し，取引態様 and the 情報公開日 / 最新情報提供日.\n\n`_extra` follows the shared residential shape with `deal_kind: 'sale'`; `listed_at` is the 情報公開日.\n\nThe site sits behind AWS WAF, which starts answering a client with an empty challenge page after only a few requests: measured on 2026-10-31 at about fifteen in an hour and again at about eight in ten minutes, from one address, and lifted within the hour. The route reports that as an error naming the challenge rather than as an empty feed, and does not try to get past it. To stay under that, one poll requests at most five detail pages it has not cached yet, and stops requesting altogether once the site has challenged it; items past that keep their list fields until a later poll fills them in. A challenged list page fails the feed. Poll each area infrequently and not several areas at once, and pass `detail=0` to make one request per poll instead of one per item.\n\n| Query    | Description                                                    | Default |\n| -------- | -------------------------------------------------------------- | ------- |\n| `limit`  | Units to return, at most one list page                         | 20      |\n| `detail` | `0` skips the per-unit pages and returns list-page fields only | `1`     |",
+        "categories": [
+          "other"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": true,
+          "supportRadar": true
+        },
+        "radar": [
+          {
+            "source": [
+              "www.homes.co.jp/mansion/chuko/:pref/:city/list"
+            ],
+            "target": "/mansion/chuko/:pref/:city"
+          }
+        ],
+        "location": "mansion-chuko.ts",
+        "module": () => import('@/routes/homes/mansion-chuko.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "LIFULL HOME'S",
+    "url": "www.homes.co.jp",
+    "description": "LIFULL HOME'S — 不動産・住宅情報サイト（賃貸・中古マンション・中古一戸建て）",
+    "lang": "ja",
+    "ja": {
+      "name": "LIFULL HOME'S（ホームズ）"
+    }
   },
   "hpoi": {
     "routes": {
@@ -155942,6 +156425,145 @@ export default {
     "name": "LINE",
     "url": "today.line.me",
     "lang": "en"
+  },
+  "lingowhale": {
+    "routes": {
+      "/channel/:id": {
+        "path": "/channel/:id",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/lingowhale/channel/67cc08a19a4297b6148b297e",
+        "parameters": {
+          "id": "Channel ID, found in the `channel_id` query of the channel page URL"
+        },
+        "radar": [
+          {
+            "source": [
+              "lingowhale.com/channels"
+            ]
+          }
+        ],
+        "name": "频道",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "url": "lingowhale.com",
+        "location": "channel.ts",
+        "module": () => import('@/routes/lingowhale/channel.ts')
+      },
+      "/hot/:type?": {
+        "path": "/hot/:type?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/lingowhale/hot/2",
+        "parameters": {
+          "type": {
+            "description": "Hot list type",
+            "options": [
+              {
+                "value": "1",
+                "label": "热门频道"
+              },
+              {
+                "value": "2",
+                "label": "热门话题"
+              },
+              {
+                "value": "3",
+                "label": "热门文章"
+              }
+            ],
+            "default": "2"
+          }
+        },
+        "radar": [
+          {
+            "source": [
+              "lingowhale.com/topics"
+            ]
+          }
+        ],
+        "name": "热门",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "url": "lingowhale.com",
+        "location": "hot.ts",
+        "module": () => import('@/routes/lingowhale/hot.ts')
+      },
+      "/search/:keyword/:type?": {
+        "path": "/search/:keyword/:type?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/lingowhale/search/F1",
+        "parameters": {
+          "keyword": "Search keyword",
+          "type": {
+            "description": "Search type",
+            "options": [
+              {
+                "value": "1",
+                "label": "频道"
+              },
+              {
+                "value": "2",
+                "label": "话题"
+              },
+              {
+                "value": "3",
+                "label": "文章"
+              }
+            ],
+            "default": "1"
+          }
+        },
+        "radar": [
+          {
+            "source": [
+              "lingowhale.com/channels"
+            ]
+          }
+        ],
+        "name": "搜索",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "url": "lingowhale.com",
+        "location": "search.ts",
+        "module": () => import('@/routes/lingowhale/search.ts')
+      },
+      "/topic/:id": {
+        "path": "/topic/:id",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/lingowhale/topic/6ace33a60c047819650365b1",
+        "parameters": {
+          "id": "Topic ID, found in the `topic_id` query of the topic page URL"
+        },
+        "radar": [
+          {
+            "source": [
+              "lingowhale.com/topics"
+            ]
+          }
+        ],
+        "name": "话题",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "url": "lingowhale.com",
+        "location": "topic.ts",
+        "module": () => import('@/routes/lingowhale/topic.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "语鲸 LingoWhale",
+    "url": "lingowhale.com",
+    "lang": "zh-CN"
   },
   "linkedin": {
     "routes": {
@@ -161105,7 +161727,7 @@ export default {
           "BeaCox"
         ],
         "url": "www.cs.sjtu.edu.cn/notice-xssw-bkspy.html",
-        "description": "| 本科生培养 | 研究生培养 | 国际交流 | 党建德育 | 团学工作 | 职业发展 | 其他 |\n| ---------- | ---------- | -------- | -------- | -------- | -------- | ---- |\n| bkspy      | yjspy      | gjjl     | djdy     | txgz     | zyfz     | qt   |",
+        "description": "仅包含官网未登录时可见的公开通知。分类没有公开通知时无法生成订阅。\n\n| 本科生培养 | 研究生培养 | 国际交流 | 党建德育 | 团学工作 | 职业发展 | 其他 |\n| ---------- | ---------- | -------- | -------- | -------- | -------- | ---- |\n| bkspy      | yjspy      | gjjl     | djdy     | txgz     | zyfz     | qt   |",
         "location": "cs/tzgg.tsx",
         "module": () => import('@/routes/sjtu/cs/tzgg.tsx')
       },
@@ -161145,10 +161767,10 @@ export default {
         "categories": [
           "university"
         ],
-        "example": "/sjtu/gs/enroll/59",
+        "example": "/sjtu/gs/xsjy",
         "parameters": {
           "type": "类别",
-          "num": "细分类别, 仅对`type`为`enroll`或`exchange`有效"
+          "num": "细分类别, 仅对`type`为`exchange`有效"
         },
         "features": {
           "requireConfig": false,
@@ -161188,7 +161810,7 @@ export default {
         "maintainers": [
           "dzx-dzx"
         ],
-        "description": "| 工作信息 | 招生信息 | 培养信息 | 学位学科 | 国际交流 | 创新工程 |\n| -------- | -------- | -------- | -------- | -------- | -------- |\n| work     | enroll   | train    | degree   | exchange | xsjy     |\n\n当`type`为`enroll`, `num`可选字段:\n\n| 58       | 59       | 60         | 61       | 62       |\n| -------- | -------- | ---------- | -------- | -------- |\n| 博士招生 | 硕士招生 | 港澳台招生 | 考点信息 | 院系动态 |\n\n当`type`为`exchange`, `num`可选字段:\n\n| 67             | 68             | 69             | 70             | 71             |\n| -------------- | -------------- | -------------- | -------------- | -------------- |\n| 国家公派研究生 | 国际化培养资助 | 校际交换与联培 | 交流与合作项目 | 项目招募与宣讲 |",
+        "description": "| 工作信息 | 培养信息 | 学位学科 | 国际交流 | 创新工程 |\n| -------- | -------- | -------- | -------- | -------- |\n| work     | train    | degree   | exchange | xsjy     |\n\n招生信息已移至研究生招生网，请使用「研究生招生网招考信息」路由 `/sjtu/yzb/zkxx/:type`。\n\n当`type`为`exchange`, `num`可选字段:\n\n| 67             | 68             | 69             | 70             | 71             |\n| -------------- | -------------- | -------------- | -------------- | -------------- |\n| 国家公派研究生 | 国际化培养资助 | 校际交换与联培 | 交流与合作项目 | 项目招募与宣讲 |",
         "location": "gs.ts",
         "module": () => import('@/routes/sjtu/gs.ts')
       },
@@ -161300,6 +161922,186 @@ export default {
         "description": "| 博士招生 | 硕士招生 | 港澳台招生 | 考点信息 | 院系动态 |\n| -------- | -------- | ---------- | -------- | -------- |\n| bszs     | sszs     | gatzs      | kdxx     | yxdt     |",
         "location": "yzb/zkxx.ts",
         "module": () => import('@/routes/sjtu/yzb/zkxx.ts')
+      },
+      "/cs/rcpy/:category": {
+        "path": "/cs/rcpy/:category",
+        "categories": [
+          "university"
+        ],
+        "example": "/sjtu/cs/rcpy/bsyjs_notice",
+        "parameters": {
+          "category": "栏目代码，见下表，与官网栏目网址中 .html 前的部分一致"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "title": "计算机学院 - 人才培养 - 本科生培养 - 国际交流",
+            "source": [
+              "www.cs.sjtu.edu.cn/bkspy_gjjl.html",
+              "cs.sjtu.edu.cn/bkspy_gjjl.html"
+            ],
+            "target": "/cs/rcpy/bkspy_gjjl"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 研究生培养 - 招生工作",
+            "source": [
+              "www.cs.sjtu.edu.cn/bsyjs_zsgz.html",
+              "cs.sjtu.edu.cn/bsyjs_zsgz.html"
+            ],
+            "target": "/cs/rcpy/bsyjs_zsgz"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 研究生培养 - 学籍管理",
+            "source": [
+              "www.cs.sjtu.edu.cn/bsyjs_xjgl.html",
+              "cs.sjtu.edu.cn/bsyjs_xjgl.html"
+            ],
+            "target": "/cs/rcpy/bsyjs_xjgl"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 研究生培养 - 培养管理",
+            "source": [
+              "www.cs.sjtu.edu.cn/bsyjs_pygl.html",
+              "cs.sjtu.edu.cn/bsyjs_pygl.html"
+            ],
+            "target": "/cs/rcpy/bsyjs_pygl"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 研究生培养 - 学位管理",
+            "source": [
+              "www.cs.sjtu.edu.cn/bsyjs_xwgl.html",
+              "cs.sjtu.edu.cn/bsyjs_xwgl.html"
+            ],
+            "target": "/cs/rcpy/bsyjs_xwgl"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 研究生培养 - 答辩公告",
+            "source": [
+              "www.cs.sjtu.edu.cn/bsyjs_dbgg.html",
+              "cs.sjtu.edu.cn/bsyjs_dbgg.html"
+            ],
+            "target": "/cs/rcpy/bsyjs_dbgg"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 研究生培养 - 国际交流",
+            "source": [
+              "www.cs.sjtu.edu.cn/bsyjs_gjjl.html",
+              "cs.sjtu.edu.cn/bsyjs_gjjl.html"
+            ],
+            "target": "/cs/rcpy/bsyjs_gjjl"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 研究生培养 - 教师事务",
+            "source": [
+              "www.cs.sjtu.edu.cn/bsyjs_jssw.html",
+              "cs.sjtu.edu.cn/bsyjs_jssw.html"
+            ],
+            "target": "/cs/rcpy/bsyjs_jssw"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 研究生培养 - 通知公告",
+            "source": [
+              "www.cs.sjtu.edu.cn/bsyjs_notice.html",
+              "cs.sjtu.edu.cn/bsyjs_notice.html"
+            ],
+            "target": "/cs/rcpy/bsyjs_notice"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 微专业培养",
+            "source": [
+              "www.cs.sjtu.edu.cn/wzypy.html",
+              "cs.sjtu.edu.cn/wzypy.html"
+            ],
+            "target": "/cs/rcpy/wzypy"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 教学实践 - 科创实践项目 - PRP 项目",
+            "source": [
+              "www.cs.sjtu.edu.cn/jxsj_kcsj_prp.html",
+              "cs.sjtu.edu.cn/jxsj_kcsj_prp.html"
+            ],
+            "target": "/cs/rcpy/jxsj_kcsj_prp"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 教学实践 - 科创实践项目 - 专业实习",
+            "source": [
+              "www.cs.sjtu.edu.cn/jxsj_kcsj_zysx.html",
+              "cs.sjtu.edu.cn/jxsj_kcsj_zysx.html"
+            ],
+            "target": "/cs/rcpy/jxsj_kcsj_zysx"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 教学实践 - 学生科创组织",
+            "source": [
+              "www.cs.sjtu.edu.cn/jxsj_xskczz.html",
+              "cs.sjtu.edu.cn/jxsj_xskczz.html"
+            ],
+            "target": "/cs/rcpy/jxsj_xskczz"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 学生工作 - 通知公告 - 党建德育",
+            "source": [
+              "www.cs.sjtu.edu.cn/xsgz-tzgg-djdy.html",
+              "cs.sjtu.edu.cn/xsgz-tzgg-djdy.html"
+            ],
+            "target": "/cs/rcpy/xsgz-tzgg-djdy"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 学生工作 - 通知公告 - 团学工作",
+            "source": [
+              "www.cs.sjtu.edu.cn/xsgz-tzgg-txgz.html",
+              "cs.sjtu.edu.cn/xsgz-tzgg-txgz.html"
+            ],
+            "target": "/cs/rcpy/xsgz-tzgg-txgz"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 学生工作 - 通知公告 - 学生事务",
+            "source": [
+              "www.cs.sjtu.edu.cn/xsgz-tzgg-xssw.html",
+              "cs.sjtu.edu.cn/xsgz-tzgg-xssw.html"
+            ],
+            "target": "/cs/rcpy/xsgz-tzgg-xssw"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 学生工作 - 通知公告 - 职业发展",
+            "source": [
+              "www.cs.sjtu.edu.cn/xsgz-tzgg-zyfz.html",
+              "cs.sjtu.edu.cn/xsgz-tzgg-zyfz.html"
+            ],
+            "target": "/cs/rcpy/xsgz-tzgg-zyfz"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 学生工作 - 规章制度 - 学生事务",
+            "source": [
+              "www.cs.sjtu.edu.cn/xsgz-gzzd-xssw.html",
+              "cs.sjtu.edu.cn/xsgz-gzzd-xssw.html"
+            ],
+            "target": "/cs/rcpy/xsgz-gzzd-xssw"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 学生工作 - 规章制度 - 职业发展",
+            "source": [
+              "www.cs.sjtu.edu.cn/xsgz-gzzd-zyfz.html",
+              "cs.sjtu.edu.cn/xsgz-gzzd-zyfz.html"
+            ],
+            "target": "/cs/rcpy/xsgz-gzzd-zyfz"
+          }
+        ],
+        "name": "计算机学院 - 人才培养",
+        "maintainers": [
+          "BeaCox"
+        ],
+        "url": "www.cs.sjtu.edu.cn/rcpy.html",
+        "description": "订阅「人才培养」下指定栏目的第一页文章。\n\n仅获取未登录时可见的列表和正文。需要 jAccount 登录或无法获取全文的文章保留公开标题、发布日期和原文链接。栏目没有公开条目时无法生成订阅。\n\n| 栏目 | category |\n| ---- | -------- |\n| 本科生培养 - 国际交流 | bkspy_gjjl |\n| 研究生培养 - 招生工作 | bsyjs_zsgz |\n| 研究生培养 - 学籍管理 | bsyjs_xjgl |\n| 研究生培养 - 培养管理 | bsyjs_pygl |\n| 研究生培养 - 学位管理 | bsyjs_xwgl |\n| 研究生培养 - 答辩公告 | bsyjs_dbgg |\n| 研究生培养 - 国际交流 | bsyjs_gjjl |\n| 研究生培养 - 教师事务 | bsyjs_jssw |\n| 研究生培养 - 通知公告 | bsyjs_notice |\n| 微专业培养 | wzypy |\n| 教学实践 - 科创实践项目 - PRP 项目 | jxsj_kcsj_prp |\n| 教学实践 - 科创实践项目 - 专业实习 | jxsj_kcsj_zysx |\n| 教学实践 - 学生科创组织 | jxsj_xskczz |\n| 学生工作 - 通知公告 - 党建德育 | xsgz-tzgg-djdy |\n| 学生工作 - 通知公告 - 团学工作 | xsgz-tzgg-txgz |\n| 学生工作 - 通知公告 - 学生事务 | xsgz-tzgg-xssw |\n| 学生工作 - 通知公告 - 职业发展 | xsgz-tzgg-zyfz |\n| 学生工作 - 规章制度 - 学生事务 | xsgz-gzzd-xssw |\n| 学生工作 - 规章制度 - 职业发展 | xsgz-gzzd-zyfz |\n\n「学生工作」下「规章制度」中的党建德育、团学工作，以及「管理服务」中的办事指南、日常管理目前没有公开条目，未纳入订阅。\n\n专业介绍、培养方案、课程信息、通知指南、快速链接、教学成果，以及教学实践中的其他介绍页属于静态介绍、课程目录或链接导航，未纳入订阅。",
+        "location": "cs/rcpy.ts",
+        "module": () => import('@/routes/sjtu/cs/rcpy.ts')
       }
     },
     "apiRoutes": {},
@@ -161821,6 +162623,133 @@ export default {
     "name": "Sub HD",
     "url": "subhd.tv",
     "lang": "zh-CN"
+  },
+  "suumo": {
+    "routes": {
+      "/chintai/:pref/:city/:page?": {
+        "path": "/chintai/:pref/:city/:page?",
+        "name": "賃貸物件",
+        "url": "suumo.jp",
+        "maintainers": [
+          "pseudoyu"
+        ],
+        "example": "/suumo/chintai/tokyo/minato",
+        "parameters": {
+          "pref": {
+            "description": "都道府県 slug, e.g. `tokyo`, `kanagawa`"
+          },
+          "city": {
+            "description": "市区町村 slug as SUUMO spells it after `sc_` in its area path — `minato` for `/chintai/tokyo/sc_minato/`"
+          },
+          "page": {
+            "description": "List page to read, from 1, in the same 新着順; a page past the last returns no item",
+            "default": "1"
+          }
+        },
+        "description": "賃貸 rooms on SUUMO for one 市区町村，newest first (the page's own 新着順).\n\nEach room row of the list page is one item; the building's 種目，name, 所在地，交通 and 階建 are copied onto it. Each room's own page is then read once for what the list does not show — 築年月，構造，契約期間，保証会社，損保，取引態様，情報更新日 — and cached per listing, while the list's own values (賃料 and the rest) are read fresh on every poll.\n\n`_extra` follows the shared residential shape: `price_jpy` is the monthly 賃料，`deposit_jpy` / `key_money_jpy` the 敷金 / 礼金 as SUUMO quotes them (in yen), and `listed_at` stays `null` because SUUMO publishes no 情報公開日 — `updated_at` carries its 情報更新日 instead.\n\n| Query    | Description                                                    | Default |\n| -------- | -------------------------------------------------------------- | ------- |\n| `limit`  | Rooms to return, at most one list page                         | 20      |\n| `detail` | `0` skips the per-room pages and returns list-page fields only | `1`     |",
+        "categories": [
+          "other"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": true
+        },
+        "radar": [
+          {
+            "source": [
+              "suumo.jp/chintai/:pref/:city"
+            ],
+            "target": "/chintai/:pref/:city"
+          }
+        ],
+        "location": "chintai.ts",
+        "module": () => import('@/routes/suumo/chintai.ts')
+      },
+      "/chukoikkodate/:pref/:city": {
+        "path": "/chukoikkodate/:pref/:city",
+        "name": "中古一戸建て",
+        "url": "suumo.jp",
+        "maintainers": [
+          "pseudoyu"
+        ],
+        "example": "/suumo/chukoikkodate/tokyo/setagaya",
+        "parameters": {
+          "pref": {
+            "description": "都道府県 slug, e.g. `tokyo`, `kanagawa`"
+          },
+          "city": {
+            "description": "市区町村 slug as SUUMO spells it after `sc_` in its area path — `setagaya` for `/chukoikkodate/tokyo/sc_setagaya/`"
+          }
+        },
+        "description": "中古一戸建て for sale on SUUMO for one 市区町村，newest first (the page's own 新着・更新順).\n\nEach property card of the list page is one item, carrying 物件名，販売価格，所在地，沿線・駅，土地面積，建物面積，間取り and 築年月. Each house's own page is then read once (cached per listing) for 構造・工法，土地の権利形態，私道負担・道路，建ぺい率・容積率，引渡可能時期 and the 情報提供日.\n\n`_extra` follows the shared residential shape with `deal_kind: 'sale'`: `area_m2` is the 建物面積 and `land_area_m2` the 土地面積. SUUMO publishes no 情報公開日，so `listed_at` stays `null` and `updated_at` carries the 情報提供日.\n\n| Query    | Description                                                     | Default |\n| -------- | --------------------------------------------------------------- | ------- |\n| `limit`  | Houses to return, at most one list page                         | 20      |\n| `detail` | `0` skips the per-house pages and returns list-page fields only | `1`     |",
+        "categories": [
+          "other"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": true
+        },
+        "radar": [
+          {
+            "source": [
+              "suumo.jp/chukoikkodate/:pref/:city"
+            ],
+            "target": "/chukoikkodate/:pref/:city"
+          }
+        ],
+        "location": "chukoikkodate.ts",
+        "module": () => import('@/routes/suumo/chukoikkodate.ts')
+      },
+      "/ms/chuko/:pref/:city": {
+        "path": "/ms/chuko/:pref/:city",
+        "name": "中古マンション",
+        "url": "suumo.jp",
+        "maintainers": [
+          "pseudoyu"
+        ],
+        "example": "/suumo/ms/chuko/tokyo/minato",
+        "parameters": {
+          "pref": {
+            "description": "都道府県 slug, e.g. `tokyo`, `kanagawa`"
+          },
+          "city": {
+            "description": "市区町村 slug as SUUMO spells it after `sc_` in its area path — `minato` for `/ms/chuko/tokyo/sc_minato/`"
+          }
+        },
+        "description": "中古マンション for sale on SUUMO for one 市区町村，newest first (the page's own 新着・更新順).\n\nEach property card of the list page is one item, carrying 物件名，販売価格，所在地，沿線・駅，専有面積，間取り，バルコニー and 築年月. Each unit's own page is then read once (cached per listing) for 管理費，修繕積立金，所在階，構造・階建，向き，総戸数，敷地の権利形態，用途地域，引渡可能時期 and the 情報提供日.\n\n`_extra` follows the shared residential shape with `deal_kind: 'sale'` and `price_jpy` the asking price in yen. SUUMO publishes no 情報公開日，so `listed_at` stays `null` and `updated_at` carries the 情報提供日.\n\n| Query    | Description                                                    | Default |\n| -------- | -------------------------------------------------------------- | ------- |\n| `limit`  | Units to return, at most one list page                         | 20      |\n| `detail` | `0` skips the per-unit pages and returns list-page fields only | `1`     |",
+        "categories": [
+          "other"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": true
+        },
+        "radar": [
+          {
+            "source": [
+              "suumo.jp/ms/chuko/:pref/:city"
+            ],
+            "target": "/ms/chuko/:pref/:city"
+          }
+        ],
+        "location": "ms-chuko.ts",
+        "module": () => import('@/routes/suumo/ms-chuko.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "SUUMO",
+    "url": "suumo.jp",
+    "description": "SUUMO — リクルートの不動産・住宅情報サイト（賃貸・中古マンション・中古一戸建て）",
+    "lang": "ja",
+    "ja": {
+      "name": "SUUMO（スーモ）"
+    }
   },
   "szftedu": {
     "routes": {
@@ -165355,6 +166284,32 @@ export default {
   },
   "yahoo": {
     "routes": {
+      "/auctions/search/:query": {
+        "path": "/auctions/search/:query",
+        "categories": [
+          "shopping"
+        ],
+        "example": "/yahoo/auctions/search/p=カメラ&aucmaxprice=10000",
+        "parameters": {
+          "query": "Search conditions, the query string of a search result URL on auctions.yahoo.co.jp, e.g. `p=カメラ&auccat=23632&aucmaxprice=10000`. Every condition the site supports works, including those set in 条件指定. Newest listings come first unless `s1` is set"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "Yahoo! Auctions Search",
+        "maintainers": [
+          "pseudoyu"
+        ],
+        "url": "auctions.yahoo.co.jp",
+        "description": "Search conditions are passed to the site as is, so the easiest way to build a feed is to search on [Yahoo! Auctions](https://auctions.yahoo.co.jp), then copy everything after `?` in the result URL.\n\n::: warning\nYahoo! JAPAN services are not available from the EEA and the UK.\n:::",
+        "location": "auctions/search.tsx",
+        "module": () => import('@/routes/yahoo/auctions/search.tsx')
+      },
       "/author/:author": {
         "path": "/author/:author",
         "categories": [
@@ -172158,31 +173113,6 @@ export default {
         "location": "album.ts",
         "module": () => import('@/routes/google/album.ts')
       },
-      "/doodles/:language?": {
-        "path": "/doodles/:language?",
-        "categories": [
-          "picture"
-        ],
-        "view": 2,
-        "example": "/google/doodles/zh-CN",
-        "parameters": {
-          "language": "Language, default to `zh-CN`, for other language values, you can get it from [Google Doodles official website](https://www.google.com/doodles)"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "Update",
-        "maintainers": [
-          "xyqfer"
-        ],
-        "location": "doodles.ts",
-        "module": () => import('@/routes/google/doodles.ts')
-      },
       "/fonts/:sort?": {
         "path": "/fonts/:sort?",
         "categories": [
@@ -172347,6 +173277,31 @@ export default {
         ],
         "location": "developers.ts",
         "module": () => import('@/routes/google/developers.ts')
+      },
+      "/doodles/:language?": {
+        "path": "/doodles/:language?",
+        "categories": [
+          "picture"
+        ],
+        "view": 2,
+        "example": "/google/doodles/zh-CN",
+        "parameters": {
+          "language": "No longer used, [Google Doodles](https://doodles.google/) is only served in English now. Kept so existing feed URLs keep working"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "Update",
+        "maintainers": [
+          "xyqfer"
+        ],
+        "location": "doodles.ts",
+        "module": () => import('@/routes/google/doodles.ts')
       },
       "/chrome/extension/:id": {
         "path": "/chrome/extension/:id",

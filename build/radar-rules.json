@@ -145,6 +145,19 @@
       }
     ]
   },
+  "10086.cn": {
+    "_name": "中国移动",
+    "b2b": [
+      {
+        "title": "采购与招标网公告",
+        "docs": "https://docs.rsshub.app/routes/10086",
+        "source": [
+          "/"
+        ],
+        "target": "/10086/b2b"
+      }
+    ]
+  },
   "12306.cn": {
     "_name": "12306",
     "www": [
@@ -183,19 +196,6 @@
           "/articles/:type"
         ],
         "target": "/freebuf/articles/:type"
-      }
-    ]
-  },
-  "fuliba2023.net": {
-    "_name": "福利吧",
-    ".": [
-      {
-        "title": "最新",
-        "docs": "https://docs.rsshub.app/routes/fuliba",
-        "source": [
-          "/"
-        ],
-        "target": "/fuliba/latest"
       }
     ]
   },
@@ -541,6 +541,19 @@
           "/element/:id/article"
         ],
         "target": "/cowlevel/element/:id"
+      }
+    ]
+  },
+  "datalekt.nl": {
+    "_name": "Datalekt",
+    ".": [
+      {
+        "title": "Incidents",
+        "docs": "https://docs.rsshub.app/routes/datalekt",
+        "source": [
+          "/incidenten/"
+        ],
+        "target": "/datalekt/incidents"
       }
     ]
   },
@@ -3897,28 +3910,6 @@
       }
     ]
   },
-  "facebook.com": {
-    "_name": "Facebook",
-    "www": [
-      {
-        "title": "Group",
-        "docs": "https://docs.rsshub.app/routes/facebook",
-        "source": [
-          "/groups/:id"
-        ],
-        "target": "/facebook/group/:id"
-      },
-      {
-        "title": "Page / Profile",
-        "docs": "https://docs.rsshub.app/routes/facebook",
-        "source": [
-          "/:id",
-          "/people/:name/:id"
-        ],
-        "target": "/facebook/page/:id"
-      }
-    ]
-  },
   "fffdm.com": {
     "_name": "风之动漫",
     "www": [
@@ -5211,7 +5202,7 @@
         "target": "/xiaomiyoupin/crowdfunding"
       },
       {
-        "title": "每日上新",
+        "title": "上新",
         "docs": "https://docs.rsshub.app/routes/xiaomiyoupin",
         "source": [
           "/"
@@ -5550,6 +5541,45 @@
           "/quest-home"
         ],
         "target": "/discord/quests"
+      }
+    ]
+  },
+  "facebook.com": {
+    "_name": "Facebook",
+    "www": [
+      {
+        "title": "Group",
+        "docs": "https://docs.rsshub.app/routes/facebook",
+        "source": [
+          "/groups/:id"
+        ],
+        "target": "/facebook/group/:id"
+      },
+      {
+        "title": "Page / Profile",
+        "docs": "https://docs.rsshub.app/routes/facebook",
+        "source": [
+          "/:id",
+          "/people/:name/:id"
+        ],
+        "target": "/facebook/page/:id"
+      },
+      {
+        "title": "Photos",
+        "docs": "https://docs.rsshub.app/routes/facebook",
+        "source": [
+          "/:id/photos",
+          "/:id/photos_by"
+        ],
+        "target": "/facebook/photos/:id"
+      },
+      {
+        "title": "Reels",
+        "docs": "https://docs.rsshub.app/routes/facebook",
+        "source": [
+          "/:id/reels"
+        ],
+        "target": "/facebook/reels/:id"
       }
     ]
   },
@@ -12051,19 +12081,6 @@
       }
     ]
   },
-  "athome.co.jp": {
-    "_name": "at home",
-    "www": [
-      {
-        "title": "貸店舗",
-        "docs": "https://docs.rsshub.app/routes/athome",
-        "source": [
-          "/rent_store/:pref/:city/list"
-        ],
-        "target": "/athome/rent-store/:pref/:city"
-      }
-    ]
-  },
   "augmentcode.com": {
     "_name": "Augment Code",
     ".": [
@@ -13982,6 +13999,19 @@
           "/"
         ],
         "target": "/caixinglobal/latest"
+      }
+    ]
+  },
+  "calif.io": {
+    "_name": "Calif",
+    ".": [
+      {
+        "title": "Research",
+        "docs": "https://docs.rsshub.app/routes/calif",
+        "source": [
+          "/research"
+        ],
+        "target": "/calif/research"
       }
     ]
   },
@@ -16709,6 +16739,19 @@
           "/blog"
         ],
         "target": "/cline/blog"
+      }
+    ]
+  },
+  "cloudflare.com": {
+    "_name": "Cloudflare",
+    "blog": [
+      {
+        "title": "Blog",
+        "docs": "https://docs.rsshub.app/routes/cloudflare",
+        "source": [
+          "/"
+        ],
+        "target": "/cloudflare/blog"
       }
     ]
   },
@@ -22340,6 +22383,19 @@
       }
     ]
   },
+  "fuliba2023.net": {
+    "_name": "福利吧",
+    ".": [
+      {
+        "title": "最新",
+        "docs": "https://docs.rsshub.app/routes/fuliba",
+        "source": [
+          "/"
+        ],
+        "target": "/fuliba/latest"
+      }
+    ]
+  },
   "funresearch.cn": {
     "_name": "泛研网",
     "www": [
@@ -22907,22 +22963,6 @@
         "target": "/github/notifications"
       },
       {
-        "title": "Organization Event",
-        "docs": "https://docs.rsshub.app/routes/github",
-        "source": [
-          "/orgs/:org"
-        ],
-        "target": "/github/org_event/:org"
-      },
-      {
-        "title": "User's Feed",
-        "docs": "https://docs.rsshub.app/routes/github",
-        "source": [
-          "/:user"
-        ],
-        "target": "/github/feed/:user"
-      },
-      {
         "title": "Repo Pull Requests",
         "docs": "https://docs.rsshub.app/routes/github",
         "source": [
@@ -22931,14 +22971,6 @@
           "/:user/:repo"
         ],
         "target": "/github/pull/:user/:repo"
-      },
-      {
-        "title": "Repository Event",
-        "docs": "https://docs.rsshub.app/routes/github",
-        "source": [
-          "/:owner/:repo"
-        ],
-        "target": "/github/repo_event/:owner/:repo"
       },
       {
         "title": "User Repo",
@@ -22964,6 +22996,30 @@
           "/:user"
         ],
         "target": "/github/starred_repos/:user"
+      },
+      {
+        "title": "Organization Event",
+        "docs": "https://docs.rsshub.app/routes/github",
+        "source": [
+          "/orgs/:org"
+        ],
+        "target": "/github/org_event/:org"
+      },
+      {
+        "title": "User's Feed",
+        "docs": "https://docs.rsshub.app/routes/github",
+        "source": [
+          "/:user"
+        ],
+        "target": "/github/feed/:user"
+      },
+      {
+        "title": "Repository Event",
+        "docs": "https://docs.rsshub.app/routes/github",
+        "source": [
+          "/:owner/:repo"
+        ],
+        "target": "/github/repo_event/:owner/:repo"
       },
       {
         "title": "User Event",
@@ -36349,15 +36405,7 @@
         "title": "政治外交",
         "docs": "https://docs.rsshub.app/routes/nippon",
         "source": [
-          "/cn/sci-tech"
-        ],
-        "target": "/nippon/Science,Technology"
-      },
-      {
-        "title": "政治外交",
-        "docs": "https://docs.rsshub.app/routes/nippon",
-        "source": [
-          "/cn/in-depth"
+          "/cn/insight"
         ],
         "target": "/nippon/In-depth"
       },
@@ -36365,15 +36413,7 @@
         "title": "政治外交",
         "docs": "https://docs.rsshub.app/routes/nippon",
         "source": [
-          "/cn/japan-topics"
-        ],
-        "target": "/nippon/japan-topics"
-      },
-      {
-        "title": "政治外交",
-        "docs": "https://docs.rsshub.app/routes/nippon",
-        "source": [
-          "/cn/japan-data"
+          "/cn/data"
         ],
         "target": "/nippon/japan-data"
       },
@@ -52502,6 +52542,43 @@
       }
     ]
   },
+  "athome.co.jp": {
+    "_name": "at home",
+    "www": [
+      {
+        "title": "貸店舗",
+        "docs": "https://docs.rsshub.app/routes/athome",
+        "source": [
+          "/rent_store/:pref/:city/list"
+        ],
+        "target": "/athome/rent-store/:pref/:city"
+      },
+      {
+        "title": "賃貸物件",
+        "docs": "https://docs.rsshub.app/routes/athome",
+        "source": [
+          "/chintai/:pref/:city/list"
+        ],
+        "target": "/athome/chintai/:pref/:city"
+      },
+      {
+        "title": "中古一戸建て",
+        "docs": "https://docs.rsshub.app/routes/athome",
+        "source": [
+          "/kodate/chuko/:pref/:city/list"
+        ],
+        "target": "/athome/kodate/chuko/:pref/:city"
+      },
+      {
+        "title": "中古マンション",
+        "docs": "https://docs.rsshub.app/routes/athome",
+        "source": [
+          "/mansion/chuko/:pref/:city/list"
+        ],
+        "target": "/athome/mansion/chuko/:pref/:city"
+      }
+    ]
+  },
   "bandcamp.com": {
     "_name": "Bandcamp",
     ".": [
@@ -57990,6 +58067,35 @@
       }
     ]
   },
+  "homes.co.jp": {
+    "_name": "LIFULL HOME'S",
+    "www": [
+      {
+        "title": "賃貸物件",
+        "docs": "https://docs.rsshub.app/routes/homes",
+        "source": [
+          "/chintai/:pref/:city/list"
+        ],
+        "target": "/homes/chintai/:pref/:city"
+      },
+      {
+        "title": "中古一戸建て",
+        "docs": "https://docs.rsshub.app/routes/homes",
+        "source": [
+          "/kodate/chuko/:pref/:city/list"
+        ],
+        "target": "/homes/kodate/chuko/:pref/:city"
+      },
+      {
+        "title": "中古マンション",
+        "docs": "https://docs.rsshub.app/routes/homes",
+        "source": [
+          "/mansion/chuko/:pref/:city/list"
+        ],
+        "target": "/homes/mansion/chuko/:pref/:city"
+      }
+    ]
+  },
   "hpoi.net": {
     "_name": "Hpoi 手办维基",
     "www": [
@@ -59140,6 +59246,43 @@
           "/"
         ],
         "target": "/line/today/:edition?/:tab?"
+      }
+    ]
+  },
+  "lingowhale.com": {
+    "_name": "语鲸 LingoWhale",
+    ".": [
+      {
+        "title": "频道",
+        "docs": "https://docs.rsshub.app/routes/lingowhale",
+        "source": [
+          "/channels"
+        ],
+        "target": "/lingowhale/channel/:id"
+      },
+      {
+        "title": "热门",
+        "docs": "https://docs.rsshub.app/routes/lingowhale",
+        "source": [
+          "/topics"
+        ],
+        "target": "/lingowhale/hot/:type?"
+      },
+      {
+        "title": "搜索",
+        "docs": "https://docs.rsshub.app/routes/lingowhale",
+        "source": [
+          "/channels"
+        ],
+        "target": "/lingowhale/search/:keyword/:type?"
+      },
+      {
+        "title": "话题",
+        "docs": "https://docs.rsshub.app/routes/lingowhale",
+        "source": [
+          "/topics"
+        ],
+        "target": "/lingowhale/topic/:id"
       }
     ]
   },
@@ -60502,6 +60645,177 @@
           "/xshd.html"
         ],
         "target": "/sjtu/cs/xshd"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 本科生培养 - 国际交流",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/bkspy_gjjl.html",
+          "/bkspy_gjjl.html"
+        ],
+        "target": "/sjtu/cs/rcpy/bkspy_gjjl"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 研究生培养 - 招生工作",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/bsyjs_zsgz.html",
+          "/bsyjs_zsgz.html"
+        ],
+        "target": "/sjtu/cs/rcpy/bsyjs_zsgz"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 研究生培养 - 学籍管理",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/bsyjs_xjgl.html",
+          "/bsyjs_xjgl.html"
+        ],
+        "target": "/sjtu/cs/rcpy/bsyjs_xjgl"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 研究生培养 - 培养管理",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/bsyjs_pygl.html",
+          "/bsyjs_pygl.html"
+        ],
+        "target": "/sjtu/cs/rcpy/bsyjs_pygl"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 研究生培养 - 学位管理",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/bsyjs_xwgl.html",
+          "/bsyjs_xwgl.html"
+        ],
+        "target": "/sjtu/cs/rcpy/bsyjs_xwgl"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 研究生培养 - 答辩公告",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/bsyjs_dbgg.html",
+          "/bsyjs_dbgg.html"
+        ],
+        "target": "/sjtu/cs/rcpy/bsyjs_dbgg"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 研究生培养 - 国际交流",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/bsyjs_gjjl.html",
+          "/bsyjs_gjjl.html"
+        ],
+        "target": "/sjtu/cs/rcpy/bsyjs_gjjl"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 研究生培养 - 教师事务",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/bsyjs_jssw.html",
+          "/bsyjs_jssw.html"
+        ],
+        "target": "/sjtu/cs/rcpy/bsyjs_jssw"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 研究生培养 - 通知公告",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/bsyjs_notice.html",
+          "/bsyjs_notice.html"
+        ],
+        "target": "/sjtu/cs/rcpy/bsyjs_notice"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 微专业培养",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/wzypy.html",
+          "/wzypy.html"
+        ],
+        "target": "/sjtu/cs/rcpy/wzypy"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 教学实践 - 科创实践项目 - PRP 项目",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/jxsj_kcsj_prp.html",
+          "/jxsj_kcsj_prp.html"
+        ],
+        "target": "/sjtu/cs/rcpy/jxsj_kcsj_prp"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 教学实践 - 科创实践项目 - 专业实习",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/jxsj_kcsj_zysx.html",
+          "/jxsj_kcsj_zysx.html"
+        ],
+        "target": "/sjtu/cs/rcpy/jxsj_kcsj_zysx"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 教学实践 - 学生科创组织",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/jxsj_xskczz.html",
+          "/jxsj_xskczz.html"
+        ],
+        "target": "/sjtu/cs/rcpy/jxsj_xskczz"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 学生工作 - 通知公告 - 党建德育",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/xsgz-tzgg-djdy.html",
+          "/xsgz-tzgg-djdy.html"
+        ],
+        "target": "/sjtu/cs/rcpy/xsgz-tzgg-djdy"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 学生工作 - 通知公告 - 团学工作",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/xsgz-tzgg-txgz.html",
+          "/xsgz-tzgg-txgz.html"
+        ],
+        "target": "/sjtu/cs/rcpy/xsgz-tzgg-txgz"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 学生工作 - 通知公告 - 学生事务",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/xsgz-tzgg-xssw.html",
+          "/xsgz-tzgg-xssw.html"
+        ],
+        "target": "/sjtu/cs/rcpy/xsgz-tzgg-xssw"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 学生工作 - 通知公告 - 职业发展",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/xsgz-tzgg-zyfz.html",
+          "/xsgz-tzgg-zyfz.html"
+        ],
+        "target": "/sjtu/cs/rcpy/xsgz-tzgg-zyfz"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 学生工作 - 规章制度 - 学生事务",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/xsgz-gzzd-xssw.html",
+          "/xsgz-gzzd-xssw.html"
+        ],
+        "target": "/sjtu/cs/rcpy/xsgz-gzzd-xssw"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 学生工作 - 规章制度 - 职业发展",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/xsgz-gzzd-zyfz.html",
+          "/xsgz-gzzd-zyfz.html"
+        ],
+        "target": "/sjtu/cs/rcpy/xsgz-gzzd-zyfz"
       }
     ],
     "gs": [
@@ -60701,6 +61015,35 @@
           "/"
         ],
         "target": "/subhd/zu/:category?"
+      }
+    ]
+  },
+  "suumo.jp": {
+    "_name": "SUUMO",
+    ".": [
+      {
+        "title": "賃貸物件",
+        "docs": "https://docs.rsshub.app/routes/suumo",
+        "source": [
+          "/chintai/:pref/:city"
+        ],
+        "target": "/suumo/chintai/:pref/:city"
+      },
+      {
+        "title": "中古一戸建て",
+        "docs": "https://docs.rsshub.app/routes/suumo",
+        "source": [
+          "/chukoikkodate/:pref/:city"
+        ],
+        "target": "/suumo/chukoikkodate/:pref/:city"
+      },
+      {
+        "title": "中古マンション",
+        "docs": "https://docs.rsshub.app/routes/suumo",
+        "source": [
+          "/ms/chuko/:pref/:city"
+        ],
+        "target": "/suumo/ms/chuko/:pref/:city"
       }
     ]
   },
