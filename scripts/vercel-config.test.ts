@@ -6,7 +6,7 @@ describe('vercel config', () => {
 
         expect(config).toMatchObject({
             deps: {
-                alwaysBundle: ['sanitize-html'],
+                alwaysBundle: ['sanitize-html', /^entities(?:\/|$)/],
             },
         });
     });
