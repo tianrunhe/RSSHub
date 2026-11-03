@@ -9,7 +9,6 @@ import logger from '@/utils/logger';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
 import playwright, { getPlaywrightPage } from '@/utils/playwright';
-import { setCookies } from '@/utils/playwright-utils';
 
 declare global {
     interface Window {
@@ -38,12 +37,6 @@ const getHeaders = (cookie?: string) => ({
     ...(cookie && { Cookie: cookie }),
 });
 
-function assertNotLoginPage(url: string) {
-    if (new URL(url).pathname === '/login') {
-        throw new Error('RedNote redirected the request to its login page. Refresh XIAOHONGSHU_COOKIE from a signed-in browser. If a fresh cookie still fails, check the deployment network and RedNote risk controls.');
-    }
-}
-
 // Fetch HTML through proxy when configured
 async function fetchWithProxy(url: string, cookie?: string): Promise<string> {
     const proxy = config.xiaohongshu.proxy;
@@ -55,9 +48,6 @@ async function fetchWithProxy(url: string, cookie?: string): Promise<string> {
     logger.http(`Requesting ${url}`);
     return await ofetch(url, {
         headers: getHeaders(cookie),
-        onResponse({ response }) {
-            assertNotLoginPage(response.url);
-        },
     });
 }
 
@@ -83,9 +73,6 @@ const getUser = (url, cache) =>
             // Use Playwright
             const { page, destroy } = await getPlaywrightPage(url, {
                 onBeforeLoad: async (page) => {
-                    if (config.xiaohongshu.cookie) {
-                        await setCookies(page, config.xiaohongshu.cookie, '.xiaohongshu.com');
-                    }
                     await page.route('**/*', (route) => {
                         const request = route.request();
                         request.resourceType() === 'document' || request.resourceType() === 'script' || request.resourceType() === 'xhr' || request.resourceType() === 'other' ? route.continue() : route.abort();
@@ -93,7 +80,6 @@ const getUser = (url, cache) =>
                 },
             });
             try {
-                assertNotLoginPage(page.url());
                 let collect = '';
                 logger.http(`Requesting ${url}`);
                 try {
@@ -357,7 +343,7 @@ async function checkCookie() {
     const res = await ofetch('https://edith.xiaohongshu.com/api/sns/web/v2/user/me', {
         headers: getHeaders(cookie),
     });
-    return res?.code === 0 && !!res.data?.user_id && !res.data?.guest;
+    return res?.code === 0 && !!res.data?.user_id;
 }
 
 export { checkCookie, getBoard, getUser, getUserWithCookie, renderNotesFulltext };
