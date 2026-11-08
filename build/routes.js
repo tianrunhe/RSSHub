@@ -36,6 +36,48 @@ export default {
         ],
         "location": "81rc/index.ts",
         "module": () => import('@/routes/81/81rc/index.ts')
+      },
+      "/jfjb/:page?": {
+        "path": "/jfjb/:page?",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/81/jfjb",
+        "parameters": {
+          "page": "版面编号，如 `01`、`1`、`01版` 或 `第1版`；使用 `all` 或留空获取全部版面"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "www.81.cn/szb_223187/szblb/index.html",
+              "www.81.cn/szb_223187/szblb",
+              "www.81.cn/szb_223187/szbxq/index.html",
+              "www.81.cn/szb_223187/szbxq",
+              "81.cn/szb_223187/szblb/index.html",
+              "81.cn/szb_223187/szblb",
+              "81.cn/szb_223187/szbxq/index.html",
+              "81.cn/szb_223187/szbxq"
+            ],
+            "target": "/jfjb"
+          }
+        ],
+        "name": "解放军报",
+        "maintainers": [
+          "zhangsan-xyz"
+        ],
+        "url": "www.81.cn/szb_223187/szblb/index.html",
+        "description": "获取当日《解放军报》数字报（电子版）的全部文章或指定版面文章。如订阅 **01 版**，路由为 `/81/jfjb/01`（亦支持 `/81/jfjb/第1版`）。如需按栏目过滤（如 **军营观察**），可使用通用参数 `/81/jfjb?filter_category=军营观察`。",
+        "location": "jfjb/index.ts",
+        "module": () => import('@/routes/81/jfjb/index.ts')
       }
     },
     "apiRoutes": {},
@@ -44,7 +86,7 @@ export default {
     "categories": [
       "government"
     ],
-    "description": "",
+    "description": "中国军网是中央军委批准的中国人民解放军唯一新闻门户网站。",
     "lang": "zh-CN"
   },
   "121": {
@@ -5620,6 +5662,40 @@ export default {
     "apiRoutes": {},
     "name": "Tableau",
     "url": "public.tableau.com",
+    "lang": "en"
+  },
+  "the-decoder": {
+    "routes": {
+      "/news": {
+        "path": "/news",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/the-decoder/news",
+        "name": "News",
+        "maintainers": [
+          "ljh12138164"
+        ],
+        "description": "Full English news and analysis from the official WordPress API, including images and videos. The official RSS feed only contains excerpts. Fetches the latest 30 articles by default; use the common `limit` parameter for up to 100 articles.",
+        "zh": {
+          "name": "新闻",
+          "description": "官方 RSS 只提供摘要。本路由通过官方 WordPress API 获取英文新闻与分析全文，保留正文中的图片和视频。默认获取最新 30 篇，可通过通用参数 `limit` 调整，最多 100 篇。"
+        },
+        "radar": [
+          {
+            "source": [
+              "the-decoder.com/",
+              "the-decoder.com/artificial-intelligence-news/"
+            ]
+          }
+        ],
+        "location": "news.ts",
+        "module": () => import('@/routes/the-decoder/news.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "The Decoder",
+    "url": "the-decoder.com",
     "lang": "en"
   },
   "trendingpapers": {
@@ -11441,6 +11517,39 @@ export default {
       "name": "殷墟博物馆"
     }
   },
+  "zagg": {
+    "routes": {
+      "/new-arrivals/:query?": {
+        "path": "/new-arrivals/:query?",
+        "categories": [
+          "shopping"
+        ],
+        "example": "/zagg/new-arrivals/vendor=ZAGG,InvisibleShield&product_type=cases",
+        "parameters": {
+          "query": "query string, `vendor` and `product_type`, comma separated"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "New Arrivals",
+        "maintainers": [
+          "IvanWng97"
+        ],
+        "description": "Filter by vendor (`ZAGG`, `InvisibleShield`, `ZAGG Custom`...) and product type (`cases`, `screen protectors`, `tablet keyboards`...), e.g. `vendor=ZAGG&product_type=cases,tablet cases`",
+        "location": "new-arrivals.tsx",
+        "module": () => import('@/routes/zagg/new-arrivals.tsx')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Zagg",
+    "url": "zagg.com",
+    "lang": "en"
+  },
   "zaozao": {
     "routes": {
       "/article/:type?": {
@@ -11619,6 +11728,40 @@ export default {
   },
   "4chan": {
     "routes": {
+      "/:board/thread/:threadId/:routeParams?": {
+        "path": "/:board/thread/:threadId/:routeParams?",
+        "categories": [
+          "bbs"
+        ],
+        "example": "/4chan/g/thread/105076684",
+        "parameters": {
+          "board": "4chan board",
+          "threadId": "Thread ID, the number in the thread URL",
+          "routeParams": "extra parameters, see the table above"
+        },
+        "features": {
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "Thread",
+        "maintainers": [
+          "Hash6232"
+        ],
+        "radar": [
+          {
+            "source": [
+              "boards.4chan.org/:board/thread/:threadId",
+              "boards.4chan.org/:board/thread/:threadId/*"
+            ]
+          }
+        ],
+        "description": "Returns one feed item per post in the thread. The original post links to the thread; replies link to `#p<post number>`. The OP's reply count is exposed as `comments` in Atom, and thread state such as sticky, closed, bump limit, image limit, and archived is exposed in the feed description.\n\n| Key              | Description                          | Accepts                | Defaults to |\n| ---------------- | ------------------------------------ | ---------------------- | ----------- |\n| `revealSpoilers` | Don't wrap images tagged as spoilers | `0`/`1`/`true`/`false` | `false`     |",
+        "location": "thread.tsx",
+        "module": () => import('@/routes/4chan/thread.tsx')
+      },
       "/:board/catalog/:routeParams?": {
         "path": "/:board/catalog/:routeParams?",
         "categories": [
@@ -11648,7 +11791,7 @@ export default {
             "target": "/:board/catalog"
           }
         ],
-        "description": "Specify options (in the format of query string) in parameter `routeParams` to control extra features for threads\n\n| Key               | Description                                      | Accepts                | Defaults to |\n| ----------------- | ------------------------------------------------ | ---------------------- | ----------- |\n| `showReplyCount`  | Show number of replies of each thread in catalog | `0`/`1`/`true`/`false` | `false`     |\n| `showLastReplies` | Show last 5 replies of each thread               | `0`/`1`/`true`/`false` | `false`     |\n| `revealSpoilers`  | Don't wrap images tagged as spoilers             | `0`/`1`/`true`/`false` | `false`     |\n| `excludeSticky`   | Filter out sticky threads                        | `0`/`1`/`true`/`false` | `false`     |\n| `minReplies`      | Minimum replies per thread                       | Integer                | None        |\n| `maxReplies`      | Maximum replies per thread                       | Integer                | None        |",
+        "description": "Specify options (in the format of query string) in parameter `routeParams` to control extra features for threads\n\n| Key               | Description                                      | Accepts                | Defaults to |\n| ----------------- | ------------------------------------------------ | ---------------------- | ----------- |\n| `showReplyCount`  | Show number of replies of each thread in catalog | `0`/`1`/`true`/`false` | `false`     |\n| `showLastReplies` | Show last 5 replies of each thread               | `0`/`1`/`true`/`false` | `false`     |\n| `showThreadFeed`  | Add a per-thread feed link to each item          | `0`/`1`/`true`/`false` | `false`     |\n| `revealSpoilers`  | Don't wrap images tagged as spoilers             | `0`/`1`/`true`/`false` | `false`     |\n| `excludeSticky`   | Filter out sticky threads                        | `0`/`1`/`true`/`false` | `false`     |\n| `minReplies`      | Minimum replies per thread                       | Integer                | None        |\n| `maxReplies`      | Maximum replies per thread                       | Integer                | None        |",
         "location": "catalog.tsx",
         "module": () => import('@/routes/4chan/catalog.tsx')
       }
@@ -12420,6 +12563,82 @@ export default {
     "categories": [
       "social-media"
     ],
+    "lang": "zh-CN"
+  },
+  "mi": {
+    "routes": {
+      "/golden": {
+        "path": "/golden",
+        "categories": [
+          "program-update"
+        ],
+        "example": "/mi/golden",
+        "name": "小米应用商店金米奖",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "golden.ts",
+        "module": () => import('@/routes/mi/golden.ts')
+      },
+      "/crowdfunding": {
+        "path": "/crowdfunding",
+        "categories": [
+          "shopping"
+        ],
+        "example": "/mi/crowdfunding",
+        "name": "众筹",
+        "maintainers": [
+          "DIYgod",
+          "nuomi1"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "m.mi.com/crowdfunding/home"
+            ],
+            "target": "/crowdfunding"
+          }
+        ],
+        "view": 5,
+        "location": "crowdfunding.ts",
+        "module": () => import('@/routes/mi/crowdfunding.ts')
+      },
+      "/newproducts": {
+        "path": "/newproducts",
+        "categories": [
+          "shopping"
+        ],
+        "example": "/mi/newproducts",
+        "name": "上新",
+        "maintainers": [
+          "nuomi1"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "view": 5,
+        "location": "newproducts.ts",
+        "module": () => import('@/routes/mi/newproducts.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "小米",
+    "url": "mi.com",
     "lang": "zh-CN"
   },
   "mixcloud": {
@@ -15389,8 +15608,8 @@ export default {
         "location": "literature.ts",
         "module": () => import('@/routes/inspirehep/literature.ts')
       },
-      "/:collection{jobs|seminars|conferences|institutions|experiments|journals}/:q?": {
-        "path": "/:collection{jobs|seminars|conferences|institutions|experiments|journals}/:q?",
+      "/:collection{(?:jobs|seminars|conferences|institutions|experiments|journals)}/:q?": {
+        "path": "/:collection{(?:jobs|seminars|conferences|institutions|experiments|journals)}/:q?",
         "name": "Collection Search",
         "categories": [
           "journal"
@@ -15500,6 +15719,47 @@ export default {
     "categories": [
       "journal"
     ],
+    "lang": "en"
+  },
+  "instagram": {
+    "routes": {
+      "/:category/:key": {
+        "path": "/:category/:key",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/instagram/user/stefaniejoosten",
+        "parameters": {
+          "category": "Feed category, see table below",
+          "key": "Username / Hashtag name"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "INSTAGRAM_COOKIE",
+              "optional": true,
+              "description": "Instagram cookie, only `sessionid` and `ds_user_id` are required."
+            }
+          ],
+          "requirePuppeteer": false,
+          "antiCrawler": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "User",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "description": "| User Posts | Current stories | Highlighted stories | Hashtag |\n| ---------- | --------------- | ------------------- | ------- |\n| user       | stories         | highlights          | tags    |\n\nStories, highlights and hashtags require a cookie.",
+        "location": "index.ts",
+        "module": () => import('@/routes/instagram/index.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Instagram",
+    "url": "www.instagram.com",
+    "description": "::: tip\nIt's highly recommended to deploy with Redis cache enabled.\n:::",
     "lang": "en"
   },
   "iwara": {
@@ -16710,82 +16970,6 @@ export default {
       "name": "美露可利"
     }
   },
-  "mi": {
-    "routes": {
-      "/golden": {
-        "path": "/golden",
-        "categories": [
-          "program-update"
-        ],
-        "example": "/mi/golden",
-        "name": "小米应用商店金米奖",
-        "maintainers": [
-          "nczitzk"
-        ],
-        "location": "golden.ts",
-        "module": () => import('@/routes/mi/golden.ts')
-      },
-      "/crowdfunding": {
-        "path": "/crowdfunding",
-        "categories": [
-          "shopping"
-        ],
-        "example": "/mi/crowdfunding",
-        "name": "众筹",
-        "maintainers": [
-          "DIYgod",
-          "nuomi1"
-        ],
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportRadar": true,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "m.mi.com/crowdfunding/home"
-            ],
-            "target": "/crowdfunding"
-          }
-        ],
-        "view": 5,
-        "location": "crowdfunding.ts",
-        "module": () => import('@/routes/mi/crowdfunding.ts')
-      },
-      "/newproducts": {
-        "path": "/newproducts",
-        "categories": [
-          "shopping"
-        ],
-        "example": "/mi/newproducts",
-        "name": "上新",
-        "maintainers": [
-          "nuomi1"
-        ],
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportRadar": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "view": 5,
-        "location": "newproducts.ts",
-        "module": () => import('@/routes/mi/newproducts.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "小米",
-    "url": "mi.com",
-    "lang": "zh-CN"
-  },
   "missevan": {
     "routes": {
       "/drama/:id": {
@@ -17218,13 +17402,13 @@ export default {
         "maintainers": [
           "emdoe"
         ],
-        "example": "/openalex/s64187185/subfield/2604",
+        "example": "/openalex/s64187185/subfield/1312",
         "parameters": {
           "journals": "Pipe-separated journal source IDs (e.g., s64187185|s123456789)",
           "type": "Optional filter type: subfield, topic, field, or domain",
           "ids": "Optional pipe-separated filter IDs matching the type (e.g., 2604|2605 for subfields)"
         },
-        "description": "Get recent scientific publications from OpenAlex filtered by journal and optionally by topic classification (last 2 weeks).\n\nExamples:\n\n- /openalex/s64187185 - All works from a journal (no topic filter)\n- /openalex/s64187185/subfield/2604 - Filter by subfield\n- /openalex/s64187185|s123456/topic/T10001|T10002 - Filter by topic with multiple journals\n- /openalex/s64187185/field/19 - Filter by field\n- /openalex/s64187185/domain/1 - Filter by domain",
+        "description": "Get recent scientific publications from OpenAlex filtered by journal and optionally by topic classification (last 2 weeks).\n\nExamples:\n\n- /openalex/s64187185 - All works from a journal (no topic filter)\n- /openalex/s64187185/subfield/1312 - Filter by subfield\n- /openalex/s64187185|s123456/topic/T10001|T10002 - Filter by topic with multiple journals\n- /openalex/s64187185/field/19 - Filter by field\n- /openalex/s64187185/domain/1 - Filter by domain",
         "categories": [
           "journal"
         ],
@@ -18006,7 +18190,7 @@ export default {
         },
         "name": "Illust",
         "maintainers": [
-          "SnowAgar25"
+          "Tsuyumi25"
         ],
         "radar": [
           {
@@ -18062,7 +18246,7 @@ export default {
         },
         "name": "Hot",
         "maintainers": [
-          "SnowAgar25"
+          "Tsuyumi25"
         ],
         "radar": [
           {
@@ -18118,7 +18302,7 @@ export default {
         },
         "name": "Manga",
         "maintainers": [
-          "SnowAgar25"
+          "Tsuyumi25"
         ],
         "radar": [
           {
@@ -22959,7 +23143,7 @@ export default {
         "name": "User timeline",
         "maintainers": [
           "siygle",
-          "SnowAgar25",
+          "Tsuyumi25",
           "HanaokaYuzu"
         ],
         "location": "user-timeline.ts",
@@ -23916,7 +24100,7 @@ export default {
         },
         "name": "Works and Creators",
         "maintainers": [
-          "SnowAgar25"
+          "Tsuyumi25"
         ],
         "radar": [
           {
@@ -24013,7 +24197,7 @@ export default {
         },
         "name": "Search Results",
         "maintainers": [
-          "SnowAgar25"
+          "Tsuyumi25"
         ],
         "description": "Get the search results for works on Skeb",
         "location": "search.ts",
@@ -24045,7 +24229,7 @@ export default {
         },
         "name": "Creator Works",
         "maintainers": [
-          "SnowAgar25"
+          "Tsuyumi25"
         ],
         "radar": [
           {
@@ -24086,7 +24270,7 @@ export default {
         },
         "name": "Following Creators",
         "maintainers": [
-          "SnowAgar25"
+          "Tsuyumi25"
         ],
         "radar": [
           {
@@ -24127,7 +24311,7 @@ export default {
         },
         "name": "Following Works",
         "maintainers": [
-          "SnowAgar25"
+          "Tsuyumi25"
         ],
         "radar": [
           {
@@ -24168,7 +24352,7 @@ export default {
         },
         "name": "Friend Works",
         "maintainers": [
-          "SnowAgar25"
+          "Tsuyumi25"
         ],
         "radar": [
           {
@@ -24492,6 +24676,105 @@ export default {
     "apiRoutes": {},
     "name": "UNTAG",
     "url": "utgd.net",
+    "lang": "zh-CN"
+  },
+  "viva-la-vita": {
+    "routes": {
+      "/featured": {
+        "path": "/featured",
+        "name": "精华帖子",
+        "categories": [
+          "bbs"
+        ],
+        "example": "/viva-la-vita/featured",
+        "maintainers": [
+          "0zheermao0"
+        ],
+        "description": "对应论坛“精华”，仅返回加精主题，按加精日期倒序排列，不是置顶主题。读取榜单前 20 个主题，跳过首帖不可见的主题，包含首帖正文及最新 5 条公开评论（新到旧，不含首帖及系统事件）。评论缓存 5 分钟，无需登录。主题链接、GUID 和发布时间在各路由中保持一致，不因排名、加精、编辑或回复而生成新条目；新增评论只更新原条目内容。是否重新通知以及跨订阅去重取决于阅读器。",
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": true,
+          "nsfw": true
+        },
+        "radar": [
+          {
+            "source": [
+              "bbs.viva-la-vita.org/",
+              "bbs.viva-la-vita.org/all"
+            ],
+            "target": "/featured"
+          }
+        ],
+        "location": "featured.ts",
+        "module": () => import('@/routes/viva-la-vita/featured.ts')
+      },
+      "/hot": {
+        "path": "/hot",
+        "name": "热门帖子",
+        "categories": [
+          "bbs"
+        ],
+        "example": "/viva-la-vita/hot",
+        "maintainers": [
+          "0zheermao0"
+        ],
+        "description": "对应论坛“热门”，按评论总数倒序排列，为全站累计热门榜，不是近期热度榜。读取榜单前 20 个主题，跳过首帖不可见的主题，包含首帖正文及最新 5 条公开评论（新到旧，不含首帖及系统事件）。评论缓存 5 分钟，无需登录。主题链接、GUID 和发布时间在各路由中保持一致，不因排名、加精、编辑或回复而生成新条目；新增评论只更新原条目内容。是否重新通知以及跨订阅去重取决于阅读器。",
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": true,
+          "nsfw": true
+        },
+        "radar": [
+          {
+            "source": [
+              "bbs.viva-la-vita.org/",
+              "bbs.viva-la-vita.org/all"
+            ],
+            "target": "/hot"
+          }
+        ],
+        "location": "hot.ts",
+        "module": () => import('@/routes/viva-la-vita/hot.ts')
+      },
+      "/latest": {
+        "path": "/latest",
+        "name": "最新帖子",
+        "categories": [
+          "bbs"
+        ],
+        "example": "/viva-la-vita/latest",
+        "maintainers": [
+          "0zheermao0"
+        ],
+        "description": "按主题创建时间倒序排列。读取榜单前 20 个主题，跳过首帖不可见的主题，包含首帖正文及最新 5 条公开评论（新到旧，不含首帖及系统事件）。评论缓存 5 分钟，无需登录。主题链接、GUID 和发布时间在各路由中保持一致，不因排名、加精、编辑或回复而生成新条目；新增评论只更新原条目内容。是否重新通知以及跨订阅去重取决于阅读器。",
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": true,
+          "nsfw": true
+        },
+        "radar": [
+          {
+            "source": [
+              "bbs.viva-la-vita.org/",
+              "bbs.viva-la-vita.org/all",
+              "bbs.viva-la-vita.org/d/:id"
+            ],
+            "target": "/latest"
+          }
+        ],
+        "location": "latest.ts",
+        "module": () => import('@/routes/viva-la-vita/latest.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "生如夏花论坛",
+    "url": "bbs.viva-la-vita.org",
     "lang": "zh-CN"
   },
   "wellcee": {
@@ -31432,7 +31715,7 @@ export default {
         "maintainers": [
           "lifetraveler"
         ],
-        "example": "/air-level/rank/best,/air-level/rank",
+        "example": "/air-level/rank",
         "location": "levelrank.ts",
         "module": () => import('@/routes/air-level/levelrank.ts')
       }
@@ -33801,8 +34084,8 @@ export default {
   },
   "aqara": {
     "routes": {
-      "/:region{cn|kr|eu|us|ru|en}/:type?": {
-        "path": "/:region{cn|kr|eu|us|ru|en}/:type?",
+      "/:region{(?:cn|kr|eu|us|ru|en)}/:type?": {
+        "path": "/:region{(?:cn|kr|eu|us|ru|en)}/:type?",
         "categories": [
           "other"
         ],
@@ -42899,6 +43182,52 @@ export default {
         "view": 0,
         "location": "district.ts",
         "module": () => import('@/routes/ce/district.ts')
+      },
+      "/paper/:page?": {
+        "path": "/paper/:page?",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/ce/paper",
+        "parameters": {
+          "page": "版面编号，如 `01`；使用 `all` 或留空获取全部版面"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "paper.ce.cn",
+              "paper.ce.cn/index.html",
+              "paper.ce.cn/pc/layout",
+              "paper.ce.cn/pc/layout/index.html",
+              "paper.ce.cn/pad/layout",
+              "paper.ce.cn/pad/layout/index.html"
+            ],
+            "target": "/paper"
+          },
+          {
+            "source": [
+              "paper.ce.cn/pc/layout/:yearMonth/:day/node_:page.html",
+              "paper.ce.cn/pad/layout/:yearMonth/:day/node_:page.html"
+            ],
+            "target": "/paper/:page"
+          }
+        ],
+        "name": "电子版",
+        "maintainers": [
+          "zhangsan-xyz"
+        ],
+        "url": "paper.ce.cn/pc/layout/index.html",
+        "description": "获取当日《经济日报》电子版的全部文章或指定版面文章。",
+        "location": "paper.ts",
+        "module": () => import('@/routes/ce/paper.ts')
       }
     },
     "apiRoutes": {},
@@ -47505,7 +47834,7 @@ export default {
         ],
         "example": "/cntheory/paper",
         "parameters": {
-          "id": "板块，默认为全部"
+          "id": "版块或版面编号，默认为全部，如 `国内大局` 或 `01`；使用 `all` 或留空获取全部版面"
         },
         "features": {
           "requireConfig": false,
@@ -47515,18 +47844,35 @@ export default {
           "supportPodcast": false,
           "supportScihub": false
         },
+        "radar": [
+          {
+            "source": [
+              "paper.studytimes.cn",
+              "paper.studytimes.cn/cntheory"
+            ],
+            "target": "/paper"
+          },
+          {
+            "source": [
+              "paper.studytimes.cn/cntheory/:yearMonth/:day/node_:id.html"
+            ],
+            "target": "/paper/:id"
+          }
+        ],
         "name": "学习时报",
         "maintainers": [
-          "nczitzk"
+          "nczitzk",
+          "zhangsan-xyz"
         ],
-        "description": "如订阅 **第 A1 版：国内大局**，路由为 [`/cntheory/paper/国内大局`](https://rsshub.app/cntheory/paper/国内大局)。",
-        "location": "paper.tsx",
-        "module": () => import('@/routes/cntheory/paper.tsx')
+        "url": "paper.studytimes.cn/cntheory",
+        "description": "获取当日《学习时报》数字报的全部文章或指定版面文章。如订阅 **01 版：国内大局**，路由为 `/cntheory/paper/国内大局` 或 `/cntheory/paper/01`。",
+        "location": "paper.ts",
+        "module": () => import('@/routes/cntheory/paper.ts')
       }
     },
     "apiRoutes": {},
     "name": "理论网",
-    "url": "paper.cntheory.com",
+    "url": "paper.studytimes.cn",
     "lang": "zh-CN"
   },
   "cnu": {
@@ -63648,6 +63994,59 @@ export default {
     "description": "",
     "lang": "zh-CN"
   },
+  "gmrb": {
+    "routes": {
+      "/paper/:page?": {
+        "path": "/paper/:page?",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/gmrb/paper",
+        "parameters": {
+          "page": "版面编号，如 `01`；使用 `all` 或留空获取全部版面"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "epaper.gmw.cn/gmrb",
+              "epaper.gmw.cn/gmrb/html/layout/index.html",
+              "epaper.gmw.cn/gmrb/paperindex.htm"
+            ],
+            "target": "/paper"
+          },
+          {
+            "source": [
+              "epaper.gmw.cn/gmrb/html/layout/:yearMonth/:day/node_:page.html"
+            ],
+            "target": "/paper/:page"
+          }
+        ],
+        "name": "电子版",
+        "maintainers": [
+          "zhangsan-xyz"
+        ],
+        "url": "epaper.gmw.cn/gmrb/html/layout/index.html",
+        "description": "获取当日《光明日报》电子版的全部文章或指定版面文章。",
+        "location": "paper.ts",
+        "module": () => import('@/routes/gmrb/paper.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "光明日报",
+    "url": "epaper.gmw.cn/gmrb",
+    "categories": [
+      "traditional-media"
+    ],
+    "lang": "zh-CN"
+  },
   "gmu": {
     "routes": {
       "/news/:type?": {
@@ -78982,6 +79381,102 @@ export default {
       "name": "京王電鉄"
     }
   },
+  "keke.app": {
+    "routes": {
+      "/:category?": {
+        "path": "/:category?",
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/keke.app/latest",
+        "parameters": {
+          "category": {
+            "description": "分类，默认为 `latest`",
+            "default": "latest",
+            "options": [
+              {
+                "value": "latest",
+                "label": "最近更新"
+              },
+              {
+                "value": "movie",
+                "label": "电影"
+              },
+              {
+                "value": "series",
+                "label": "连续剧"
+              },
+              {
+                "value": "anime",
+                "label": "动漫"
+              },
+              {
+                "value": "variety",
+                "label": "综艺纪录"
+              },
+              {
+                "value": "short",
+                "label": "短剧"
+              },
+              {
+                "value": "hot-movie",
+                "label": "近期热门电影"
+              },
+              {
+                "value": "hot-series",
+                "label": "近期热门剧集"
+              },
+              {
+                "value": "hot-jpkr",
+                "label": "近期热门日韩剧"
+              },
+              {
+                "value": "hot-western",
+                "label": "近期热门欧美剧"
+              },
+              {
+                "value": "hot-hktw",
+                "label": "近期热门港台剧"
+              },
+              {
+                "value": "hot-cn",
+                "label": "近期热播国产剧"
+              },
+              {
+                "value": "hot-anime",
+                "label": "热播动漫"
+              },
+              {
+                "value": "hot-variety",
+                "label": "热播综艺纪录"
+              }
+            ]
+          }
+        },
+        "features": {
+          "antiCrawler": true
+        },
+        "radar": [
+          {
+            "source": [
+              "www.keke1.app/"
+            ],
+            "target": "/latest"
+          }
+        ],
+        "name": "分类",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "location": "index.ts",
+        "module": () => import('@/routes/keke.app/index.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "可可影视",
+    "url": "www.keke1.app",
+    "lang": "zh-CN"
+  },
   "kelownacapnews": {
     "routes": {
       "/:type": {
@@ -81295,7 +81790,7 @@ export default {
             ]
           }
         },
-        "description": "Newly granted food business permits (飲食店営業許可 etc.) in Tokyo wards, from each ward's CC BY open data:\n\n- 渋谷区: [食品営業許可施設一覧 (ArcGIS FeatureServer)](https://city-shibuya-data.opendata.arcgis.com/items/e68f41ebfa5f4ea490ca9af701d44e02) — current and previous month\n- 港区: [食品営業許可一覧 (CSV)](https://catalog.data.metro.tokyo.lg.jp/dataset/t131032d0000000244) — monthly snapshot of valid permits, newest first\n- 台東区: [食品衛生営業施設一覧](https://www.city.taito.lg.jp/kenkohukusi/kenkokikikanrieisei/food/syokuhin-sisetu/index.html) — the two newest monthly 新規許可 CSVs (updated on the 10th)\n- 品川区: [食品衛生許可施設一覧](https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-eisei/kenkou-eisei-syokuhin/opendate.html) — the two newest monthly CSVs (updated on the 15th); individuals' names and addresses are masked by the publisher and come through as `null`\n- 世田谷区: [食品関係施設情報の公開について](https://www.city.setagaya.lg.jp/02245/online_tetsuzuki/3246.html) — the two newest 例月新規許可施設一覧 CSVs (updated on the 15th)\n- 目黒区: [飲食店等 (BODIK CKAN)](https://data.bodik.jp/dataset/131105_food_business) — the two newest 飲食店 新規 monthly CSVs (updated by the 10th)\n\nItems are sorted by permit date (`pubDate`). `_extra` holds `source`, `ward`, `permit_no`, `name`, `address`, `town` (町字), `permit_date`, `first_permit_date`, `expires_at` (許可満了日), `closed_date` (廃業日 — non-null means the business has already closed), `business_type`, `lat` / `lon` and the publisher's original columns in `raw`. Every field a publisher omits is `null`, never `0` or an empty string. Only 許可 rows are included (届出 rows are skipped).\n\n| Query   | Description                           | Default |\n| ------- | ------------------------------------- | ------- |\n| `limit` | Number of permits per source, max 500 | 100     |",
+        "description": "Newly granted food business permits (飲食店営業許可 etc.) in Tokyo wards, from each ward's CC BY open data:\n\n- 渋谷区: [食品営業許可施設一覧 (ArcGIS FeatureServer)](https://city-shibuya-data.opendata.arcgis.com/items/e68f41ebfa5f4ea490ca9af701d44e02) — current and previous month\n- 港区: [食品営業許可一覧 (CSV)](https://catalog.data.metro.tokyo.lg.jp/dataset/t131032d0000000244) — monthly snapshot of valid permits, newest first\n- 台東区: [食品衛生営業施設一覧](https://www.city.taito.lg.jp/kenkohukusi/kenkokikikanrieisei/food/syokuhin-sisetu/index.html) — the two newest monthly 新規許可 CSVs (updated on the 10th)\n- 品川区: [食品衛生許可施設一覧](https://www.city.shinagawa.tokyo.jp/kenko/eisei/1003077/1003132.html) — the two newest monthly CSVs (updated on the 15th); individuals' names and addresses are masked by the publisher and come through as `null`\n- 世田谷区: [食品関係施設情報の公開について](https://www.city.setagaya.lg.jp/02245/online_tetsuzuki/3246.html) — the two newest 例月新規許可施設一覧 CSVs (updated on the 15th)\n- 目黒区: [飲食店等 (BODIK CKAN)](https://data.bodik.jp/dataset/131105_food_business) — the two newest 飲食店 新規 monthly CSVs (updated by the 10th)\n\nItems are sorted by permit date (`pubDate`). `_extra` holds `source`, `ward`, `permit_no`, `name`, `address`, `town` (町字), `permit_date`, `first_permit_date`, `expires_at` (許可満了日), `closed_date` (廃業日 — non-null means the business has already closed), `business_type`, `lat` / `lon` and the publisher's original columns in `raw`. Every field a publisher omits is `null`, never `0` or an empty string. Only 許可 rows are included (届出 rows are skipped).\n\n| Query   | Description                           | Default |\n| ------- | ------------------------------------- | ------- |\n| `limit` | Number of permits per source, max 500 | 100     |",
         "categories": [
           "government"
         ],
@@ -94383,6 +94878,124 @@ export default {
     "description": "::: tip\n路由地址全部按照 **学校官网域名和栏目编号** 设计\n\n使用方法：\n\n以[南信大信息公告栏](https://bulletin.nuist.edu.cn)为例，点开任意一个栏目\n\n获得 URL 中的**分域名**和**栏目编号（可选）**：https\\://`bulletin`.nuist.edu.cn/`791`/list.htm\n\n将其替换到 RSS 路由地址中即可：\n\n[https://rsshub.app/**nuist**/`bulletin`](https://rsshub.app/nuist/bulletin) 或 [https://rsshub.app/**nuist**/`bulletin`/`791`](https://rsshub.app/nuist/bulletin)\n:::",
     "lang": "zh-CN"
   },
+  "nvidia": {
+    "routes": {
+      "/developer/:language?": {
+        "path": "/developer/:language?",
+        "name": "Technical Blog",
+        "url": "developer.nvidia.com/blog",
+        "example": "/nvidia/developer",
+        "categories": [
+          "programming"
+        ],
+        "maintainers": [
+          "ljh12138164"
+        ],
+        "parameters": {
+          "language": {
+            "description": "Blog language",
+            "default": "en",
+            "options": [
+              {
+                "value": "en",
+                "label": "English"
+              },
+              {
+                "value": "zh-CN",
+                "label": "Simplified Chinese"
+              }
+            ]
+          }
+        },
+        "description": "Full technical articles from the official WordPress API, including images, code blocks, and tables. The official feeds only contain excerpts.",
+        "zh": {
+          "name": "技术博客",
+          "parameters": {
+            "language": {
+              "description": "文章语言。中英文站分别维护，文章列表和发布时间可能不同",
+              "default": "en",
+              "options": [
+                {
+                  "value": "en",
+                  "label": "英语"
+                },
+                {
+                  "value": "zh-CN",
+                  "label": "简体中文"
+                }
+              ]
+            }
+          },
+          "description": "官方 Feed 只提供摘要。本路由通过官方 WordPress API 获取全文，保留图片、代码块和表格。使用 `/nvidia/developer/zh-CN` 订阅简体中文，或使用 `/nvidia/developer/en` 订阅英文。"
+        },
+        "radar": [
+          {
+            "source": [
+              "developer.nvidia.com/blog",
+              "developer.nvidia.com/blog/:slug"
+            ],
+            "target": "/developer/en"
+          },
+          {
+            "source": [
+              "developer.nvidia.cn/blog",
+              "developer.nvidia.cn/blog/:slug"
+            ],
+            "target": "/developer/zh-CN"
+          },
+          {
+            "source": [
+              "developer.nvidia.com/zh-cn/blog",
+              "developer.nvidia.com/zh-cn/blog/:slug"
+            ],
+            "target": "/developer/zh-CN"
+          }
+        ],
+        "features": {
+          "requirePuppeteer": false,
+          "supportRadar": true
+        },
+        "location": "developer.ts",
+        "module": () => import('@/routes/nvidia/developer.ts')
+      },
+      "/newsroom": {
+        "path": "/newsroom",
+        "name": "Newsroom",
+        "url": "nvidianews.nvidia.com",
+        "example": "/nvidia/newsroom",
+        "categories": [
+          "new-media"
+        ],
+        "maintainers": [
+          "ljh12138164"
+        ],
+        "description": "Full articles from the English newsroom feed, covering press releases and selected NVIDIA Blog posts. Expands blog excerpts into complete articles.",
+        "zh": {
+          "name": "新闻中心",
+          "description": "订阅英文新闻中心的新闻稿和部分企业博客文章，并补全其中只有摘要的正文。"
+        },
+        "radar": [
+          {
+            "source": [
+              "nvidianews.nvidia.com",
+              "nvidianews.nvidia.com/news/:slug"
+            ],
+            "target": "/newsroom"
+          }
+        ],
+        "features": {
+          "requirePuppeteer": false,
+          "supportRadar": true
+        },
+        "location": "newsroom.ts",
+        "module": () => import('@/routes/nvidia/newsroom.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "NVIDIA",
+    "url": "nvidia.com",
+    "lang": "en"
+  },
   "nwafu": {
     "routes": {
       "/:type?": {
@@ -100818,7 +101431,7 @@ export default {
         },
         "name": "Category",
         "maintainers": [
-          "SnowAgar25"
+          "Tsuyumi25"
         ],
         "description": "::: tip\n`https://www.pixivision.net/zh-tw/c/interview` → `/pixivision/zh-tw/interview`\n:::",
         "radar": [
@@ -103833,14 +104446,15 @@ export default {
         "location": "index.ts",
         "module": () => import('@/routes/qstheory/index.ts')
       },
-      "/magazine/:magazine": {
-        "path": "/magazine/:magazine",
+      "/magazine/:magazine/:issue?": {
+        "path": "/magazine/:magazine/:issue?",
         "categories": [
           "traditional-media"
         ],
         "example": "/qstheory/magazine/qs",
         "parameters": {
-          "magazine": "刊物，`qs` 为求是，`hqwglist` 为红旗文稿"
+          "magazine": "刊物，`qs` 为求是，`hqwglist` 为红旗文稿",
+          "issue": "期数编号，如 `21` 或 `2026-21`；留空或 `latest` 获取最新一期"
         },
         "radar": [
           {
@@ -103852,7 +104466,8 @@ export default {
         "name": "在线读刊",
         "maintainers": [
           "TonyRL",
-          "cscnk52"
+          "cscnk52",
+          "zhangsan-xyz"
         ],
         "location": "magazine.ts",
         "module": () => import('@/routes/qstheory/magazine.ts')
@@ -109914,32 +110529,6 @@ export default {
   },
   "shopback": {
     "routes": {
-      "/cashback/:store/:market?": {
-        "path": "/cashback/:store/:market?",
-        "example": "/shopback/cashback/agoda/tw",
-        "name": "Merchant cashback rates",
-        "categories": [
-          "shopping"
-        ],
-        "maintainers": [
-          "DIYgod"
-        ],
-        "parameters": {
-          "store": "Merchant slug from its ShopBack URL.",
-          "market": "tw (default), my, sg, th, kr, au, id, or ph."
-        },
-        "description": "Includes the merchant’s current cashback rates. Each distinct product-and-rate combination has a separate GUID. A return to a previously seen rate reuses its earlier GUID. The former product/search and store/search endpoints are no longer available.",
-        "radar": [
-          {
-            "source": [
-              "www.shopback.com.tw/:store"
-            ],
-            "target": "/cashback/:store/tw"
-          }
-        ],
-        "location": "cashback.ts",
-        "module": () => import('@/routes/shopback/cashback.ts')
-      },
       "/:store": {
         "path": "/:store",
         "categories": [
@@ -109971,6 +110560,32 @@ export default {
         ],
         "location": "store.ts",
         "module": () => import('@/routes/shopback/store.ts')
+      },
+      "/cashback/:store/:market?": {
+        "path": "/cashback/:store/:market?",
+        "example": "/shopback/cashback/agoda/tw",
+        "name": "Merchant cashback rates",
+        "categories": [
+          "shopping"
+        ],
+        "maintainers": [
+          "DIYgod"
+        ],
+        "parameters": {
+          "store": "Merchant slug from its ShopBack URL.",
+          "market": "tw (default), my, sg, th, kr, au, id, or ph."
+        },
+        "description": "Includes the merchant’s current cashback rates. Each distinct product-and-rate combination has a separate GUID. A return to a previously seen rate reuses its earlier GUID. The former product/search and store/search endpoints are no longer available.",
+        "radar": [
+          {
+            "source": [
+              "www.shopback.com.tw/:store"
+            ],
+            "target": "/cashback/:store/tw"
+          }
+        ],
+        "location": "cashback.ts",
+        "module": () => import('@/routes/shopback/cashback.ts')
       }
     },
     "apiRoutes": {},
@@ -119792,7 +120407,7 @@ export default {
           "AlanZeng423",
           "SuperPung"
         ],
-        "description": "| Focus on TJU | General News | Internal News | Media Report | Pictures of TJU |\n| :----------: | :----------: | :-----------: | :----------: | :-------------: |\n|     focus    |    general   |    internal   |     media    |     picture     |",
+        "description": "| Cover News | General News | Campus News | Media Report | Pictures of TJU |\n| :--------: | :----------: | :---------: | :----------: | :-------------: |\n|    focus   |    general   |   internal  |     media    |     picture     |",
         "location": "news/index.ts",
         "module": () => import('@/routes/tju/news/index.ts')
       },
@@ -128952,7 +129567,7 @@ export default {
         },
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": false,
+          "requirePuppeteer": true,
           "antiCrawler": true,
           "supportBT": false,
           "supportPodcast": false,
@@ -131374,39 +131989,6 @@ export default {
     "name": "游研社",
     "url": "yystv.cn",
     "lang": "zh-CN"
-  },
-  "zagg": {
-    "routes": {
-      "/new-arrivals/:query?": {
-        "path": "/new-arrivals/:query?",
-        "categories": [
-          "shopping"
-        ],
-        "example": "/zagg/new-arrivals/brand=164&cat=3038,3041",
-        "parameters": {
-          "query": "query, search page querystring"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "New Arrivals",
-        "maintainers": [
-          "IvanWng97"
-        ],
-        "description": "For instance, in `https://www.zagg.com/en_us/new-arrivals?brand=164&cat=3038%2C3041`, the query is `brand=164&cat=3038%2C3041`",
-        "location": "new-arrivals.tsx",
-        "module": () => import('@/routes/zagg/new-arrivals.tsx')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Zagg",
-    "url": "zagg.com",
-    "lang": "en"
   },
   "zaker": {
     "routes": {
@@ -135073,6 +135655,162 @@ export default {
     "url": "aljazeera.com",
     "lang": "en"
   },
+  "amd": {
+    "routes": {
+      "/newsroom/:category?/:language?": {
+        "path": "/newsroom/:category?/:language?",
+        "name": "Newsroom",
+        "url": "newsroom.amd.com",
+        "example": "/amd/newsroom",
+        "categories": [
+          "new-media"
+        ],
+        "maintainers": [
+          "ljh12138164"
+        ],
+        "parameters": {
+          "category": "Official category slug such as gaming, ai, or data-center. Omit or use all for all news. Chinese supports all only.",
+          "language": {
+            "description": "Article language. Chinese uses the latest news and blogs on the regional homepage.",
+            "default": "en",
+            "options": [
+              {
+                "value": "en",
+                "label": "English"
+              },
+              {
+                "value": "zh-CN",
+                "label": "Simplified Chinese"
+              }
+            ]
+          }
+        },
+        "description": "Use `/amd/newsroom/all/zh-CN` for the Chinese homepage news and blogs. Fetches complete articles and footnotes using the official RSS feed for discovery. For Radeon and gaming news, use `/amd/newsroom/gaming`.",
+        "zh": {
+          "name": "新闻中心",
+          "parameters": {
+            "category": "官网分类，如 gaming（游戏与显卡）、ai（人工智能）或 data-center（数据中心）。留空或填 all 订阅全部新闻；中文站仅支持 all",
+            "language": {
+              "description": "文章语言。中英文站的文章列表和发布时间可能不同",
+              "default": "en",
+              "options": [
+                {
+                  "value": "en",
+                  "label": "英语"
+                },
+                {
+                  "value": "zh-CN",
+                  "label": "简体中文"
+                }
+              ]
+            }
+          },
+          "description": "获取文章的完整正文和脚注。英文文章列表来自官方 RSS，使用 `/amd/newsroom/all/en` 订阅；Radeon 显卡和游戏资讯可使用 `/amd/newsroom/gaming`。中文内容来自地区官网首页的最新新闻和博客，使用 `/amd/newsroom/all/zh-CN` 订阅。中文站不支持按分类订阅。"
+        },
+        "radar": [
+          {
+            "source": [
+              "newsroom.amd.com",
+              "newsroom.amd.com/news/:slug"
+            ],
+            "target": "/newsroom"
+          },
+          {
+            "source": [
+              "newsroom.amd.com/category/:category"
+            ],
+            "target": "/newsroom/:category"
+          },
+          {
+            "source": [
+              "www.amd.com/zh-cn/newsroom.html"
+            ],
+            "target": "/newsroom/all/zh-CN"
+          }
+        ],
+        "features": {
+          "requirePuppeteer": false,
+          "supportRadar": true
+        },
+        "location": "newsroom.ts",
+        "module": () => import('@/routes/amd/newsroom.ts')
+      },
+      "/press-releases/:language?": {
+        "path": "/press-releases/:language?",
+        "name": "Press Releases",
+        "url": "ir.amd.com/news-events/press-releases",
+        "example": "/amd/press-releases",
+        "categories": [
+          "finance"
+        ],
+        "maintainers": [
+          "ljh12138164"
+        ],
+        "parameters": {
+          "language": {
+            "description": "Article language. English uses the investor relations feed; Chinese uses the regional newsroom homepage. Lists and publication dates differ.",
+            "default": "en",
+            "options": [
+              {
+                "value": "en",
+                "label": "English"
+              },
+              {
+                "value": "zh-CN",
+                "label": "Simplified Chinese"
+              }
+            ]
+          }
+        },
+        "description": "Use `/amd/press-releases/zh-CN` for Chinese press releases. Full press releases from the investor relations website. The official RSS feed provides titles and links without article bodies.",
+        "zh": {
+          "name": "新闻稿",
+          "parameters": {
+            "language": {
+              "description": "文章语言。中英文新闻稿的来源、文章列表和发布时间不同",
+              "default": "en",
+              "options": [
+                {
+                  "value": "en",
+                  "label": "英语"
+                },
+                {
+                  "value": "zh-CN",
+                  "label": "简体中文"
+                }
+              ]
+            }
+          },
+          "description": "英文新闻稿来自投资者关系网站，官方 RSS 只有标题和链接，本路由会补全正文。使用 `/amd/press-releases/en` 订阅英文，或使用 `/amd/press-releases/zh-CN` 订阅地区新闻中心首页的中文新闻稿。"
+        },
+        "radar": [
+          {
+            "source": [
+              "ir.amd.com/news-events/press-releases",
+              "ir.amd.com/news-events/press-releases/detail/:id/:slug"
+            ],
+            "target": "/press-releases/en"
+          },
+          {
+            "source": [
+              "www.amd.com/zh-cn/newsroom/press-releases/:slug"
+            ],
+            "target": "/press-releases/zh-CN"
+          }
+        ],
+        "features": {
+          "requirePuppeteer": false,
+          "supportRadar": true
+        },
+        "location": "press-releases.ts",
+        "module": () => import('@/routes/amd/press-releases.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "AMD",
+    "url": "amd.com",
+    "lang": "en"
+  },
   "apnews": {
     "routes": {
       "/sitemap/:route": {
@@ -135893,6 +136631,38 @@ export default {
         "description": "Releases on the music page of an artist or label, in the order the page shows them (newest first unless the artist reorders them). Returns the latest 10 by default, use `limit` for more. Artists on a custom domain still have a bandcamp.com subdomain.",
         "location": "artist.tsx",
         "module": () => import('@/routes/bandcamp/artist.tsx')
+      },
+      "/daily": {
+        "path": "/daily",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/bandcamp/daily",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "daily.bandcamp.com/latest"
+            ],
+            "target": "/daily"
+          }
+        ],
+        "name": "Daily",
+        "maintainers": [
+          "ashi-koki"
+        ],
+        "url": "daily.bandcamp.com/latest",
+        "description": "The latest Bandcamp Daily articles, with the full article text and images.",
+        "location": "daily.ts",
+        "module": () => import('@/routes/bandcamp/daily.ts')
       },
       "/tag/:tag?": {
         "path": "/tag/:tag?",
@@ -139052,7 +139822,7 @@ export default {
         },
         "name": "Category",
         "maintainers": [
-          "SnowAgar25"
+          "Tsuyumi25"
         ],
         "radar": [
           {
@@ -139083,7 +139853,7 @@ export default {
         },
         "name": "最新記事",
         "maintainers": [
-          "SnowAgar25"
+          "Tsuyumi25"
         ],
         "radar": [
           {
@@ -139159,7 +139929,7 @@ export default {
         },
         "name": "Navigation",
         "maintainers": [
-          "SnowAgar25"
+          "Tsuyumi25"
         ],
         "description": "| 殿堂 | 動畫  | VR | 漫畫  | 音聲  | CG・イラスト |\n| ---- | ----- | -- | ----- | ----- | ------------ |\n| best | video | vr | comic | voice | cg           |",
         "location": "navigation.ts",
@@ -139185,7 +139955,7 @@ export default {
         },
         "name": "動画カテゴリー",
         "maintainers": [
-          "SnowAgar25"
+          "Tsuyumi25"
         ],
         "radar": [
           {
@@ -139219,7 +139989,7 @@ export default {
         },
         "name": "AVメーカー",
         "maintainers": [
-          "SnowAgar25"
+          "Tsuyumi25"
         ],
         "radar": [
           {
@@ -139253,7 +140023,7 @@ export default {
         },
         "name": "Search",
         "maintainers": [
-          "SnowAgar25"
+          "Tsuyumi25"
         ],
         "location": "search.ts",
         "module": () => import('@/routes/chikubi/search.ts')
@@ -139278,7 +140048,7 @@ export default {
         },
         "name": "Tag",
         "maintainers": [
-          "SnowAgar25"
+          "Tsuyumi25"
         ],
         "radar": [
           {
@@ -153595,47 +154365,6 @@ export default {
     "url": "www.infzm.com",
     "lang": "zh-CN"
   },
-  "instagram": {
-    "routes": {
-      "/:category/:key": {
-        "path": "/:category/:key",
-        "categories": [
-          "social-media"
-        ],
-        "example": "/instagram/user/stefaniejoosten",
-        "parameters": {
-          "category": "Feed category, see table below",
-          "key": "Username / Hashtag name"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "INSTAGRAM_COOKIE",
-              "optional": true,
-              "description": "Instagram cookie, only `sessionid` and `ds_user_id` are required."
-            }
-          ],
-          "requirePuppeteer": false,
-          "antiCrawler": true,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "User",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "description": "| User Posts | Current stories | Highlighted stories | Hashtag |\n| ---------- | --------------- | ------------------- | ------- |\n| user       | stories         | highlights          | tags    |\n\nStories, highlights and hashtags require a cookie.",
-        "location": "index.ts",
-        "module": () => import('@/routes/instagram/index.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Instagram",
-    "url": "www.instagram.com",
-    "description": "::: tip\nIt's highly recommended to deploy with Redis cache enabled.\n:::",
-    "lang": "en"
-  },
   "iplaysoft": {
     "routes": {
       "/": {
@@ -161348,16 +162077,17 @@ export default {
   },
   "sina": {
     "routes": {
-      "/sports/:type?": {
-        "path": "/sports/:type?",
+      "/sports/:type": {
+        "path": "/sports/:type",
         "name": "体育",
         "categories": [
           "sport"
         ],
-        "example": "/sina/sports",
+        "example": "/sina/sports/volley",
         "parameters": {
-          "type": "类别"
+          "type": "运动类型，见下表"
         },
+        "description": "| 排球   | 游泳 | 乒乓球   | 羽毛球 | 台球    | 田径     | 体操  | 冰雪   | 射击 | 马术  | 拳击搏击 | UFC | 其他   |\n| ------ | ---- | -------- | ------ | ------- | -------- | ----- | ------ | ---- | ----- | -------- | --- | ------ |\n| volley | swim | pingpang | badmin | snooker | tianjing | ticao | winter | sh   | horse | kungfu   | ufc | others |",
         "maintainers": [
           "nczitzk"
         ],
@@ -169503,7 +170233,7 @@ export default {
         },
         "name": "Novel Series",
         "maintainers": [
-          "SnowAgar25",
+          "Tsuyumi25",
           "keocheung"
         ],
         "radar": [
@@ -169581,7 +170311,7 @@ export default {
         "name": "User Novels",
         "maintainers": [
           "TonyRL",
-          "SnowAgar25"
+          "Tsuyumi25"
         ],
         "description": "| 小說類型 Novel Type | full\\_content | PIXIV\\_REFRESHTOKEN | 返回內容 Content |\n| ------------------- | ------------- | ------------------- | ---------------- |\n| Non R18             | false         | 不需要 Not Required | 簡介 Basic info  |\n| Non R18             | true          | 不需要 Not Required | 全文 Full text   |\n| R18                 | false         | 需要 Required       | 簡介 Basic info  |\n| R18                 | true          | 需要 Required       | 全文 Full text   |\n\nDefault value for `full_content` is `false` if not specified.\n\nExample:\n\n- `/pixiv/user/novels/79603797` → 簡介 Basic info\n- `/pixiv/user/novels/79603797/true` → 全文 Full text",
         "location": "novels.ts",
@@ -169821,7 +170551,7 @@ export default {
         "name": "なろう小説 API の更新履歴",
         "url": "dev.syosetu.com",
         "maintainers": [
-          "SnowAgar25"
+          "Tsuyumi25"
         ],
         "radar": [
           {
@@ -169855,7 +170585,7 @@ export default {
         "name": "Novel Updates",
         "maintainers": [
           "eternasuno",
-          "SnowAgar25"
+          "Tsuyumi25"
         ],
         "radar": [
           {
@@ -170003,7 +170733,7 @@ export default {
         "name": "R18 Rankings",
         "url": "syosetu.com/site/group",
         "maintainers": [
-          "SnowAgar25"
+          "Tsuyumi25"
         ],
         "description": "| Period  | Description       | 説明             |\n| ------- | ----------------- | ---------------- |\n| daily   | Daily Ranking     | 日間ランキング   |\n| weekly  | Weekly Ranking    | 週間ランキング   |\n| monthly | Monthly Ranking   | 月間ランキング   |\n| quarter | Quarterly Ranking | 四半期ランキング |\n| yearly  | Yearly Ranking    | 年間ランキング   |\n\n| Novel Type | Description      | 説明   |\n| ---------- | ---------------- | ------ |\n| total      | All Works        | 総合   |\n| t          | Short Stories    | 短編   |\n| r          | Ongoing Series   | 連載中 |\n| er         | Completed Series | 完結済 |\n\n::: tip\nCombine Period and Novel Type with `_`.\nFor example: `daily_total`, `weekly_r`, `monthly_er`\n:::",
         "radar": [
@@ -170215,7 +170945,7 @@ export default {
         },
         "name": "Search",
         "maintainers": [
-          "SnowAgar25"
+          "Tsuyumi25"
         ],
         "location": "search.ts",
         "module": () => import('@/routes/syosetu/search.ts')
@@ -172661,7 +173391,7 @@ export default {
         "name": "Rankings",
         "url": "yomou.syosetu.com/rank/top",
         "maintainers": [
-          "SnowAgar25"
+          "Tsuyumi25"
         ],
         "description": "| Keyword | Description                           | 説明                        |\n| ------- | ------------------------------------- | --------------------------- |\n| list    | Overall Ranking                       | 総合ランキング              |\n| genre   | Genre Ranking                         | ジャンル別ランキング        |\n| isekai  | Isekai/Reincarnation/Transfer Ranking | 異世界転生 / 転移ランキング |\n\n| Period  | Description       |\n| ------- | ----------------- |\n| daily   | Daily Ranking     |\n| weekly  | Weekly Ranking    |\n| monthly | Monthly Ranking   |\n| quarter | Quarterly Ranking |\n| yearly  | Yearly Ranking    |\n\n| Type  | Description      |\n| ----- | ---------------- |\n| total | All Works        |\n| t     | Short Stories    |\n| r     | Ongoing Series   |\n| er    | Completed Series |\n\n::: warning\nPlease note that novel type options may vary depending on the ranking category.\n\nランキングの種類によって、小説タイプが異なる場合がございますのでご注意ください。\n:::\n\n::: danger 注意事項\nThe \"注目度ランキング\" (Attention Ranking) is not supported as syosetu does not provide a public API for this feature and the results cannot be replicated through the search API.\n\n「注目度ランキング」については、API が非公開で検索 API でも同様の結果を得ることができないため、本 Route ではサポートしておりません。\n:::\n\n::: tip 異世界転生 / 転移ランキングについて (Isekai)\nWhen multiple works have the same points, their order may differ from syosetu's ranking as syosetu randomizes the order for works with identical points.\n\n集計の結果、同じポイントの作品が複数存在する場合、Syosetu ではランダムで順位が決定されるため、本 Route の順位と異なる場合があります。\n:::",
         "radar": [
@@ -173505,304 +174235,6 @@ export default {
     "url": "www.google.com",
     "lang": "en"
   },
-  "youtube": {
-    "routes": {
-      "/community/:handle": {
-        "path": "/community/:handle",
-        "categories": [
-          "social-media"
-        ],
-        "example": "/youtube/community/@JFlaMusic",
-        "parameters": {
-          "handle": "YouTube handles or channel id"
-        },
-        "name": "Community Posts",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "location": "community.tsx",
-        "module": () => import('@/routes/youtube/community.tsx')
-      },
-      "/c/:username/:embed?": {
-        "path": "/c/:username/:embed?",
-        "categories": [
-          "social-media"
-        ],
-        "example": "/youtube/c/YouTubeCreators",
-        "parameters": {
-          "username": "YouTube custom URL",
-          "embed": "Default to embed the video, set to any value to disable embedding"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "YOUTUBE_KEY",
-              "description": " YouTube API Key, support multiple keys, split them with `,`, [API Key application](https://console.developers.google.com/)"
-            }
-          ],
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "www.youtube.com/c/:id"
-            ],
-            "target": "/c/:id"
-          }
-        ],
-        "name": "Custom URL",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "location": "custom.ts",
-        "module": () => import('@/routes/youtube/custom.ts')
-      },
-      "/charts/:category?/:country?/:embed?": {
-        "path": "/charts/:category?/:country?/:embed?",
-        "categories": [
-          "social-media"
-        ],
-        "example": "/youtube/charts",
-        "parameters": {
-          "category": "Chart, see table below, default to `TopVideos`",
-          "country": "Country Code, see table below, default to global",
-          "embed": "Default to embed the video, set to any value to disable embedding"
-        },
-        "name": "Music Charts",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "description": "Chart\n\n| Top artists | Top songs | Top music videos | Trending       |\n| ----------- | --------- | ---------------- | -------------- |\n| TopArtists  | TopSongs  | TopVideos        | TrendingVideos |\n\nCountry Code\n\n| Argentina | Australia | Austria | Belgium | Bolivia | Brazil | Canada |\n| --------- | --------- | ------- | ------- | ------- | ------ | ------ |\n| ar        | au        | at      | be      | bo      | br     | ca     |\n\n| Chile | Colombia | Costa Rica | Czechia | Denmark | Dominican Republic | Ecuador |\n| ----- | -------- | ---------- | ------- | ------- | ------------------ | ------- |\n| cl    | co       | cr         | cz      | dk      | do                 | ec      |\n\n| Egypt | El Salvador | Estonia | Finland | France | Germany | Guatemala |\n| ----- | ----------- | ------- | ------- | ------ | ------- | --------- |\n| eg    | sv          | ee      | fi      | fr     | de      | gt        |\n\n| Honduras | Hungary | Iceland | India | Indonesia | Ireland | Israel | Italy |\n| -------- | ------- | ------- | ----- | --------- | ------- | ------ | ----- |\n| hn       | hu      | is      | in    | id        | ie      | il     | it    |\n\n| Japan | Kenya | Luxembourg | Mexico | Netherlands | New Zealand | Nicaragua |\n| ----- | ----- | ---------- | ------ | ----------- | ----------- | --------- |\n| jp    | ke    | lu         | mx     | nl          | nz          | ni        |\n\n| Nigeria | Norway | Panama | Paraguay | Peru | Poland | Portugal | Romania |\n| ------- | ------ | ------ | -------- | ---- | ------ | -------- | ------- |\n| ng      | no     | pa     | py       | pe   | pl     | pt       | ro      |\n\n| Russia | Saudi Arabia | Serbia | South Africa | South Korea | Spain | Sweden | Switzerland |\n| ------ | ------------ | ------ | ------------ | ----------- | ----- | ------ | ----------- |\n| ru     | sa           | rs     | za           | kr          | es    | se     | ch          |\n\n| Tanzania | Turkey | Uganda | Ukraine | United Arab Emirates | United Kingdom | United States |\n| -------- | ------ | ------ | ------- | -------------------- | -------------- | ------------- |\n| tz       | tr     | ug     | ua      | ae                   | gb             | us            |\n\n| Uruguay | Zimbabwe |\n| ------- | -------- |\n| uy      | zw       |",
-        "location": "charts.ts",
-        "module": () => import('@/routes/youtube/charts.ts')
-      },
-      "/subscriptions/:embed?": {
-        "path": "/subscriptions/:embed?",
-        "categories": [
-          "social-media"
-        ],
-        "example": "/youtube/subscriptions",
-        "parameters": {
-          "embed": "Default to embed the video, set to any value to disable embedding"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "YOUTUBE_KEY",
-              "description": ""
-            },
-            {
-              "name": "YOUTUBE_CLIENT_ID",
-              "description": ""
-            },
-            {
-              "name": "YOUTUBE_CLIENT_SECRET",
-              "description": ""
-            },
-            {
-              "name": "YOUTUBE_REFRESH_TOKEN",
-              "description": ""
-            }
-          ]
-        },
-        "radar": [
-          {
-            "source": [
-              "www.youtube.com/feed/subscriptions",
-              "www.youtube.com/feed/channels"
-            ],
-            "target": "/subscriptions"
-          }
-        ],
-        "name": "Subscriptions",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "url": "www.youtube.com/feed/subscriptions",
-        "location": "subscriptions.ts",
-        "module": () => import('@/routes/youtube/subscriptions.ts')
-      },
-      "/channel/:id/:routeParams?": {
-        "path": "/channel/:id/:routeParams?",
-        "categories": [
-          "social-media"
-        ],
-        "example": "/youtube/channel/UCDwDMPOZfxVV0x_dz0eQ8KQ",
-        "parameters": {
-          "id": "YouTube channel id",
-          "routeParams": "Extra parameters, see the table below"
-        },
-        "radar": [
-          {
-            "source": [
-              "www.youtube.com/channel/:id"
-            ],
-            "target": "/channel/:id"
-          }
-        ],
-        "name": "Channel with id",
-        "maintainers": [
-          "DIYgod",
-          "pseudoyu"
-        ],
-        "description": "::: tip Parameter\n\n| Name         | Description                                                                        | Default |\n| ------------ | ---------------------------------------------------------------------------------- | ------- |\n| embed        | Whether to embed the video, fill in any value to disable embedding                 | embed   |\n| filterShorts | Whether to filter out shorts from the feed, fill in any falsy value to show shorts | true    |\n\n:::\n\n::: tip\nYouTube provides official RSS feeds for channels, for instance <https://www.youtube.com/feeds/videos.xml?channel_id=UCDwDMPOZfxVV0x_dz0eQ8KQ>.\n:::",
-        "features": {
-          "requireConfig": [
-            {
-              "name": "YOUTUBE_KEY",
-              "description": " YouTube API Key, support multiple keys, split them with `,`, [API Key application](https://console.developers.google.com/)",
-              "optional": true
-            }
-          ],
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "location": "channel.ts",
-        "module": () => import('@/routes/youtube/channel.ts')
-      },
-      "/live/:username/:embed?": {
-        "path": "/live/:username/:embed?",
-        "categories": [
-          "live"
-        ],
-        "view": 3,
-        "example": "/youtube/live/@GawrGura",
-        "parameters": {
-          "username": "YouTube handle or channel id",
-          "embed": "Default to embed the video, set to any value to disable embedding"
-        },
-        "radar": [
-          {
-            "source": [
-              "www.youtube.com/:username/streams",
-              "www.youtube.com/channel/:username/streams"
-            ],
-            "target": "/live/:username"
-          }
-        ],
-        "name": "Live",
-        "maintainers": [
-          "sussurr127",
-          "ouuan"
-        ],
-        "description": "::: tip\nEvery stream is categorized as `live`, `upcoming` or `completed`, so a single state can be picked out with the `filter_category` and `filterout_category` [common parameters](https://docs.rsshub.app/guide/parameters#filtering). For example, `/youtube/live/@GawrGura?filterout_category=completed` only tracks streams that are live or about to start.\n:::",
-        "location": "live.ts",
-        "module": () => import('@/routes/youtube/live.ts')
-      },
-      "/playlist/:id/:embed?": {
-        "path": "/playlist/:id/:embed?",
-        "categories": [
-          "social-media"
-        ],
-        "view": 3,
-        "example": "/youtube/playlist/PLqQ1RwlxOgeLTJ1f3fNMSwhjVgaWKo_9Z",
-        "parameters": {
-          "id": "YouTube playlist id",
-          "embed": "Default to embed the video, set to any value to disable embedding"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "YOUTUBE_KEY",
-              "description": " YouTube API Key, support multiple keys, split them with `,`, [API Key application](https://console.developers.google.com/)",
-              "optional": true
-            }
-          ],
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "Playlist",
-        "maintainers": [
-          "HenryQW"
-        ],
-        "location": "playlist.ts",
-        "module": () => import('@/routes/youtube/playlist.ts')
-      },
-      "/shows/:username": {
-        "path": "/shows/:username",
-        "categories": [
-          "social-media"
-        ],
-        "example": "/youtube/shows/@LinusTechTips",
-        "parameters": {
-          "username": "YouTube handle or channel id"
-        },
-        "radar": [
-          {
-            "source": [
-              "www.youtube.com/:username/shows",
-              "www.youtube.com/channel/:username/shows"
-            ],
-            "target": "/shows/:username"
-          }
-        ],
-        "name": "Shows",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "location": "shows.ts",
-        "module": () => import('@/routes/youtube/shows.ts')
-      },
-      "/user/:username/:routeParams?": {
-        "path": "/user/:username/:routeParams?",
-        "categories": [
-          "social-media"
-        ],
-        "view": 3,
-        "example": "/youtube/user/@JFlaMusic",
-        "parameters": {
-          "username": "YouTuber handle with @",
-          "routeParams": "Extra parameters, see the table below"
-        },
-        "description": "::: tip Parameter\n\n| Name         | Description                                                                        | Default |\n| ------------ | ---------------------------------------------------------------------------------- | ------- |\n| embed        | Whether to embed the video, fill in any value to disable embedding                 | embed   |\n| filterShorts | Whether to filter out shorts from the feed, fill in any falsy value to show shorts | true    |\n\n:::",
-        "features": {
-          "requireConfig": [
-            {
-              "name": "YOUTUBE_KEY",
-              "description": " YouTube API Key, support multiple keys, split them with `,`, [API Key application](https://console.developers.google.com/)",
-              "optional": true
-            }
-          ],
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "www.youtube.com/user/:username",
-              "www.youtube.com/:username",
-              "www.youtube.com/:username/videos"
-            ],
-            "target": "/user/:username"
-          }
-        ],
-        "name": "Channel with user handle",
-        "maintainers": [
-          "DIYgod",
-          "pseudoyu"
-        ],
-        "location": "user.ts",
-        "module": () => import('@/routes/youtube/user.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "YouTube",
-    "url": "youtube.com",
-    "lang": "en"
-  },
   "twitter": {
     "routes": {
       "/trends/:woeid?": {
@@ -174180,6 +174612,304 @@ export default {
     "name": "X (Twitter)",
     "url": "x.com",
     "description": "Specify options (in the format of query string) in parameter `routeParams` to control some extra features for Tweets\n\n| Key                               | Description                                                                                                                              | Accepts                | Defaults to                               |\n| --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------------------------------------- |\n| `readable`                        | Enable readable layout                                                                                                                   | `0`/`1`/`true`/`false` | `false`                                   |\n| `authorNameBold`                  | Display author name in bold                                                                                                              | `0`/`1`/`true`/`false` | `false`                                   |\n| `showAuthorInTitle`               | Show author name in title                                                                                                                | `0`/`1`/`true`/`false` | `false` (`true` in `/twitter/followings`) |\n| `showAuthorAsTitleOnly`           | Show only author name as title                                                                                                           | `0`/`1`/`true`/`false` | `false`                                   |\n| `showAuthorInDesc`                | Show author name in description (RSS body)                                                                                               | `0`/`1`/`true`/`false` | `false` (`true` in `/twitter/followings`) |\n| `showQuotedAuthorAvatarInDesc`    | Show avatar of quoted Tweet's author in description (RSS body) (Not recommended if your RSS reader extracts images from description)     | `0`/`1`/`true`/`false` | `false`                                   |\n| `showAuthorAvatarInDesc`          | Show avatar of author in description (RSS body) (Not recommended if your RSS reader extracts images from description)                    | `0`/`1`/`true`/`false` | `false`                                   |\n| `showEmojiForRetweetAndReply`     | Use \"🔁\" instead of \"RT\", \"↩️\" & \"💬\" instead of \"Re\"                                                                                    | `0`/`1`/`true`/`false` | `false`                                   |\n| `showSymbolForRetweetAndReply`    | Use \" RT \" instead of \"\", \" Re \" instead of \"\"                                                                                           | `0`/`1`/`true`/`false` | `true`                                    |\n| `showRetweetTextInTitle`          | Show quote comments in title (if `false`, only the retweeted tweet will be shown in the title)                                           | `0`/`1`/`true`/`false` | `true`                                    |\n| `useRetweetDate`                  | Use the time of the retweet as its publication date, instead of the original tweet's date                                                | `0`/`1`/`true`/`false` | `false`                                   |\n| `showLikesCountInTitle`           | Prefix the title with the tweet's like count when available, for example `[1567] Tweet text`                                             | `0`/`1`/`true`/`false` | `false`                                   |\n| `includeReplyContext`             | Prepend up to five available parent replies from the API response, oldest first; unavailable parents are omitted without extra API calls | `0`/`1`/`true`/`false` | `false`                                   |\n| `addLinkForPics`                  | Add clickable links for Tweet pictures                                                                                                   | `0`/`1`/`true`/`false` | `false`                                   |\n| `showTimestampInDescription`      | Show timestamp in description                                                                                                            | `0`/`1`/`true`/`false` | `false`                                   |\n| `showQuotedInTitle`               | Show quoted tweet in title                                                                                                               | `0`/`1`/`true`/`false` | `false`                                   |\n| `widthOfPics`                     | Width of Tweet pictures                                                                                                                  | Unspecified/Integer    | Unspecified                               |\n| `heightOfPics`                    | Height of Tweet pictures                                                                                                                 | Unspecified/Integer    | Unspecified                               |\n| `sizeOfAuthorAvatar`              | Size of author's avatar                                                                                                                  | Integer                | `48`                                      |\n| `sizeOfQuotedAuthorAvatar`        | Size of quoted tweet's author's avatar                                                                                                   | Integer                | `24`                                      |\n| `includeReplies`                  | Include replies, only available in `/twitter/user`                                                                                       | `0`/`1`/`true`/`false` | `false`                                   |\n| `includeRts`                      | Include retweets, only available in `/twitter/user`                                                                                      | `0`/`1`/`true`/`false` | `true`                                    |\n| `forceWebApi`                     | Force using Web API even if Developer API is configured, only available in `/twitter/user` and `/twitter/keyword`                        | `0`/`1`/`true`/`false` | `false`                                   |\n| `count`                           | `count` parameter passed to Twitter API, only available in `/twitter/user`                                                               | Unspecified/Integer    | Unspecified                               |\n| `onlyMedia`                       | Only get tweets with a media                                                                                                             | `0`/`1`/`true`/`false` | `false`                                   |\n| `mediaNumber `                    | Number the medias                                                                                                                        | `0`/`1`/`true`/`false` | `false`                                   |\n| `showEmojiForSubscriberOnly`      | Use \"🔒\" as prefix for subscriber-only posts                                                                                             | `0`/`1`/`true`/`false` | `false`                                   |\n| `showSymbolForSubscriberOnly`     | Use \"\\[Subscribers Only]\" as prefix for subscriber-only posts                                                                            | `0`/`1`/`true`/`false` | `true`                                    |\n| `showFullPrefixForSubscriberOnly` | Use \"🔒 \\[Subscribers Only]\" as prefix for subscriber-only posts                                                                         | `0`/`1`/`true`/`false` | `false`                                   |\n\nSpecify different option values than default values to improve readability. The URL\n\n```\nhttps://rsshub.app/twitter/user/durov/readable=1&authorNameBold=1&showAuthorInTitle=1&showAuthorInDesc=1&showQuotedAuthorAvatarInDesc=1&showAuthorAvatarInDesc=1&showEmojiForRetweetAndReply=1&showRetweetTextInTitle=0&addLinkForPics=1&showTimestampInDescription=1&showQuotedInTitle=1&heightOfPics=150\n```\n\ngenerates\n\n<img loading=\"lazy\" src=\"/img/readable-twitter.png\" alt=\"Readable Twitter RSS of Durov\" />\n\nCurrently supports two authentication methods:\n\n- Using `TWITTER_AUTH_TOKEN` (recommended): Configure a comma-separated list of `auth_token` cookies of logged-in Twitter Web. RSSHub will use this information to directly access Twitter's web API to obtain data.\n\n~~- Using `TWITTER_USERNAME` `TWITTER_PASSWORD` and `TWITTER_AUTHENTICATION_SECRET`: Configure a comma-separated list of Twitter username and password. RSSHub will use this information to log in to Twitter and obtain data using the mobile API. Please note that if you have not logged in with the current IP address before, it is easy to trigger Twitter's risk control mechanism.~~ This no longer works since mobile client attestation has been implemented in October 2025.\n\n- Using `TWITTER_CONSUMER_KEY` and `TWITTER_CONSUMER_SECRET`: Configure a comma-separated list of Twitter API keys and secrets. RSSHub will use this information to access Twitter's Pay-Per-Use developer API to obtain data.\n- OPTIONAL: Using `TWITTER_ACCESS_TOKEN` and `TWITTER_ACCESS_SECRET`: Configure a comma-separated list of Twitter API access tokens and secrets. RSSHub will use this information to access Twitter's Pay-Per-Use developer API with user authentication to obtain data. If not provided, RSSHub will only use app authentication, which may only access to public information.",
+    "lang": "en"
+  },
+  "youtube": {
+    "routes": {
+      "/community/:handle": {
+        "path": "/community/:handle",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/youtube/community/@JFlaMusic",
+        "parameters": {
+          "handle": "YouTube handles or channel id"
+        },
+        "name": "Community Posts",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "location": "community.tsx",
+        "module": () => import('@/routes/youtube/community.tsx')
+      },
+      "/c/:username/:embed?": {
+        "path": "/c/:username/:embed?",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/youtube/c/YouTubeCreators",
+        "parameters": {
+          "username": "YouTube custom URL",
+          "embed": "Default to embed the video, set to any value to disable embedding"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "YOUTUBE_KEY",
+              "description": " YouTube API Key, support multiple keys, split them with `,`, [API Key application](https://console.developers.google.com/)"
+            }
+          ],
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "www.youtube.com/c/:id"
+            ],
+            "target": "/c/:id"
+          }
+        ],
+        "name": "Custom URL",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "location": "custom.ts",
+        "module": () => import('@/routes/youtube/custom.ts')
+      },
+      "/charts/:category?/:country?/:embed?": {
+        "path": "/charts/:category?/:country?/:embed?",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/youtube/charts",
+        "parameters": {
+          "category": "Chart, see table below, default to `TopVideos`",
+          "country": "Country Code, see table below, default to global",
+          "embed": "Default to embed the video, set to any value to disable embedding"
+        },
+        "name": "Music Charts",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "description": "Chart\n\n| Top artists | Top songs | Top music videos | Trending       |\n| ----------- | --------- | ---------------- | -------------- |\n| TopArtists  | TopSongs  | TopVideos        | TrendingVideos |\n\nCountry Code\n\n| Argentina | Australia | Austria | Belgium | Bolivia | Brazil | Canada |\n| --------- | --------- | ------- | ------- | ------- | ------ | ------ |\n| ar        | au        | at      | be      | bo      | br     | ca     |\n\n| Chile | Colombia | Costa Rica | Czechia | Denmark | Dominican Republic | Ecuador |\n| ----- | -------- | ---------- | ------- | ------- | ------------------ | ------- |\n| cl    | co       | cr         | cz      | dk      | do                 | ec      |\n\n| Egypt | El Salvador | Estonia | Finland | France | Germany | Guatemala |\n| ----- | ----------- | ------- | ------- | ------ | ------- | --------- |\n| eg    | sv          | ee      | fi      | fr     | de      | gt        |\n\n| Honduras | Hungary | Iceland | India | Indonesia | Ireland | Israel | Italy |\n| -------- | ------- | ------- | ----- | --------- | ------- | ------ | ----- |\n| hn       | hu      | is      | in    | id        | ie      | il     | it    |\n\n| Japan | Kenya | Luxembourg | Mexico | Netherlands | New Zealand | Nicaragua |\n| ----- | ----- | ---------- | ------ | ----------- | ----------- | --------- |\n| jp    | ke    | lu         | mx     | nl          | nz          | ni        |\n\n| Nigeria | Norway | Panama | Paraguay | Peru | Poland | Portugal | Romania |\n| ------- | ------ | ------ | -------- | ---- | ------ | -------- | ------- |\n| ng      | no     | pa     | py       | pe   | pl     | pt       | ro      |\n\n| Russia | Saudi Arabia | Serbia | South Africa | South Korea | Spain | Sweden | Switzerland |\n| ------ | ------------ | ------ | ------------ | ----------- | ----- | ------ | ----------- |\n| ru     | sa           | rs     | za           | kr          | es    | se     | ch          |\n\n| Tanzania | Turkey | Uganda | Ukraine | United Arab Emirates | United Kingdom | United States |\n| -------- | ------ | ------ | ------- | -------------------- | -------------- | ------------- |\n| tz       | tr     | ug     | ua      | ae                   | gb             | us            |\n\n| Uruguay | Zimbabwe |\n| ------- | -------- |\n| uy      | zw       |",
+        "location": "charts.ts",
+        "module": () => import('@/routes/youtube/charts.ts')
+      },
+      "/subscriptions/:embed?": {
+        "path": "/subscriptions/:embed?",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/youtube/subscriptions",
+        "parameters": {
+          "embed": "Default to embed the video, set to any value to disable embedding"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "YOUTUBE_KEY",
+              "description": ""
+            },
+            {
+              "name": "YOUTUBE_CLIENT_ID",
+              "description": ""
+            },
+            {
+              "name": "YOUTUBE_CLIENT_SECRET",
+              "description": ""
+            },
+            {
+              "name": "YOUTUBE_REFRESH_TOKEN",
+              "description": ""
+            }
+          ]
+        },
+        "radar": [
+          {
+            "source": [
+              "www.youtube.com/feed/subscriptions",
+              "www.youtube.com/feed/channels"
+            ],
+            "target": "/subscriptions"
+          }
+        ],
+        "name": "Subscriptions",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "url": "www.youtube.com/feed/subscriptions",
+        "location": "subscriptions.ts",
+        "module": () => import('@/routes/youtube/subscriptions.ts')
+      },
+      "/channel/:id/:routeParams?": {
+        "path": "/channel/:id/:routeParams?",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/youtube/channel/UCDwDMPOZfxVV0x_dz0eQ8KQ",
+        "parameters": {
+          "id": "YouTube channel id",
+          "routeParams": "Extra parameters, see the table below"
+        },
+        "radar": [
+          {
+            "source": [
+              "www.youtube.com/channel/:id"
+            ],
+            "target": "/channel/:id"
+          }
+        ],
+        "name": "Channel with id",
+        "maintainers": [
+          "DIYgod",
+          "pseudoyu"
+        ],
+        "description": "::: tip Parameter\n\n| Name         | Description                                                                        | Default |\n| ------------ | ---------------------------------------------------------------------------------- | ------- |\n| embed        | Whether to embed the video, fill in any value to disable embedding                 | embed   |\n| filterShorts | Whether to filter out shorts from the feed, fill in any falsy value to show shorts | true    |\n\n:::\n\n::: tip\nYouTube provides official RSS feeds for channels, for instance <https://www.youtube.com/feeds/videos.xml?channel_id=UCDwDMPOZfxVV0x_dz0eQ8KQ>.\n:::",
+        "features": {
+          "requireConfig": [
+            {
+              "name": "YOUTUBE_KEY",
+              "description": " YouTube API Key, support multiple keys, split them with `,`, [API Key application](https://console.developers.google.com/)",
+              "optional": true
+            }
+          ],
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "location": "channel.ts",
+        "module": () => import('@/routes/youtube/channel.ts')
+      },
+      "/live/:username/:embed?": {
+        "path": "/live/:username/:embed?",
+        "categories": [
+          "live"
+        ],
+        "view": 3,
+        "example": "/youtube/live/@GawrGura",
+        "parameters": {
+          "username": "YouTube handle or channel id",
+          "embed": "Default to embed the video, set to any value to disable embedding"
+        },
+        "radar": [
+          {
+            "source": [
+              "www.youtube.com/:username/streams",
+              "www.youtube.com/channel/:username/streams"
+            ],
+            "target": "/live/:username"
+          }
+        ],
+        "name": "Live",
+        "maintainers": [
+          "sussurr127",
+          "ouuan"
+        ],
+        "description": "::: tip\nEvery stream is categorized as `live`, `upcoming` or `completed`, so a single state can be picked out with the `filter_category` and `filterout_category` [common parameters](https://docs.rsshub.app/guide/parameters#filtering). For example, `/youtube/live/@GawrGura?filterout_category=completed` only tracks streams that are live or about to start.\n:::",
+        "location": "live.ts",
+        "module": () => import('@/routes/youtube/live.ts')
+      },
+      "/playlist/:id/:embed?": {
+        "path": "/playlist/:id/:embed?",
+        "categories": [
+          "social-media"
+        ],
+        "view": 3,
+        "example": "/youtube/playlist/PLqQ1RwlxOgeLTJ1f3fNMSwhjVgaWKo_9Z",
+        "parameters": {
+          "id": "YouTube playlist id",
+          "embed": "Default to embed the video, set to any value to disable embedding"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "YOUTUBE_KEY",
+              "description": " YouTube API Key, support multiple keys, split them with `,`, [API Key application](https://console.developers.google.com/)",
+              "optional": true
+            }
+          ],
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "Playlist",
+        "maintainers": [
+          "HenryQW"
+        ],
+        "location": "playlist.ts",
+        "module": () => import('@/routes/youtube/playlist.ts')
+      },
+      "/shows/:username": {
+        "path": "/shows/:username",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/youtube/shows/@LinusTechTips",
+        "parameters": {
+          "username": "YouTube handle or channel id"
+        },
+        "radar": [
+          {
+            "source": [
+              "www.youtube.com/:username/shows",
+              "www.youtube.com/channel/:username/shows"
+            ],
+            "target": "/shows/:username"
+          }
+        ],
+        "name": "Shows",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "location": "shows.ts",
+        "module": () => import('@/routes/youtube/shows.ts')
+      },
+      "/user/:username/:routeParams?": {
+        "path": "/user/:username/:routeParams?",
+        "categories": [
+          "social-media"
+        ],
+        "view": 3,
+        "example": "/youtube/user/@JFlaMusic",
+        "parameters": {
+          "username": "YouTuber handle with @",
+          "routeParams": "Extra parameters, see the table below"
+        },
+        "description": "::: tip Parameter\n\n| Name         | Description                                                                        | Default |\n| ------------ | ---------------------------------------------------------------------------------- | ------- |\n| embed        | Whether to embed the video, fill in any value to disable embedding                 | embed   |\n| filterShorts | Whether to filter out shorts from the feed, fill in any falsy value to show shorts | true    |\n\n:::",
+        "features": {
+          "requireConfig": [
+            {
+              "name": "YOUTUBE_KEY",
+              "description": " YouTube API Key, support multiple keys, split them with `,`, [API Key application](https://console.developers.google.com/)",
+              "optional": true
+            }
+          ],
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "www.youtube.com/user/:username",
+              "www.youtube.com/:username",
+              "www.youtube.com/:username/videos"
+            ],
+            "target": "/user/:username"
+          }
+        ],
+        "name": "Channel with user handle",
+        "maintainers": [
+          "DIYgod",
+          "pseudoyu"
+        ],
+        "location": "user.ts",
+        "module": () => import('@/routes/youtube/user.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "YouTube",
+    "url": "youtube.com",
     "lang": "en"
   },
   "economist": {
