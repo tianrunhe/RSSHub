@@ -341,7 +341,6 @@ export type RoutePath =
   | `/bbc/sport/:sport`
   | `/bbc/topics/:topic`
   | `/bbc/zhongwen/topics/:topic/:variant?`
-  | `/bbcnewslabs/news`
   | `/bc3ts/post/list/:sort?`
   | `/bcg/search/:params?`
   | `/bdys/:caty?/:type?/:area?/:year?/:order?`
@@ -2219,6 +2218,8 @@ export type RoutePath =
   | `/luogu/user/feed/:uid`
   | `/luolei/`
   | `/luxiangdong/archive`
+  | `/lvshunmuseum/exhibition/:type?`
+  | `/lvshunmuseum/news`
   | `/lvv2/news/:channel/:sort?`
   | `/lvv2/top/:channel/:sort?`
   | `/lwn/alerts/:distributor`
@@ -2449,7 +2450,7 @@ export type RoutePath =
   | `/ncpssd/newlist`
   | `/ncu/jwc`
   | `/ncwu/notice`
-  | `/ndss-symposium/ndss`
+  | `/ndss-symposium/ndss/:abstract?`
   | `/neatdownloadmanager/download/:os?`
   | `/neea/jlpt`
   | `/neea/local/:type`
@@ -3139,7 +3140,7 @@ export type RoutePath =
   | `/sicau/jk/:gid/:typeId/:sortType/:token`
   | `/sicau/yan/:category?`
   | `/sicau/zsjy/:category?`
-  | `/sigsac/ccs`
+  | `/sigsac/ccs/:year?`
   | `/simonsfoundation/articles`
   | `/simonsfoundation/recommend`
   | `/simpleinfo/:category?`
