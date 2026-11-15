@@ -185,9 +185,6 @@
   "/codefather/questions/:sort?": [
     "JackyST0"
   ],
-  "/cohere/blog": [
-    "Loongphy"
-  ],
   "/cowlevel/element/:id": [
     "hoilc"
   ],
@@ -2583,6 +2580,9 @@
   "/asus/bios/:model/:lang?": [
     "Fatpandac"
   ],
+  "/asus/driver/:model/:lang?/:os?": [
+    "regulad"
+  ],
   "/asus/gpu-tweak": [
     "TonyRL"
   ],
@@ -3439,6 +3439,10 @@
   "/cognition/blog": [
     "Loongphy",
     "ttttmr"
+  ],
+  "/cohere/blog": [
+    "Loongphy",
+    "ljh12138164"
   ],
   "/cointelegraph/": [
     "pseudoyu"
@@ -4707,6 +4711,9 @@
   ],
   "/grist/featured": [
     "Rjnishant530"
+  ],
+  "/groq/blog": [
+    "ljh12138164"
   ],
   "/gs/developer/blog": [
     "chesha1"
@@ -5986,6 +5993,9 @@
   ],
   "/missav/new": [
     "TonyRL"
+  ],
+  "/mistral/news": [
+    "ljh12138164"
   ],
   "/mit/ocw-top": [
     "dwemerx"
@@ -9781,6 +9791,12 @@
   ],
   "/arcteryx/outlet/:country/:gender": [
     "IvanWng97"
+  ],
+  "/arm/blog/:topic?": [
+    "ljh12138164"
+  ],
+  "/arm/news/:topic?": [
+    "ljh12138164"
   ],
   "/asahi/area/:id": [
     "nczitzk"

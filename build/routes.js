@@ -2184,45 +2184,6 @@ export default {
     "url": "www.codefather.cn",
     "description": "编程导航是一个编程学习交流社区，由程序员鱼皮创建，提供学习路线、项目教程、求职攻略、技术交流等内容。"
   },
-  "cohere": {
-    "routes": {
-      "/blog": {
-        "path": "/blog",
-        "name": "Blog",
-        "url": "cohere.com/blog",
-        "maintainers": [
-          "Loongphy"
-        ],
-        "example": "/cohere/blog",
-        "description": "Cohere is a platform for building AI applications.",
-        "categories": [
-          "blog"
-        ],
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportRadar": true,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "cohere.com"
-            ]
-          }
-        ],
-        "location": "index.ts",
-        "module": () => import('@/routes/cohere/index.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Cohere",
-    "url": "cohere.com",
-    "lang": "en"
-  },
   "cowlevel": {
     "routes": {
       "/element/:id": {
@@ -34824,6 +34785,19 @@ export default {
               "www.asus.com/:region/networking-iot-servers/:productLine/:series/:model"
             ],
             "target": "/bios/:model"
+          },
+          {
+            "source": [
+              "rog.asus.com/laptops/:series/:model/*",
+              "rog.asus.com/motherboards/:series/:model/*",
+              "rog.asus.com/gaming-handhelds/:series/:model/*",
+              "rog.asus.com/desktops/:series/:model/*",
+              "rog.asus.com/:region/laptops/:series/:model/*",
+              "rog.asus.com/:region/motherboards/:series/:model/*",
+              "rog.asus.com/:region/gaming-handhelds/:series/:model/*",
+              "rog.asus.com/:region/desktops/:series/:model/*"
+            ],
+            "target": "/bios/:model"
           }
         ],
         "name": "BIOS",
@@ -34831,8 +34805,78 @@ export default {
           "Fatpandac"
         ],
         "url": "www.asus.com",
+        "description": "Lists every BIOS and firmware download ASUS publishes for the product, such as BIOS installers, EZ Flash images and ROG keyboard or USB-PD firmware tools.",
         "location": "bios.tsx",
         "module": () => import('@/routes/asus/bios.tsx')
+      },
+      "/driver/:model/:lang?/:os?": {
+        "path": "/driver/:model/:lang?/:os?",
+        "categories": [
+          "program-update"
+        ],
+        "example": "/asus/driver/ROG-Flow-Z13-2025",
+        "parameters": {
+          "model": "Model name or product-page slug, e.g. `PRIME-X570-PRO` or `ROG-Flow-Z13-2025`",
+          "lang": {
+            "description": "Language, provide access routes for other parts of the world",
+            "options": [
+              {
+                "label": "Chinese",
+                "value": "zh"
+              },
+              {
+                "label": "Global",
+                "value": "en"
+              }
+            ],
+            "default": "en"
+          },
+          "os": "Operating system ID, e.g. `52` for Windows 11 64-bit or `45` for Windows 10 64-bit. Defaults to the first operating system ASUS lists for the product"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "www.asus.com/displays-desktops/:productLine/:series/:model",
+              "www.asus.com/laptops/:productLine/:series/:model",
+              "www.asus.com/motherboards-components/:productLine/:series/:model",
+              "www.asus.com/networking-iot-servers/:productLine/:series/:model",
+              "www.asus.com/:region/displays-desktops/:productLine/:series/:model",
+              "www.asus.com/:region/laptops/:productLine/:series/:model",
+              "www.asus.com/:region/motherboards-components/:productLine/:series/:model",
+              "www.asus.com/:region/networking-iot-servers/:productLine/:series/:model"
+            ],
+            "target": "/driver/:model"
+          },
+          {
+            "source": [
+              "rog.asus.com/laptops/:series/:model/*",
+              "rog.asus.com/motherboards/:series/:model/*",
+              "rog.asus.com/gaming-handhelds/:series/:model/*",
+              "rog.asus.com/desktops/:series/:model/*",
+              "rog.asus.com/:region/laptops/:series/:model/*",
+              "rog.asus.com/:region/motherboards/:series/:model/*",
+              "rog.asus.com/:region/gaming-handhelds/:series/:model/*",
+              "rog.asus.com/:region/desktops/:series/:model/*"
+            ],
+            "target": "/driver/:model"
+          }
+        ],
+        "name": "Driver",
+        "maintainers": [
+          "regulad"
+        ],
+        "url": "www.asus.com",
+        "description": "Lists the drivers and utilities ASUS publishes for the product on one operating system. If an `os` ID is not available for the product, the error message lists the IDs that are.",
+        "location": "driver.ts",
+        "module": () => import('@/routes/asus/driver.ts')
       },
       "/gpu-tweak": {
         "path": "/gpu-tweak",
@@ -48031,6 +48075,60 @@ export default {
       }
     },
     "apiRoutes": {}
+  },
+  "cohere": {
+    "routes": {
+      "/blog": {
+        "path": "/blog",
+        "name": "Blog",
+        "url": "cohere.com/blog",
+        "maintainers": [
+          "Loongphy",
+          "ljh12138164"
+        ],
+        "example": "/cohere/blog",
+        "parameters": {},
+        "description": "Full-text articles from the Cohere Blog (merging both official CMS sources), including key takeaways, formulas, FAQs, code blocks, tables, and embedded media. Fetches 20 entries by default; use the common `limit` query parameter (1-100) to adjust.",
+        "zh": {
+          "name": "博客",
+          "parameters": {},
+          "description": "合并读取 Cohere 官方博客双 CMS 接口获取英文全文，包含要点总结、公式、FAQ 问答、代码块、表格与内嵌媒体。默认获取 20 篇，可通过通用 `limit` 参数（1-100）调整条数。"
+        },
+        "categories": [
+          "blog"
+        ],
+        "view": 0,
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "cohere.com/blog",
+              "cohere.com/blog/:slug"
+            ],
+            "target": "/blog"
+          }
+        ],
+        "location": "index.ts",
+        "module": () => import('@/routes/cohere/index.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Cohere",
+    "url": "cohere.com",
+    "lang": "en",
+    "description": "Enterprise AI platform building frontier foundation models, retrieval systems, and agentic workspaces.",
+    "zh": {
+      "name": "Cohere",
+      "description": "Cohere 是专注于企业级大语言模型、检索系统与智能体工作区的 AI 平台。"
+    }
   },
   "cointelegraph": {
     "routes": {
@@ -65241,6 +65339,39 @@ export default {
     "url": "grist.org",
     "lang": "en"
   },
+  "groq": {
+    "routes": {
+      "/blog": {
+        "path": "/blog",
+        "categories": [
+          "programming"
+        ],
+        "example": "/groq/blog",
+        "name": "Blog",
+        "maintainers": [
+          "ljh12138164"
+        ],
+        "description": "Full articles from the Groq blog, including news listed on the blog page. Follows the page order and fetches 20 entries by default. Use the common `limit` parameter to adjust the count.",
+        "zh": {
+          "name": "博客",
+          "description": "获取 Groq 官方博客及该页面所列新闻的英文全文。按页面顺序默认获取 20 篇，可通过通用参数 `limit` 调整。"
+        },
+        "radar": [
+          {
+            "source": [
+              "groq.com/blog"
+            ]
+          }
+        ],
+        "location": "blog.ts",
+        "module": () => import('@/routes/groq/blog.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Groq",
+    "url": "groq.com",
+    "lang": "en"
+  },
   "gs": {
     "routes": {
       "/developer/blog": {
@@ -78708,7 +78839,7 @@ export default {
     },
     "apiRoutes": {},
     "name": "金诚同达律师事务所",
-    "url": "jtn.com",
+    "url": "www.jtn.com",
     "categories": [
       "other"
     ],
@@ -86931,6 +87062,51 @@ export default {
     "name": "MissAV",
     "url": "missav.ws",
     "lang": "en"
+  },
+  "mistral": {
+    "routes": {
+      "/news": {
+        "path": "/news",
+        "categories": [
+          "programming"
+        ],
+        "example": "/mistral/news",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "mistral.ai/news",
+              "mistral.ai/news/rss"
+            ],
+            "target": "/news"
+          }
+        ],
+        "name": "News",
+        "maintainers": [
+          "ljh12138164"
+        ],
+        "url": "mistral.ai/news",
+        "location": "news.ts",
+        "module": () => import('@/routes/mistral/news.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Mistral AI",
+    "url": "mistral.ai",
+    "description": "The official Mistral news RSS (`https://mistral.ai/news/rss`) only contains short summaries. Routes here fetch the full article text.",
+    "lang": "en",
+    "zh": {
+      "name": "Mistral AI",
+      "description": "Mistral 官方新闻 RSS（`https://mistral.ai/news/rss`）只包含简短摘要，此处的路由会抓取文章全文。"
+    }
   },
   "mit": {
     "routes": {
@@ -112840,7 +113016,7 @@ export default {
         "parameters": {
           "category": "分类，默认为最新规则，即 `latest`，可在对应分类页 URL 中找到"
         },
-        "description": "::: tip\n若订阅 [最新规则](https://www.sse.com.cn/lawandrules/sselawsrules/latest/)，网址为 `https://www.sse.com.cn/lawandrules/sselawsrules/latest/`。截取 `https://www.sse.com.cn/lawandrules/sselawsrules/` 到末尾 `/` 的部分 `latest` 作为参数填入，此时路由为 [`/sse/sselawsrules/latest`](https://rsshub.app/sse/sselawsrules/latest)。\n:::\n\n| [最新规则](https://www.sse.com.cn/lawandrules/sselawsrules/latest/) | [章程](https://www.sse.com.cn/lawandrules/sselawsrules/article/) | [首发](https://www.sse.com.cn/lawandrules/sselawsrules/stocks/review/firstepisode/)          | [再融资](https://www.sse.com.cn/lawandrules/sselawsrules/stocks/review/refinancing/)       | [重组](https://www.sse.com.cn/lawandrules/sselawsrules/stocks/review/recombination/)           |\n| ------------------------------------------------------------------- | ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |\n| [latest](https://rsshub.app/sse/sselawsrules/latest)                | [article](https://rsshub.app/sse/sselawsrules/article)           | [stocks/review/firstepisode](https://rsshub.app/sse/sselawsrules/stocks/review/firstepisode) | [stocks/review/refinancing](https://rsshub.app/sse/sselawsrules/stocks/review/refinancing) | [stocks/review/recombination](https://rsshub.app/sse/sselawsrules/stocks/review/recombination) |\n\n| [转板](https://www.sse.com.cn/lawandrules/sselawsrules/stocks/review/flap/)  | [发行承销](https://www.sse.com.cn/lawandrules/sselawsrules/stocks/issue/) | [主板上市（挂牌）](https://www.sse.com.cn/lawandrules/sselawsrules/stocks/mainipo/) | [科创板上市（挂牌）](https://www.sse.com.cn/lawandrules/sselawsrules/stocks/staripo/) | [股票交易](https://www.sse.com.cn/lawandrules/sselawsrules/stocks/exchange/) |\n| ---------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |\n| [stocks/review/flap](https://rsshub.app/sse/sselawsrules/stocks/review/flap) | [stocks/issue](https://rsshub.app/sse/sselawsrules/stocks/issue)          | [stocks/mainipo](https://rsshub.app/sse/sselawsrules/stocks/mainipo)                | [stocks/staripo](https://rsshub.app/sse/sselawsrules/stocks/staripo)                  | [stocks/exchange](https://rsshub.app/sse/sselawsrules/stocks/exchange)       |\n\n| [试点创新企业](https://www.sse.com.cn/lawandrules/sselawsrules/stocks/innovative/) | [股权分置改革](https://www.sse.com.cn/lawandrules/sselawsrules/stocks/reform/) | [发行上市审核](https://www.sse.com.cn/lawandrules/sselawsrules/bond/review/) | [发行承销](https://www.sse.com.cn/lawandrules/sselawsrules/bond/issue/) | [公司债券上市（挂牌）](https://www.sse.com.cn/lawandrules/sselawsrules/bond/listing/corporatebond/) |\n| ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |\n| [stocks/innovative](https://rsshub.app/sse/sselawsrules/stocks/innovative)         | [stocks/reform](https://rsshub.app/sse/sselawsrules/stocks/reform)             | [bond/review](https://rsshub.app/sse/sselawsrules/bond/review)               | [bond/issue](https://rsshub.app/sse/sselawsrules/bond/issue)            | [bond/listing/corporatebond](https://rsshub.app/sse/sselawsrules/bond/listing/corporatebond)        |\n\n| [资产支持证券上市（挂牌）](https://www.sse.com.cn/lawandrules/sselawsrules/bond/listing/assets/) | [债券交易通用](https://www.sse.com.cn/lawandrules/sselawsrules/bond/trading/currency/) | [国债预发行](https://www.sse.com.cn/lawandrules/sselawsrules/bond/trading/tbondp/) | [债券质押式三方回购](https://www.sse.com.cn/lawandrules/sselawsrules/bond/trading/tripartyrepo/) | [债券质押式协议回购](https://www.sse.com.cn/lawandrules/sselawsrules/bond/trading/repurchase/) |\n| ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |\n| [bond/listing/assets](https://rsshub.app/sse/sselawsrules/bond/listing/assets)                   | [bond/trading/currency](https://rsshub.app/sse/sselawsrules/bond/trading/currency)     | [bond/trading/tbondp](https://rsshub.app/sse/sselawsrules/bond/trading/tbondp)     | [bond/trading/tripartyrepo](https://rsshub.app/sse/sselawsrules/bond/trading/tripartyrepo)       | [bond/trading/repurchase](https://rsshub.app/sse/sselawsrules/bond/trading/repurchase)         |\n\n| [国债买断式回购交易](https://www.sse.com.cn/lawandrules/sselawsrules/bond/trading/outrightrepo/) | [信用保护工具](https://www.sse.com.cn/lawandrules/sselawsrules/bond/trading/cdx/) | [上市公司可转债](https://www.sse.com.cn/lawandrules/sselawsrules/bond/convertible/) | [基金上市](https://www.sse.com.cn/lawandrules/sselawsrules/fund/listing/) | [基金交易](https://www.sse.com.cn/lawandrules/sselawsrules/fund/trading/) |\n| ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |\n| [bond/trading/outrightrepo](https://rsshub.app/sse/sselawsrules/bond/trading/outrightrepo)       | [bond/trading/cdx](https://rsshub.app/sse/sselawsrules/bond/trading/cdx)          | [bond/convertible](https://rsshub.app/sse/sselawsrules/bond/convertible)            | [fund/listing](https://rsshub.app/sse/sselawsrules/fund/listing)          | [fund/trading](https://rsshub.app/sse/sselawsrules/fund/trading)          |\n\n| [基础设施公募 REITs](https://www.sse.com.cn/lawandrules/sselawsrules/reits/) | [期权](https://www.sse.com.cn/lawandrules/sselawsrules/option/) | [通用类](https://www.sse.com.cn/lawandrules/sselawsrules/trade/universal/) | [融资融券](https://www.sse.com.cn/lawandrules/sselawsrules/trade/specific/margin/) | [转融通](https://www.sse.com.cn/lawandrules/sselawsrules/trade/specific/refinancing/)        |\n| ---------------------------------------------------------------------------- | --------------------------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |\n| [reits](https://rsshub.app/sse/sselawsrules/reits)                           | [option](https://rsshub.app/sse/sselawsrules/option)            | [trade/universal](https://rsshub.app/sse/sselawsrules/trade/universal)     | [trade/specific/margin](https://rsshub.app/sse/sselawsrules/trade/specific/margin) | [trade/specific/refinancing](https://rsshub.app/sse/sselawsrules/trade/specific/refinancing) |\n\n| [质押式回购](https://www.sse.com.cn/lawandrules/sselawsrules/trade/specific/repo/) | [质押式报价回购](https://www.sse.com.cn/lawandrules/sselawsrules/trade/specific/pricerepo/) | [约定购回](https://www.sse.com.cn/lawandrules/sselawsrules/trade/specific/promise/)  | [协议转让](https://www.sse.com.cn/lawandrules/sselawsrules/trade/specific/xyzr/) | [其他](https://www.sse.com.cn/lawandrules/sselawsrules/trade/specific/others/)     |\n| ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |\n| [trade/specific/repo](https://rsshub.app/sse/sselawsrules/trade/specific/repo)     | [trade/specific/pricerepo](https://rsshub.app/sse/sselawsrules/trade/specific/pricerepo)    | [trade/specific/promise](https://rsshub.app/sse/sselawsrules/trade/specific/promise) | [trade/specific/xyzr](https://rsshub.app/sse/sselawsrules/trade/specific/xyzr)   | [trade/specific/others](https://rsshub.app/sse/sselawsrules/trade/specific/others) |\n\n| [沪港通](https://www.sse.com.cn/lawandrules/sselawsrules/global/hkexsc/) | [互联互通存托凭证](https://www.sse.com.cn/lawandrules/sselawsrules/global/slsc/) | [会员管理](https://www.sse.com.cn/lawandrules/sselawsrules/member/personnel/) | [适当性管理](https://www.sse.com.cn/lawandrules/sselawsrules/member/adequacy/) | [纪律处分与复核](https://www.sse.com.cn/lawandrules/sselawsrules/disciplinary/) |\n| ------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- |\n| [global/hkexsc](https://rsshub.app/sse/sselawsrules/global/hkexsc)       | [global/slsc](https://rsshub.app/sse/sselawsrules/global/slsc)                   | [member/personnel](https://rsshub.app/sse/sselawsrules/member/personnel)      | [member/adequacy](https://rsshub.app/sse/sselawsrules/member/adequacy)         | [disciplinary](https://rsshub.app/sse/sselawsrules/disciplinary)                |\n\n| [交易收费](https://www.sse.com.cn/lawandrules/sselawsrules/charge/) | [其他业务规则](https://www.sse.com.cn/lawandrules/sselawsrules/other/) | [业务规则废止公告](https://www.sse.com.cn/lawandrules/sserules/repeal/announcement/)                                       | [已废止规则文本](https://www.sse.com.cn/lawandrules/sselawsrules/repeal/rules/) |\n| ------------------------------------------------------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |\n| [charge](https://rsshub.app/sse/sselawsrules/charge)                | [other](https://rsshub.app/sse/sselawsrules/other)                     | [/lawandrules/sserules/repeal/announcement](https://rsshub.app/sse/sselawsrules//lawandrules/sserules/repeal/announcement) | [repeal/rules](https://rsshub.app/sse/sselawsrules/repeal/rules)                |",
+        "description": "::: tip\n若订阅 [最新规则](https://www.sse.com.cn/lawandrules/sselawsrules2025/latest/)，网址为 `https://www.sse.com.cn/lawandrules/sselawsrules2025/latest/`。截取 `https://www.sse.com.cn/lawandrules/sselawsrules2025/` 到末尾 `/` 的部分 `latest` 作为参数填入，此时路由为 [`/sse/sselawsrules/latest`](https://rsshub.app/sse/sselawsrules/latest)。\n:::\n\n| [最新规则](https://www.sse.com.cn/lawandrules/sselawsrules2025/latest/) | [章程](https://www.sse.com.cn/lawandrules/sselawsrules2025/article/) | [首发](https://www.sse.com.cn/lawandrules/sselawsrules2025/stocks/review/firstepisode/)      | [再融资](https://www.sse.com.cn/lawandrules/sselawsrules2025/stocks/review/refinancing/)   | [重组](https://www.sse.com.cn/lawandrules/sselawsrules2025/stocks/review/recombination/)       |\n| ----------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |\n| [latest](https://rsshub.app/sse/sselawsrules/latest)                    | [article](https://rsshub.app/sse/sselawsrules/article)               | [stocks/review/firstepisode](https://rsshub.app/sse/sselawsrules/stocks/review/firstepisode) | [stocks/review/refinancing](https://rsshub.app/sse/sselawsrules/stocks/review/refinancing) | [stocks/review/recombination](https://rsshub.app/sse/sselawsrules/stocks/review/recombination) |\n\n| [转板](https://www.sse.com.cn/lawandrules/sselawsrules2025/stocks/review/flap/) | [发行承销](https://www.sse.com.cn/lawandrules/sselawsrules2025/stocks/issue/) | [主板上市（挂牌）](https://www.sse.com.cn/lawandrules/sselawsrules2025/stocks/mainipo/) | [科创板上市（挂牌）](https://www.sse.com.cn/lawandrules/sselawsrules2025/stocks/staripo/) | [股票交易](https://www.sse.com.cn/lawandrules/sselawsrules2025/stocks/exchange/) |\n| ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |\n| [stocks/review/flap](https://rsshub.app/sse/sselawsrules/stocks/review/flap)    | [stocks/issue](https://rsshub.app/sse/sselawsrules/stocks/issue)              | [stocks/mainipo](https://rsshub.app/sse/sselawsrules/stocks/mainipo)                    | [stocks/staripo](https://rsshub.app/sse/sselawsrules/stocks/staripo)                      | [stocks/exchange](https://rsshub.app/sse/sselawsrules/stocks/exchange)           |\n\n| [试点创新企业](https://www.sse.com.cn/lawandrules/sselawsrules2025/stocks/innovative/) | [股权分置改革](https://www.sse.com.cn/lawandrules/sselawsrules2025/stocks/reform/) | [发行上市审核](https://www.sse.com.cn/lawandrules/sselawsrules2025/bond/review/) | [发行承销](https://www.sse.com.cn/lawandrules/sselawsrules2025/bond/issue/) | [公司债券上市（挂牌）](https://www.sse.com.cn/lawandrules/sselawsrules2025/bond/listing/corporatebond/) |\n| -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |\n| [stocks/innovative](https://rsshub.app/sse/sselawsrules/stocks/innovative)             | [stocks/reform](https://rsshub.app/sse/sselawsrules/stocks/reform)                 | [bond/review](https://rsshub.app/sse/sselawsrules/bond/review)                   | [bond/issue](https://rsshub.app/sse/sselawsrules/bond/issue)                | [bond/listing/corporatebond](https://rsshub.app/sse/sselawsrules/bond/listing/corporatebond)            |\n\n| [资产支持证券上市（挂牌）](https://www.sse.com.cn/lawandrules/sselawsrules2025/bond/listing/assets/) | [债券交易通用](https://www.sse.com.cn/lawandrules/sselawsrules2025/bond/trading/currency/) | [国债预发行](https://www.sse.com.cn/lawandrules/sselawsrules2025/bond/trading/tbondp/) | [债券质押式三方回购](https://www.sse.com.cn/lawandrules/sselawsrules2025/bond/trading/tripartyrepo/) | [债券质押式协议回购](https://www.sse.com.cn/lawandrules/sselawsrules2025/bond/trading/repurchase/) |\n| ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |\n| [bond/listing/assets](https://rsshub.app/sse/sselawsrules/bond/listing/assets)                       | [bond/trading/currency](https://rsshub.app/sse/sselawsrules/bond/trading/currency)         | [bond/trading/tbondp](https://rsshub.app/sse/sselawsrules/bond/trading/tbondp)         | [bond/trading/tripartyrepo](https://rsshub.app/sse/sselawsrules/bond/trading/tripartyrepo)           | [bond/trading/repurchase](https://rsshub.app/sse/sselawsrules/bond/trading/repurchase)             |\n\n| [国债买断式回购交易](https://www.sse.com.cn/lawandrules/sselawsrules2025/bond/trading/outrightrepo/) | [信用保护工具](https://www.sse.com.cn/lawandrules/sselawsrules2025/bond/trading/cdx/) | [上市公司可转债](https://www.sse.com.cn/lawandrules/sselawsrules2025/bond/convertible/) | [基金上市](https://www.sse.com.cn/lawandrules/sselawsrules2025/fund/listing/) | [基金交易](https://www.sse.com.cn/lawandrules/sselawsrules2025/fund/trading/) |\n| ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |\n| [bond/trading/outrightrepo](https://rsshub.app/sse/sselawsrules/bond/trading/outrightrepo)           | [bond/trading/cdx](https://rsshub.app/sse/sselawsrules/bond/trading/cdx)              | [bond/convertible](https://rsshub.app/sse/sselawsrules/bond/convertible)                | [fund/listing](https://rsshub.app/sse/sselawsrules/fund/listing)              | [fund/trading](https://rsshub.app/sse/sselawsrules/fund/trading)              |\n\n| [基础设施公募 REITs](https://www.sse.com.cn/lawandrules/sselawsrules2025/reits/) | [期权](https://www.sse.com.cn/lawandrules/sselawsrules2025/option/) | [通用类](https://www.sse.com.cn/lawandrules/sselawsrules2025/trade/universal/) | [融资融券](https://www.sse.com.cn/lawandrules/sselawsrules2025/trade/specific/margin/) | [转融通](https://www.sse.com.cn/lawandrules/sselawsrules2025/trade/specific/refinancing/)    |\n| -------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |\n| [reits](https://rsshub.app/sse/sselawsrules/reits)                               | [option](https://rsshub.app/sse/sselawsrules/option)                | [trade/universal](https://rsshub.app/sse/sselawsrules/trade/universal)         | [trade/specific/margin](https://rsshub.app/sse/sselawsrules/trade/specific/margin)     | [trade/specific/refinancing](https://rsshub.app/sse/sselawsrules/trade/specific/refinancing) |\n\n| [质押式回购](https://www.sse.com.cn/lawandrules/sselawsrules2025/trade/specific/repo/) | [质押式报价回购](https://www.sse.com.cn/lawandrules/sselawsrules2025/trade/specific/pricerepo/) | [约定购回](https://www.sse.com.cn/lawandrules/sselawsrules2025/trade/specific/promise/) | [协议转让](https://www.sse.com.cn/lawandrules/sselawsrules2025/trade/specific/xyzr/) | [其他](https://www.sse.com.cn/lawandrules/sselawsrules2025/trade/specific/others/) |\n| -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- |\n| [trade/specific/repo](https://rsshub.app/sse/sselawsrules/trade/specific/repo)         | [trade/specific/pricerepo](https://rsshub.app/sse/sselawsrules/trade/specific/pricerepo)        | [trade/specific/promise](https://rsshub.app/sse/sselawsrules/trade/specific/promise)    | [trade/specific/xyzr](https://rsshub.app/sse/sselawsrules/trade/specific/xyzr)       | [trade/specific/others](https://rsshub.app/sse/sselawsrules/trade/specific/others) |\n\n| [沪港通](https://www.sse.com.cn/lawandrules/sselawsrules2025/global/hkexsc/) | [互联互通存托凭证](https://www.sse.com.cn/lawandrules/sselawsrules2025/global/slsc/) | [会员管理](https://www.sse.com.cn/lawandrules/sselawsrules2025/member/personnel/) | [适当性管理](https://www.sse.com.cn/lawandrules/sselawsrules2025/member/adequacy/) | [纪律处分与复核](https://www.sse.com.cn/lawandrules/sselawsrules2025/disciplinary/) |\n| ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |\n| [global/hkexsc](https://rsshub.app/sse/sselawsrules/global/hkexsc)           | [global/slsc](https://rsshub.app/sse/sselawsrules/global/slsc)                       | [member/personnel](https://rsshub.app/sse/sselawsrules/member/personnel)          | [member/adequacy](https://rsshub.app/sse/sselawsrules/member/adequacy)             | [disciplinary](https://rsshub.app/sse/sselawsrules/disciplinary)                    |\n\n| [交易收费](https://www.sse.com.cn/lawandrules/sselawsrules2025/charge/) | [其他业务规则](https://www.sse.com.cn/lawandrules/sselawsrules2025/other/) | [业务规则废止公告](https://www.sse.com.cn/lawandrules/sselawsrules2025/repeal/announcement/) | [已废止规则文本](https://www.sse.com.cn/lawandrules/sselawsrules2025/repeal/rules/) |\n| ----------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |\n| [charge](https://rsshub.app/sse/sselawsrules/charge)                    | [other](https://rsshub.app/sse/sselawsrules/other)                         | [repeal/announcement](https://rsshub.app/sse/sselawsrules/repeal/announcement)               | [repeal/rules](https://rsshub.app/sse/sselawsrules/repeal/rules)                    |",
         "categories": [
           "finance"
         ],
@@ -112857,308 +113033,308 @@ export default {
           {
             "title": "最新规则",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/latest/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/latest/"
             ],
             "target": "/sselawsrules/latest"
           },
           {
             "title": "章程",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/article/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/article/"
             ],
             "target": "/sselawsrules/article"
           },
           {
             "title": "首发",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/stocks/review/firstepisode/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/stocks/review/firstepisode/"
             ],
             "target": "/sselawsrules/stocks/review/firstepisode"
           },
           {
             "title": "再融资",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/stocks/review/refinancing/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/stocks/review/refinancing/"
             ],
             "target": "/sselawsrules/stocks/review/refinancing"
           },
           {
             "title": "重组",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/stocks/review/recombination/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/stocks/review/recombination/"
             ],
             "target": "/sselawsrules/stocks/review/recombination"
           },
           {
             "title": "转板",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/stocks/review/flap/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/stocks/review/flap/"
             ],
             "target": "/sselawsrules/stocks/review/flap"
           },
           {
             "title": "发行承销",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/stocks/issue/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/stocks/issue/"
             ],
             "target": "/sselawsrules/stocks/issue"
           },
           {
             "title": "主板上市（挂牌）",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/stocks/mainipo/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/stocks/mainipo/"
             ],
             "target": "/sselawsrules/stocks/mainipo"
           },
           {
             "title": "科创板上市（挂牌）",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/stocks/staripo/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/stocks/staripo/"
             ],
             "target": "/sselawsrules/stocks/staripo"
           },
           {
             "title": "股票交易",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/stocks/exchange/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/stocks/exchange/"
             ],
             "target": "/sselawsrules/stocks/exchange"
           },
           {
             "title": "试点创新企业",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/stocks/innovative/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/stocks/innovative/"
             ],
             "target": "/sselawsrules/stocks/innovative"
           },
           {
             "title": "股权分置改革",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/stocks/reform/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/stocks/reform/"
             ],
             "target": "/sselawsrules/stocks/reform"
           },
           {
             "title": "发行上市审核",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/bond/review/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/bond/review/"
             ],
             "target": "/sselawsrules/bond/review"
           },
           {
             "title": "发行承销",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/bond/issue/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/bond/issue/"
             ],
             "target": "/sselawsrules/bond/issue"
           },
           {
             "title": "公司债券上市（挂牌）",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/bond/listing/corporatebond/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/bond/listing/corporatebond/"
             ],
             "target": "/sselawsrules/bond/listing/corporatebond"
           },
           {
             "title": "资产支持证券上市（挂牌）",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/bond/listing/assets/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/bond/listing/assets/"
             ],
             "target": "/sselawsrules/bond/listing/assets"
           },
           {
             "title": "债券交易通用",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/bond/trading/currency/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/bond/trading/currency/"
             ],
             "target": "/sselawsrules/bond/trading/currency"
           },
           {
             "title": "国债预发行",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/bond/trading/tbondp/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/bond/trading/tbondp/"
             ],
             "target": "/sselawsrules/bond/trading/tbondp"
           },
           {
             "title": "债券质押式三方回购",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/bond/trading/tripartyrepo/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/bond/trading/tripartyrepo/"
             ],
             "target": "/sselawsrules/bond/trading/tripartyrepo"
           },
           {
             "title": "债券质押式协议回购",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/bond/trading/repurchase/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/bond/trading/repurchase/"
             ],
             "target": "/sselawsrules/bond/trading/repurchase"
           },
           {
             "title": "国债买断式回购交易",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/bond/trading/outrightrepo/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/bond/trading/outrightrepo/"
             ],
             "target": "/sselawsrules/bond/trading/outrightrepo"
           },
           {
             "title": "信用保护工具",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/bond/trading/cdx/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/bond/trading/cdx/"
             ],
             "target": "/sselawsrules/bond/trading/cdx"
           },
           {
             "title": "上市公司可转债",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/bond/convertible/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/bond/convertible/"
             ],
             "target": "/sselawsrules/bond/convertible"
           },
           {
             "title": "基金上市",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/fund/listing/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/fund/listing/"
             ],
             "target": "/sselawsrules/fund/listing"
           },
           {
             "title": "基金交易",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/fund/trading/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/fund/trading/"
             ],
             "target": "/sselawsrules/fund/trading"
           },
           {
             "title": "基础设施公募REITs",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/reits/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/reits/"
             ],
             "target": "/sselawsrules/reits"
           },
           {
             "title": "期权",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/option/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/option/"
             ],
             "target": "/sselawsrules/option"
           },
           {
             "title": "通用类",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/trade/universal/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/trade/universal/"
             ],
             "target": "/sselawsrules/trade/universal"
           },
           {
             "title": "融资融券",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/trade/specific/margin/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/trade/specific/margin/"
             ],
             "target": "/sselawsrules/trade/specific/margin"
           },
           {
             "title": "转融通",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/trade/specific/refinancing/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/trade/specific/refinancing/"
             ],
             "target": "/sselawsrules/trade/specific/refinancing"
           },
           {
             "title": "质押式回购",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/trade/specific/repo/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/trade/specific/repo/"
             ],
             "target": "/sselawsrules/trade/specific/repo"
           },
           {
             "title": "质押式报价回购",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/trade/specific/pricerepo/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/trade/specific/pricerepo/"
             ],
             "target": "/sselawsrules/trade/specific/pricerepo"
           },
           {
             "title": "约定购回",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/trade/specific/promise/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/trade/specific/promise/"
             ],
             "target": "/sselawsrules/trade/specific/promise"
           },
           {
             "title": "协议转让",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/trade/specific/xyzr/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/trade/specific/xyzr/"
             ],
             "target": "/sselawsrules/trade/specific/xyzr"
           },
           {
             "title": "其他",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/trade/specific/others/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/trade/specific/others/"
             ],
             "target": "/sselawsrules/trade/specific/others"
           },
           {
             "title": "沪港通",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/global/hkexsc/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/global/hkexsc/"
             ],
             "target": "/sselawsrules/global/hkexsc"
           },
           {
             "title": "互联互通存托凭证",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/global/slsc/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/global/slsc/"
             ],
             "target": "/sselawsrules/global/slsc"
           },
           {
             "title": "会员管理",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/member/personnel/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/member/personnel/"
             ],
             "target": "/sselawsrules/member/personnel"
           },
           {
             "title": "适当性管理",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/member/adequacy/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/member/adequacy/"
             ],
             "target": "/sselawsrules/member/adequacy"
           },
           {
             "title": "纪律处分与复核",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/disciplinary/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/disciplinary/"
             ],
             "target": "/sselawsrules/disciplinary"
           },
           {
             "title": "交易收费",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/charge/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/charge/"
             ],
             "target": "/sselawsrules/charge"
           },
           {
             "title": "其他业务规则",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/other/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/other/"
             ],
             "target": "/sselawsrules/other"
           },
           {
             "title": "业务规则废止公告",
             "source": [
-              "www.sse.com.cn/lawandrules/sserules/repeal/announcement/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/repeal/announcement/"
             ],
-            "target": "/sselawsrules//lawandrules/sserules/repeal/announcement"
+            "target": "/sselawsrules/repeal/announcement"
           },
           {
             "title": "已废止规则文本",
             "source": [
-              "www.sse.com.cn/lawandrules/sselawsrules/repeal/rules/"
+              "www.sse.com.cn/lawandrules/sselawsrules2025/repeal/rules/"
             ],
             "target": "/sselawsrules/repeal/rules"
           }
@@ -135908,6 +136084,115 @@ export default {
     "apiRoutes": {},
     "name": "Arcteryx",
     "url": "arcteryx.com",
+    "lang": "en"
+  },
+  "arm": {
+    "routes": {
+      "/blog/:topic?": {
+        "path": "/blog/:topic?",
+        "name": "Blog",
+        "url": "newsroom.arm.com/blog",
+        "example": "/arm/blog",
+        "categories": [
+          "new-media"
+        ],
+        "view": 0,
+        "maintainers": [
+          "ljh12138164"
+        ],
+        "parameters": {
+          "topic": "Topic slug from `https://newsroom.arm.com/topics/:topic`. Omit or use `all` for all topics."
+        },
+        "description": "Full-text blog posts from Arm Newsroom via the WordPress REST API. Returns up to 20 entries by default and supports the common `limit` parameter (up to 100).\n\n| Topic | Slug |\n| --- | --- |\n| Artificial Intelligence (AI) | `artificial-intelligence` |\n| Automotive and autonomous machines | `automotive-autonomous-machines` |\n| Cloud computing | `cloud-computing` |\n| Company news | `company` |\n| Gaming | `gaming` |\n| High-performance computing | `hpc` |\n| Internet of Things (IoT) | `internet-of-things` |\n| Investor news | `investor` |\n| Network infrastructure | `network-infrastructure` |\n| PCs and laptops | `pc-laptops` |\n| Reports | `reports` |\n| Robotics | `robotics` |\n| Security | `security` |\n| Silicon | `silicon` |\n| Smartphones | `smartphones` |\n| Software | `software` |\n| Sustainability and social impact | `sustainability-and-social-impact` |\n| Wearables | `wearables` |",
+        "zh": {
+          "name": "博客",
+          "parameters": {
+            "topic": "官网专题 slug（对应 `https://newsroom.arm.com/topics/:topic`），留空或填 `all` 表示全部专题。"
+          },
+          "description": "通过官方 WordPress REST API 获取 Arm Newsroom 官方博客（`/blog/`）全文内容。默认返回最多 20 篇，可通过通用参数 `limit` 调整（最大 100）。\n\n| 专题 | Slug |\n| --- | --- |\n| 人工智能（AI） | `artificial-intelligence` |\n| 汽车与自动驾驶 | `automotive-autonomous-machines` |\n| 云计算 | `cloud-computing` |\n| 公司新闻 | `company` |\n| 游戏 | `gaming` |\n| 高性能计算（HPC） | `hpc` |\n| 物联网（IoT） | `internet-of-things` |\n| 投资者新闻 | `investor` |\n| 网络基础设施 | `network-infrastructure` |\n| PC 与笔记本 | `pc-laptops` |\n| 报告 | `reports` |\n| 机器人 | `robotics` |\n| 安全 | `security` |\n| 芯片与硅技术 | `silicon` |\n| 智能手机 | `smartphones` |\n| 软件 | `software` |\n| 可持续发展与社会影响 | `sustainability-and-social-impact` |\n| 可穿戴设备 | `wearables` |"
+        },
+        "radar": [
+          {
+            "source": [
+              "newsroom.arm.com/blog",
+              "newsroom.arm.com/blog/:slug"
+            ],
+            "target": "/blog"
+          },
+          {
+            "source": [
+              "newsroom.arm.com/topics/:topic"
+            ],
+            "target": "/blog/:topic"
+          }
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false,
+          "supportRadar": true
+        },
+        "location": "blog.ts",
+        "module": () => import('@/routes/arm/blog.ts')
+      },
+      "/news/:topic?": {
+        "path": "/news/:topic?",
+        "name": "News",
+        "url": "newsroom.arm.com/news",
+        "example": "/arm/news",
+        "categories": [
+          "new-media"
+        ],
+        "view": 0,
+        "maintainers": [
+          "ljh12138164"
+        ],
+        "parameters": {
+          "topic": "Topic slug from `https://newsroom.arm.com/topics/:topic`. Omit or use `all` for all topics."
+        },
+        "description": "Full-text press releases and official news from Arm Newsroom via the WordPress REST API. Returns up to 20 entries by default and supports the common `limit` parameter (up to 100).\n\n| Topic | Slug |\n| --- | --- |\n| Artificial Intelligence (AI) | `artificial-intelligence` |\n| Automotive and autonomous machines | `automotive-autonomous-machines` |\n| Cloud computing | `cloud-computing` |\n| Company news | `company` |\n| Gaming | `gaming` |\n| High-performance computing | `hpc` |\n| Internet of Things (IoT) | `internet-of-things` |\n| Investor news | `investor` |\n| Network infrastructure | `network-infrastructure` |\n| PCs and laptops | `pc-laptops` |\n| Reports | `reports` |\n| Robotics | `robotics` |\n| Security | `security` |\n| Silicon | `silicon` |\n| Smartphones | `smartphones` |\n| Software | `software` |\n| Sustainability and social impact | `sustainability-and-social-impact` |\n| Wearables | `wearables` |",
+        "zh": {
+          "name": "新闻稿",
+          "parameters": {
+            "topic": "官网专题 slug（对应 `https://newsroom.arm.com/topics/:topic`），留空或填 `all` 表示全部专题。"
+          },
+          "description": "通过官方 WordPress REST API 获取 Arm Newsroom 官方新闻稿与公告（`/news/`）全文内容。默认返回最多 20 篇，可通过通用参数 `limit` 调整（最大 100）。\n\n| 专题 | Slug |\n| --- | --- |\n| 人工智能（AI） | `artificial-intelligence` |\n| 汽车与自动驾驶 | `automotive-autonomous-machines` |\n| 云计算 | `cloud-computing` |\n| 公司新闻 | `company` |\n| 游戏 | `gaming` |\n| 高性能计算（HPC） | `hpc` |\n| 物联网（IoT） | `internet-of-things` |\n| 投资者新闻 | `investor` |\n| 网络基础设施 | `network-infrastructure` |\n| PC 与笔记本 | `pc-laptops` |\n| 报告 | `reports` |\n| 机器人 | `robotics` |\n| 安全 | `security` |\n| 芯片与硅技术 | `silicon` |\n| 智能手机 | `smartphones` |\n| 软件 | `software` |\n| 可持续发展与社会影响 | `sustainability-and-social-impact` |\n| 可穿戴设备 | `wearables` |"
+        },
+        "radar": [
+          {
+            "source": [
+              "newsroom.arm.com/news",
+              "newsroom.arm.com/news/:slug",
+              "newsroom.arm.com/"
+            ],
+            "target": "/news"
+          },
+          {
+            "source": [
+              "newsroom.arm.com/topics/:topic"
+            ],
+            "target": "/news/:topic"
+          }
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false,
+          "supportRadar": true
+        },
+        "location": "news.ts",
+        "module": () => import('@/routes/arm/news.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Arm",
+    "url": "arm.com",
     "lang": "en"
   },
   "asahi": {
