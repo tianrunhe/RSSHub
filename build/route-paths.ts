@@ -90,6 +90,7 @@ export type RoutePath =
   | `/78dm/:category{.+}?`
   | `/7gogo/user/:username`
   | `/7mmtv/:language?/:category?/:type?`
+  | `/80lv/articles/:category?`
   | `/81/81rc/:category{.+}?`
   | `/81/jfjb/:page?`
   | `/8264/list/:id?`
@@ -3502,6 +3503,7 @@ export type RoutePath =
   | `/trendingpapers/papers/:category?/:time?/:cited?`
   | `/tribalfootball/`
   | `/trow/portal`
+  | `/tryprofound/research/:filter?`
   | `/tsdm39/bd/:type?`
   | `/tsinghua/career`
   | `/tsinghua/info/:type`
