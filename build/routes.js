@@ -58190,6 +58190,49 @@ export default {
     "url": "www.elecfans.com",
     "lang": "zh-CN"
   },
+  "elevenlabs": {
+    "routes": {
+      "/blog": {
+        "path": "/blog",
+        "name": "Blog",
+        "url": "elevenlabs.io/blog",
+        "example": "/elevenlabs/blog",
+        "categories": [
+          "new-media"
+        ],
+        "view": 0,
+        "maintainers": [
+          "ljh12138164"
+        ],
+        "description": "Full-text product updates, research, and customer stories from the official blog.",
+        "zh": {
+          "name": "博客",
+          "description": "通过官方 RSS 获取 ElevenLabs 的产品动态、研究文章和客户案例全文。"
+        },
+        "radar": [
+          {
+            "source": [
+              "elevenlabs.io/blog",
+              "elevenlabs.io/blog/:slug",
+              "elevenlabs.io/blog/rss.xml"
+            ],
+            "target": "/blog"
+          }
+        ],
+        "location": "blog.ts",
+        "module": () => import('@/routes/elevenlabs/blog.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "ElevenLabs",
+    "url": "elevenlabs.io",
+    "lang": "en",
+    "description": "Product updates, research, and customer stories from ElevenLabs.",
+    "zh": {
+      "name": "ElevenLabs",
+      "description": "ElevenLabs 官方产品动态、研究文章与客户案例。"
+    }
+  },
   "elpais": {
     "routes": {
       "/news": {
@@ -111693,6 +111736,61 @@ export default {
     "name": "四川农业大学",
     "url": "www.sicau.edu.cn",
     "lang": "zh-CN"
+  },
+  "sierra": {
+    "routes": {
+      "/blog": {
+        "path": "/blog",
+        "name": "Blog",
+        "url": "sierra.ai/blog",
+        "categories": [
+          "programming"
+        ],
+        "example": "/sierra/blog",
+        "parameters": {},
+        "maintainers": [
+          "ljh12138164"
+        ],
+        "description": "Full-text news, product updates, engineering deep dives, and customer stories from the official Sierra blog via its RSS feed.",
+        "zh": {
+          "name": "博客",
+          "description": "通过官方 RSS 获取 Sierra 博客的产品更新、工程实践与客户案例全文。"
+        },
+        "radar": [
+          {
+            "source": [
+              "sierra.ai/blog",
+              "sierra.ai/blog/:slug",
+              "sierra.ai/rss.xml"
+            ],
+            "target": "/blog"
+          }
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "view": 0,
+        "location": "blog.ts",
+        "module": () => import('@/routes/sierra/blog.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Sierra",
+    "url": "sierra.ai",
+    "categories": [
+      "programming"
+    ],
+    "lang": "en",
+    "description": "News, product updates, engineering deep dives, and customer stories from Sierra.",
+    "zh": {
+      "name": "Sierra",
+      "description": "Sierra 官方博客、产品更新、工程实践与客户案例。"
+    }
   },
   "sigsac": {
     "routes": {

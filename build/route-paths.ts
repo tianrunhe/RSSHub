@@ -1113,6 +1113,7 @@ export type RoutePath =
   | `/elecfans/soft/:atype`
   | `/eleduck/jobs`
   | `/eleduck/posts/:id?`
+  | `/elevenlabs/blog`
   | `/elpais/news`
   | `/elsevier/:journal`
   | `/elsevier/:journal/:issue`
@@ -3142,6 +3143,7 @@ export type RoutePath =
   | `/sicau/jk/:gid/:typeId/:sortType/:token`
   | `/sicau/yan/:category?`
   | `/sicau/zsjy/:category?`
+  | `/sierra/blog`
   | `/sigsac/ccs/:year?`
   | `/simonsfoundation/articles`
   | `/simonsfoundation/recommend`
