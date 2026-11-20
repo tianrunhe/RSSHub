@@ -1,6 +1,7 @@
+import InvalidParameterError from '@/errors/types/invalid-parameter';
 import type { Route } from '@/types';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
+import { parseDate } from '@/utils/time';
 
 import cache from './cache';
 import utils from './utils';
@@ -23,6 +24,9 @@ export const route: Route = {
 
 async function handler(ctx) {
     const uid = ctx.req.param('uid');
+    if (!/^\d+$/.test(uid)) {
+        throw new InvalidParameterError('Invalid uid');
+    }
     const embed = !ctx.req.param('embed');
     const cookie = await cache.getCookie();
     const wbiVerifyString = await cache.getWbiVerifyString();

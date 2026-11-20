@@ -7,8 +7,8 @@ import type { DataItem } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
 import md5 from '@/utils/md5';
-import { parseDate } from '@/utils/parse-date';
 import { getRouteLimit } from '@/utils/route-limit';
+import { parseDate } from '@/utils/time';
 
 import { renderDescription } from './templates/description';
 
@@ -93,13 +93,15 @@ const getApiDomains = () =>
 
 const fetchApi = async (apiUrl: string) => {
     // get timestamp using javascript native api
-    const ts = Date.now();
+    const ts = Temporal.Now.instant().epochMilliseconds;
     const tokenParam = `${ts},1.7.5`;
     // md5 from {token ts + "18comicAPP"
     let token = `${ts}18comicAPP`;
     token = md5(token);
 
+    // the API domains come from a remote list
     const response = await got(apiUrl, {
+        publicOnly: true,
         headers: {
             token,
             tokenparam: tokenParam,
@@ -151,14 +153,16 @@ const ProcessItems = async (ctx, currentUrl, rootUrl) => {
 
             return {
                 title: $item.text().trim(),
-                link: `${rootUrl}${$item.prev().find('a').attr('href')}`,
+                link: new URL($item.prev().find('a').attr('href')!, rootUrl).href,
                 guid: `18comic:${$item.prev().find('a').attr('href')}`,
             };
-        });
+        })
+        // only follow links on the site itself
+        .filter((item) => new URL(item.link!).origin === new URL(rootUrl).origin);
 
     items = await Promise.all(
         items.map((item) =>
-            cache.tryGet(item.guid, async () => {
+            cache.tryGet(`${item.guid}:${rootUrl}`, async () => {
                 const detailResponse = await got(item.link);
 
                 const content = load(detailResponse.data);

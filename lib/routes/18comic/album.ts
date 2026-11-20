@@ -1,6 +1,6 @@
 import type { DataItem, Route } from '@/types';
 import cache from '@/utils/cache';
-import { parseDate } from '@/utils/parse-date';
+import { parseDate } from '@/utils/time';
 
 import { renderDescription } from './templates/description';
 import { defaultDomain, getRootUrl, processApiItems } from './utils';
@@ -66,7 +66,7 @@ async function handler(ctx) {
     } else {
         results = await Promise.all(
             apiResult.series.map((item, index) =>
-                cache.tryGet(`18comic:album:${item.id}`, async () => {
+                cache.tryGet(`18comic:album:${item.id}:${rootUrl}`, async () => {
                     const chapterResult = await processApiItems(`/chapter?id=${item.id}`);
                     const result: DataItem = { title: '' };
                     const chapterNum = index + 1;

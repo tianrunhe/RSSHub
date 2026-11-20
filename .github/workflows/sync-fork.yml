@@ -5,18 +5,35 @@ on:
         - cron: '17 4 * * *'
     workflow_dispatch:
 
+concurrency:
+    group: sync-fork
+
 jobs:
     sync-fork:
-        if: github.repository_owner != 'DIYgod'
+        if: github.repository == 'tianrunhe/RSSHub' && github.ref == 'refs/heads/master'
         runs-on: ubuntu-slim
         name: Sync fork with DIYgod/RSSHub
         timeout-minutes: 5
         permissions:
-            contents: write
+            contents: read
         steps:
-            # The default token cannot update files under .github/workflows, so a sync that brings in workflow changes needs a SYNC_TOKEN secret with the workflow scope
-            - name: Sync default branch
+            - name: Require the fork sync deploy key
               env:
-                  GH_TOKEN: ${{ secrets.SYNC_TOKEN || github.token }}
-                  FORK_REPO: ${{ github.repository }}
-              run: gh repo sync "${FORK_REPO}"
+                  SYNC_DEPLOY_KEY: ${{ secrets.SYNC_DEPLOY_KEY }}
+              run: |
+                  if [[ -z "$SYNC_DEPLOY_KEY" ]]; then
+                      echo "::error::Configure the SYNC_DEPLOY_KEY Actions secret with the fork's write-enabled deploy key."
+                      exit 1
+                  fi
+
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+              with:
+                  ref: master
+                  fetch-depth: 0
+                  ssh-key: ${{ secrets.SYNC_DEPLOY_KEY }}
+
+            - name: Merge and push upstream master
+              run: |
+                  git fetch --no-tags https://github.com/DIYgod/RSSHub.git refs/heads/master
+                  git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' merge --no-edit FETCH_HEAD
+                  git push origin HEAD:refs/heads/master

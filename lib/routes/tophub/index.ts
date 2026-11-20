@@ -41,14 +41,16 @@ async function handler(ctx) {
     const threshold = Number(ctx.req.param('threshold')) || 0;
 
     const rootUrl = 'https://tophub.today/';
-    const link = new URL(`/n/${id}`, rootUrl).href;
+    const link = new URL(`/n/${encodeURIComponent(id)}`, rootUrl).href;
     const response = await ofetch(rootUrl, {
         headers: {
             Cookie: config.tophub?.cookie ?? '',
         },
     });
     const $ = load(response);
-    const container = $(`.i-o[hashid="${id}"]`).closest('.cc-cd');
+    const container = $('.i-o[hashid]')
+        .filter((_, element) => $(element).attr('hashid') === id)
+        .closest('.cc-cd');
 
     if (container.length === 0) {
         throw new Error(`TopHub list ${id} was not found on the homepage`);
@@ -93,7 +95,7 @@ function shouldIncludeItem(heatRate: string, threshold: number) {
 }
 
 function parseHotness(heatRate: string) {
-    const matched = heatRate.match(/([\d.]+)\s*[W万]/i);
+    const matched = /([\d.]+)\s*[W万]/i.exec(heatRate);
 
     return matched ? Number(matched[1]) : NaN;
 }

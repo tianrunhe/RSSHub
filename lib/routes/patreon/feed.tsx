@@ -6,7 +6,7 @@ import { config } from '@/config';
 import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
-import { parseDate } from '@/utils/parse-date';
+import { parseDate } from '@/utils/time';
 
 import { renderContentJson } from './render-content-json';
 import type { CreatorData, PostData } from './types';
@@ -123,7 +123,7 @@ async function handler(ctx) {
         const ogUrl = $('meta[property="og:url"]').attr('content');
         if (ogUrl?.startsWith(`${baseUrl}/cw/`)) {
             const ogImage = $('meta[property="og:image"]').attr('content');
-            const creatorId = decodeURIComponent(ogImage || '').match(/card-teaser-image\/creator\/(\d+)/)?.[1];
+            const creatorId = /card-teaser-image\/creator\/(\d+)/.exec(decodeURIComponent(ogImage || ''))?.[1];
             if (creatorId) {
                 const creator = await ofetch(`${baseUrl}/api/campaigns/${creatorId}`);
                 return {

@@ -4,10 +4,14 @@ This fork tracks `DIYgod/RSSHub` while preserving fork-local behavior, especiall
 
 ## Upstream Sync
 
-1. Require a clean worktree and verify `origin` points to this fork and `upstream` points to `DIYgod/RSSHub`.
-2. Fetch both remotes and update `master` from `origin/master` before merging `upstream/master`.
-3. Prefer upstream package and toolchain versions when resolving dependency conflicts. Retain a fork-local package change only when taking upstream would clearly break a required local patch.
-4. Preserve TopHub source and tests. Current TopHub test placement is `lib/routes/tophub.test.ts`: it is excluded from route discovery and from the orphan-test guard introduced upstream.
+The [Sync fork workflow](.github/workflows/sync-fork.yml) fetches and merges upstream `master` daily. You can also dispatch it from `master` in GitHub Actions. The workflow uses the fork's write-enabled deploy key stored in `SYNC_DEPLOY_KEY` so it can push upstream workflow changes. Dependabot patch auto-merges run only on `DIYgod/RSSHub` to avoid competing updates in the fork.
+
+If Git reports conflicts, reconcile them in a clean checkout:
+
+1. Verify `origin` points to this fork and `upstream` points to `DIYgod/RSSHub`.
+2. Fetch both remotes and fast-forward local `master` to `origin/master` before merging `upstream/master`.
+3. Prefer upstream package and toolchain versions. Keep fork-specific changes required by local routes or deployment.
+4. Preserve TopHub behavior and run its existing regression tests in `scripts/tophub-route.test.ts`.
 
 ## Fork-Specific CI Guards
 

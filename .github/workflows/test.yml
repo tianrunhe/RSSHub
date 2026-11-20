@@ -154,7 +154,7 @@ jobs:
                   path: assets/build/
 
     automerge:
-        if: github.triggering_actor == 'dependabot[bot]' && github.event_name == 'pull_request'
+        if: github.repository == 'DIYgod/RSSHub' && github.triggering_actor == 'dependabot[bot]' && github.event_name == 'pull_request'
         needs: [vitest, playwright, all]
         runs-on: ubuntu-slim
         permissions:

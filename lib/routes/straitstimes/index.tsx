@@ -8,7 +8,7 @@ import type { DataItem, Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
 import ofetch from '@/utils/ofetch';
-import { parseDate } from '@/utils/parse-date';
+import { parseDate } from '@/utils/time';
 
 export const route: Route = {
     path: '/:category?/:section?',
@@ -64,7 +64,7 @@ async function handler(ctx) {
     const category = ctx.req.param('category') ? ctx.req.param('category').toLowerCase() : 'singapore';
     const section = ctx.req.param('section')?.toLowerCase();
     const baseUrl = 'https://www.straitstimes.com';
-    const currentUrl = new URL(`/${category}`, baseUrl).href;
+    const currentUrl = `${baseUrl}/${category}`;
     const { data: response } = await got(currentUrl);
     const $ = load(response);
     const refCode = section === 'top-stories' ? 'top-stories' : 'latest';
