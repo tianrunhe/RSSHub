@@ -672,6 +672,7 @@ export type RoutePath =
   | `/cjlu/yjsy/:cate`
   | `/claude/blog`
   | `/claude/code/changelog`
+  | `/claude/dev/blog`
   | `/clickme/:site/:grouping/:name`
   | `/cline/blog`
   | `/cloudflare/blog`
@@ -1214,7 +1215,6 @@ export type RoutePath =
   | `/foresightnews/article`
   | `/foresightnews/column/:id`
   | `/foresightnews/news`
-  | `/foreverblog/feeds`
   | `/forklog/news`
   | `/fortnite/news/:options?`
   | `/fortunechina/:category?`
@@ -1525,9 +1525,19 @@ export type RoutePath =
   | `/gov/sh/yjj/:path{.+}?`
   | `/gov/shaanxi/kjt/:id?`
   | `/gov/shanxi/rst/:category`
+  | `/gov/shenzhen/baoan/bajshej/:caty?`
+  | `/gov/shenzhen/dpxq/dpzfjsj/:caty?`
   | `/gov/shenzhen/hrss/szksy/:caty/:page?`
+  | `/gov/shenzhen/lg/lgzjj/:caty?`
+  | `/gov/shenzhen/szft/ftqjsj/:caty?`
+  | `/gov/shenzhen/szgm/gmzfhjsjcsgx/:caty?`
+  | `/gov/shenzhen/szlh/lhqzfhjsj/:caty?`
   | `/gov/shenzhen/szlh/zwfw/zffw/:caty`
+  | `/gov/shenzhen/szlhq/lhzfhjsj/:caty?`
+  | `/gov/shenzhen/szns/nsqzjj/:caty?`
+  | `/gov/shenzhen/szpsq/pszfbzzx/:caty?`
   | `/gov/shenzhen/xxgk/zfxxgj/:caty`
+  | `/gov/shenzhen/yantian/ytjsj/:caty?`
   | `/gov/shenzhen/zjj/xxgk/:caty`
   | `/gov/shenzhen/zzb/:caty/:page?`
   | `/gov/sichuan/deyang/govpublicinfo/:countyName/:infoType?`
@@ -2040,6 +2050,7 @@ export type RoutePath =
   | `/keyakizaka46/blog`
   | `/keyakizaka46/news`
   | `/keylol/:path`
+  | `/kimi/blog`
   | `/kimlaw/thesis`
   | `/kiro/blog`
   | `/kiro/changelog`
@@ -2354,6 +2365,7 @@ export type RoutePath =
   | `/mixi2/home`
   | `/mixi2/user/:name/:media?`
   | `/miyuki/news`
+  | `/modal/blog`
   | `/modb/topic/:id`
   | `/modelscope/community`
   | `/modelscope/datasets`
@@ -2644,6 +2656,7 @@ export type RoutePath =
   | `/oo-software/changelog/:id`
   | `/openai/chatgpt/release-notes`
   | `/openai/cookbook`
+  | `/openai/developers/blog/:lang?`
   | `/openai/news`
   | `/openai/research`
   | `/openalex/:journals/:type?/:ids?`
@@ -3635,6 +3648,7 @@ export type RoutePath =
   | `/viva-la-vita/featured`
   | `/viva-la-vita/hot`
   | `/viva-la-vita/latest`
+  | `/vllm/blog`
   | `/voanews/:language/:channel?`
   | `/vocus/publication/:id`
   | `/vocus/user/:id`
