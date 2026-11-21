@@ -11552,6 +11552,22 @@
       }
     ]
   },
+  "amazon.com": {
+    "_name": "Amazon",
+    "aws": [
+      {
+        "title": "AWS Blog",
+        "docs": "https://docs.rsshub.app/routes/amazon",
+        "source": [
+          "/blogs",
+          "/blogs/:category",
+          "/blogs/:category/feed",
+          "/blogs/:category/:slug"
+        ],
+        "target": "/amazon/blogs/:category?"
+      }
+    ]
+  },
   "android.com": {
     "_name": "Android",
     "source": [
@@ -11775,6 +11791,33 @@
           "/:language/100100"
         ],
         "target": "/apple/security-releases/:language?"
+      }
+    ],
+    "machinelearning": [
+      {
+        "title": "Machine Learning Research",
+        "docs": "https://docs.rsshub.app/routes/apple",
+        "source": [
+          "/",
+          "/research/:slug"
+        ],
+        "target": "/apple/ml-research"
+      },
+      {
+        "title": "Machine Learning Research",
+        "docs": "https://docs.rsshub.app/routes/apple",
+        "source": [
+          "/highlights"
+        ],
+        "target": "/apple/ml-research/highlights"
+      },
+      {
+        "title": "Machine Learning Research",
+        "docs": "https://docs.rsshub.app/routes/apple",
+        "source": [
+          "/research"
+        ],
+        "target": "/apple/ml-research/research"
       }
     ],
     "podcasts": [
@@ -32345,6 +32388,19 @@
       }
     ]
   },
+  "manager.dev": {
+    "_name": "Manager.dev",
+    "www": [
+      {
+        "title": "Newsletter",
+        "docs": "https://docs.rsshub.app/routes/manager-dev",
+        "source": [
+          "/newsletter"
+        ],
+        "target": "/manager-dev/newsletter"
+      }
+    ]
+  },
   "mhgui.com": {
     "_name": "看漫画",
     "www": [
@@ -49845,6 +49901,27 @@
           "/t/:postid"
         ],
         "target": "/v2ex/post/:postid"
+      }
+    ]
+  },
+  "valueresearchonline.com": {
+    "_name": "Value Research",
+    "www": [
+      {
+        "title": "Knowledge Center",
+        "docs": "https://docs.rsshub.app/routes/valueresearchonline",
+        "source": [
+          "/indexinvestor/"
+        ],
+        "target": "/valueresearchonline/knowledge-center/index-investor"
+      },
+      {
+        "title": "Knowledge Center",
+        "docs": "https://docs.rsshub.app/routes/valueresearchonline",
+        "source": [
+          "/knowledge-center/:section/"
+        ],
+        "target": "/valueresearchonline/knowledge-center/:section"
       }
     ]
   },

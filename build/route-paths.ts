@@ -203,6 +203,7 @@ export type RoutePath =
   | `/alwayscontrol/news`
   | `/amazfitwatchfaces/:device/:sort/:searchParams?`
   | `/amazon/awsblogs/:locale?`
+  | `/amazon/blogs/:category?`
   | `/amazon/kindle/software-updates`
   | `/amd/newsroom/:category?/:language?`
   | `/amd/press-releases/:language?`
@@ -234,6 +235,7 @@ export type RoutePath =
   | `/apple/apps/update/:country/:id/:platform?`
   | `/apple/design`
   | `/apple/exchange_repair/:country?`
+  | `/apple/ml-research/:category?`
   | `/apple/newsroom`
   | `/apple/podcast/:id/:region?`
   | `/apple/security-releases/:language?`
@@ -2243,6 +2245,7 @@ export type RoutePath =
   | `/malaysiakini/:lang/:category?`
   | `/maldita/updates/:category?`
   | `/mamibuy/:caty?`
+  | `/manager-dev/newsletter/:sort?`
   | `/mangadex/manga/:id/:lang?`
   | `/mangadex/mdlist/:id/:lang?`
   | `/mangadex/user/feed/follow/:lang?`
@@ -3631,6 +3634,7 @@ export type RoutePath =
   | `/v2ex/topics/:type`
   | `/v2ex/xna`
   | `/v2rayshare/`
+  | `/valueresearchonline/knowledge-center/:section`
   | `/vb-audio/voicemeeter/changelog`
   | `/vcb-s/`
   | `/vcb-s/category/:cate`
